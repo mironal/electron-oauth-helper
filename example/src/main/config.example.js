@@ -55,6 +55,15 @@ const Twitter = {
   callback_url: "your callback url"
 }
 
+const Firebase = {
+  apiKey: "",
+  authDomain: "",
+  databaseURL: "",
+  projectId: "",
+  storageBucket: "",
+  messagingSenderId: ""
+}
+
 const mapTypeToConfig = type => {
   return {
     GitHub,
@@ -62,7 +71,8 @@ const mapTypeToConfig = type => {
     GoogleClientWebApp,
     FacebookImplicit,
     FacebookAuthCode,
-    Twitter
+    Twitter,
+    Firebase,
   }[type]
 }
 
