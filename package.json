@@ -1,0 +1,19 @@
+{
+    "name": "electron-oauth-helper",
+    "version": "0.0.0",
+    "description": "",
+    "scripts": {
+        "start:example": "electron ./example/src/main/main.js",
+        "lint": "eslint .",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [],
+    "author": "",
+    "devDependencies": {
+        "electron": "1.7.9",
+        "eslint": "4.12.1"
+    },
+    "dependencies": {
+        "debug": "3.1.0"
+    }
+}

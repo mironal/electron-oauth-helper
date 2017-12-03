@@ -1,0 +1,4 @@
+.vscode
+coverage
+example/
+.eslintrc*
