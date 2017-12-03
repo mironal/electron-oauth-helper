@@ -1,6 +1,6 @@
 {
     "name": "electron-oauth-helper",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "",
     "scripts": {
         "start:example": "electron ./example/src/main/main.js",
