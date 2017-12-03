@@ -1,6 +1,6 @@
 {
     "name": "electron-oauth-helper",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "Easy to use helper library for OAuth1 and OAuth2.",
     "main": "index.js",
     "scripts": {
@@ -8,7 +8,14 @@
         "lint": "eslint .",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
-    "keywords": ["oauth", "oauth1", "oauth2", "electron", "auth", "api"],
+    "keywords": [
+        "oauth",
+        "oauth1",
+        "oauth2",
+        "electron",
+        "auth",
+        "api"
+    ],
     "author": "mironal",
     "license": "MIT",
     "repository": {
