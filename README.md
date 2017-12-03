@@ -47,3 +47,5 @@ provider.perform()
 ## Example
 
 example electron app => `example/`
+
+![example screenshot](./ss/example.png)
