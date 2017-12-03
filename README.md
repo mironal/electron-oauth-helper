@@ -1,5 +1,7 @@
 # Electron OAuth Helper
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/mironal/electron-oauth-helper.svg)](https://greenkeeper.io/)
+
 [![NPM](https://nodei.co/npm/electron-oauth-helper.png)](https://nodei.co/npm/electron-oauth-helper/)
 
 [![Build Status](https://travis-ci.org/mironal/electron-oauth-helper.svg)](https://travis-ci.org/mironal/electron-oauth-helper)
