@@ -10,7 +10,11 @@ const {
   OAuth2Provider,
 } = require("../../../")
 
+const firebase = require("firebase")
+
 const mapTypeToConfig = require("./config")
+
+firebase.initializeApp(mapTypeToConfig("Firebase"))
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
