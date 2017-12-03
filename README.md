@@ -18,7 +18,7 @@ This library is lightweight because it depends only on [debug](https://github.co
 
 ## Install
 
-`npm run electron-oauth-helper --save`
+`npm install electron-oauth-helper --save`
 
 ## Usage
 
