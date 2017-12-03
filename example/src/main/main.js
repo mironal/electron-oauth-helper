@@ -61,10 +61,6 @@ app.on("activate", () => {
   }
 })
 
-const useOAuth1 = type => {
-  return type === "Twitter"
-}
-
 ipc.on("oauth", (event, type) => {
 
   const config = mapTypeToConfig(type)
@@ -72,30 +68,20 @@ ipc.on("oauth", (event, type) => {
     console.warn(`Unknown type: "${type}"`)
     return
   }
-  if (useOAuth1(type)) {
-    oauth1(config)
-  } else {
-    oauth2(config)
-  }
+
+  const Provider = (() => {
+    if (type.startsWith("Twitter")) {
+      return OAuth1Provider
+    }
+    return OAuth2Provider
+  })()
+
+  const provider = new Provider(config)
+  provider.perform()
+    .then(resp => {
+      console.log(resp)
+    })
+    .catch(error => console.error(error))
 })
-
-const oauth1 = config => {
-  const provider = new OAuth1Provider(config)
-  provider.perform()
-    .then(token => {
-      console.log(token)
-    })
-    .catch(error => console.error(error))
-}
-
-const oauth2 = config => {
-
-  const provider = new OAuth2Provider(config)
-  provider.perform()
-    .then(token => {
-      console.log(token)
-    })
-    .catch(error => console.error(error))
-}
 
 process.on("uncaughtException", error => console.error(error))
