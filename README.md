@@ -1,5 +1,9 @@
 # Electron OAuth Helper
 
+[![NPM](https://nodei.co/npm/electron-oauth-helper.png)](https://nodei.co/npm/electron-oauth-helper/)
+
+[![Build Status](https://travis-ci.org/mironal/electron-oauth-helper.svg)](https://travis-ci.org/mironal/electron-oauth-helper)
+
 ## What's this
 
 Easy to use helper library for OAuth1 and OAuth2.
