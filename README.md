@@ -356,9 +356,7 @@ TODO
 ```js
 const provider = new OAuth2Provider({
   access_token_url: "",
-  response_type: "password",
-  username: "",
-  password: "",
+  grant_type: "client_credentials",
   // other parameters are optional.
 })
 
