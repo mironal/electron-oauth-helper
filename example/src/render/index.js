@@ -35,12 +35,24 @@ const onClick = event => {
     const provider = new Provider(config)
     provider.perform()
       .then(resp => {
-        console.log(resp)
+        console.log("Got response", resp)
+
+        if (isLinkFirebaseAuth && type === "GoogleClientWebApp") {
+
+          // https://firebase.google.com/docs/reference/js/firebase.auth.GoogleAuthProvider#.credential
+          const credential = firebase.auth.GoogleAuthProvider.credential(null, resp.access_token)
+          firebase.auth().signInWithCredential(credential)
+            .then(result => {
+              console.log("joined google", result)
+            })
+            .catch(error => {
+              console.error(error)
+            })
+        }
 
         if (isLinkFirebaseAuth && type === "GitHub") {
 
           const query = querystring.parse(resp)
-
           // https://firebase.google.com/docs/auth/web/github-auth#handle_the_sign-in_flow_manually
           const credential = firebase.auth.GithubAuthProvider.credential(query.access_token)
           firebase.auth().signInWithCredential(credential)
