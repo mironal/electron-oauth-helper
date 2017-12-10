@@ -2,7 +2,7 @@ const GitHub = {
   client_id: "your client id",
   client_secret: "your client secret",
   scope: "read:user",
-  redirect_url: "your redirect url",
+  redirect_uri: "your redirect url",
   authorize_url: "https://github.com/login/oauth/authorize",
   access_token_url: "https://github.com/login/oauth/access_token",
 }
@@ -64,6 +64,7 @@ const Firebase = {
   messagingSenderId: ""
 }
 
+/* eslint-disable security/detect-object-injection*/
 const mapTypeToConfig = type => {
   return {
     GitHub,
@@ -75,5 +76,6 @@ const mapTypeToConfig = type => {
     Firebase,
   }[type]
 }
+/* eslint-enable */
 
 module.exports = mapTypeToConfig

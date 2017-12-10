@@ -1,11 +1,40 @@
 module.exports = {
+  "parserOptions": {
+    "ecmaVersion": 8,
+    "ecmaFeatures": {
+
+      "experimentalObjectRestSpread": true
+    }
+  },
   "env": {
     "browser": true,
     "es6": true,
-    "node": true
+    "node": true,
+    "jest": true,
   },
-  "extends": "eslint:recommended",
+  "extends": [
+    "eslint:recommended",
+    "plugin:ava/recommended",
+    "plugin:node/recommended",
+    "plugin:promise/recommended",
+    "plugin:security/recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings",
+  ],
+  "plugins": [
+    "ava",
+    "node",
+    "import",
+    "promise",
+    "security"
+  ],
   "rules": {
+    "node/no-unpublished-require": ["error", {
+      "allowModules": ["electron"]
+    }],
+    "promise/avoid-new": "off",
+    "promise/always-return": "off",
+    "no-multiple-empty-lines": ["error", { max: 1 }],
     "indent": [
       "error",
       2,
@@ -22,6 +51,12 @@ module.exports = {
     "semi": [
       "error",
       "never"
+    ],
+    "no-var": [
+      "error"
+    ],
+    "prefer-const": [
+      "error"
     ]
   }
 };

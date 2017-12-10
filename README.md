@@ -44,7 +44,7 @@ provider.perform()
 const { OAuth2Provider } = require("electron-oauth-helper")
 
 const config = { /* oauth config. please see example/main/config.example.js.  */}
-const provider = new OAuth2Provider(config)
+const provider = new OAuth2Provider(config).withCustomAuthPrameter({}).withCustomTokenParameter({})
 provider.perform()
   .then(resp => {
     console.log(resp)
@@ -289,13 +289,11 @@ provider.perform()
 
 #### Access Token Response
 
-> [Successful Response](https://tools.ietf.org/html/rfc6749#section-5.1)
+> [Successful Response](https://tools.ietf.org/html/rfc6749#section-4.2.2)
 
 > [Error Response](https://tools.ietf.org/html/rfc6749#section-4.2.2.1)
 
 ### Resource Owner Password Credentials Grant
-
-TODO
 
 > [RFC 6749: 4.3](https://tools.ietf.org/html/rfc6749#section-4.3)
 
@@ -348,8 +346,6 @@ No need.
 > [Error Response](https://tools.ietf.org/html/rfc6749#section-5.2)
 
 ### Client Credentials Grant
-
-TODO
 
 > [RFC 6749: 4.4](https://tools.ietf.org/html/rfc6749#section-4.4)
 

@@ -1,5 +1,8 @@
 .vscode
 coverage
 example/
+docs/
 .eslintrc*
 ss/
+**/*.test.js
+*/__test_utils/*
