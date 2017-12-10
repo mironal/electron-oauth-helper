@@ -9,7 +9,10 @@
         "lint:fix": "eslint --fix .",
         "test": "avaron --timeout=10s",
         "build": "parcel build --no-minify index.js",
-        "doc": "esdoc"
+        "doc": "esdoc",
+        "preversion": "npm run lint && npm run test",
+        "version": "npm run doc && git add -A",
+        "postversion": "git push && git push --tags"
     },
     "engines": {
         "node": ">= 8.0.0"
