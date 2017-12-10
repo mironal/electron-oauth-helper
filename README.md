@@ -10,7 +10,14 @@
 
 Easy to use helper library for OAuth1 and OAuth2.
 
-This automatically manages the Electron window for OAuth.
+All grant type supported.
+
+- Authorization Code Grant
+- Implicit Grant
+- Resource Owner Password Credentials Grant
+- Client Credentials Grant
+
+> TODO: Refreshing an Access Token
 
 You can get a token just by calling a method of start OAuth.
 
@@ -28,9 +35,19 @@ This library is lightweight because it depends only on [debug](https://github.co
 
 const { OAuth1Provider } = require("electron-oauth-helper")
 
+const window = new BrowserWindow({
+  width: 600,
+  height: 800,
+  webPreferences: {
+    nodeIntegration: false // We recommend disabling nodeIntegration for security.
+    contextIsolation: true // We recommend enabling contextIsolation for security.
+    // see https://github.com/electron/electron/blob/master/docs/tutorial/security.md
+  },
+})
+
 const config = { /* oauth config. please see example/main/config.example.js.  */}
 const provider = new OAuth1Provider(config)
-provider.perform()
+provider.perform(window)
   .then(resp => {
     console.log(resp)
   })
@@ -43,9 +60,23 @@ provider.perform()
 
 const { OAuth2Provider } = require("electron-oauth-helper")
 
+const window = new BrowserWindow({
+  width: 600,
+  height: 800,
+  webPreferences: {
+    nodeIntegration: false // We recommend disabling nodeIntegration for security.
+    contextIsolation: true // We recommend enabling contextIsolation for security.
+    // see https://github.com/electron/electron/blob/master/docs/tutorial/security.md
+  },
+})
+
 const config = { /* oauth config. please see example/main/config.example.js.  */}
-const provider = new OAuth2Provider(config).withCustomAuthPrameter({}).withCustomTokenParameter({})
-provider.perform()
+const provider = new OAuth2Provider(config)
+// Your can use custom parameter.
+// const provider = new OAuth2Provider(config)
+//   .withCustomAuthorizationRequestParameter({})
+//   .withCustomAccessTokenRequestParameter({})
+provider.perform(window)
   .then(resp => {
     console.log(resp)
   })
@@ -70,7 +101,7 @@ const { OAuth2Provider } = require("electron-oauth-helper")
 
 const config = { /* oauth config. please see example/main/config.example.js.  */}
 const provider = new OAuth2Provider(config)
-provider.perform()
+provider.perform(window)
   .then(resp => {
     const query = querystring.parse(resp)
     const credential = firebase.auth.GithubAuthProvider.credential(query.access_token)

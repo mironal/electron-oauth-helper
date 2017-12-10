@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../">
+  <title data-ice="title">lib/oauth2/helper.js | electron-oauth-helper</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="Easy to use helper library for OAuth1 and OAuth2."><meta property="twitter:card" content="summary"><meta property="twitter:title" content="electron-oauth-helper"><meta property="twitter:description" content="Easy to use helper library for OAuth1 and OAuth2."></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/mironal/electron-oauth-helper.git"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  </ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">lib/oauth2/helper.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">const querystring = require(&quot;querystring&quot;)
+const Url = require(&quot;url&quot;)
+
+const debug = require(&quot;debug&quot;)(&quot;eoh:oauth2&quot;)
+
+const {
+  postRequest,
+  awaitRedirect,
+  omit,
+} = require(&quot;../utils&quot;)
+
+const valueForType = (type, codeFn, tokenFn, passFn, credFn) =&gt; {
+
+  if (!type) {
+    throw new Error(&quot;type must not be null.&quot;)
+  }
+
+  if (type.includes(&quot;id_token&quot;)) {
+    // eslint-disable-next-line
+    console.warn(&quot;Multiple-Valued Response Type Combinations is not supportted. Brobably not working...&quot;)
+  }
+
+  if (type.includes(&quot;code&quot;)) {
+    return codeFn(type)
+  }
+
+  if (type.includes(&quot;token&quot;)) {
+    return tokenFn(type)
+  }
+
+  if (type.includes(&quot;password&quot;)) {
+    return passFn(type)
+  }
+
+  if (type.includes(&quot;client_credentials&quot;)) {
+    return credFn(type)
+  }
+
+  throw new Error(`Unsupported type: ${type}`)
+}
+
+const createAuthorizeUrl = (config, optional) =&gt; {
+
+  const keys = [
+    &quot;client_id&quot;,
+    &quot;redirect_uri&quot;,
+    &quot;scope&quot;,
+    &quot;state&quot;,
+    &quot;response_type&quot;,
+  ]
+  /* eslint-disable security/detect-object-injection */
+  const parameter = Object.assign({}, keys.reduce((prev, key) =&gt; {
+    if (typeof config[key] === &quot;string&quot;) {
+      prev[key] = config[key]
+    }
+    return prev
+  }, {}), optional || {})
+  /* eslint-enable */
+
+  const url = `${config.authorize_url}?${querystring.stringify(parameter)}`
+  return url
+}
+
+/**
+ *
+ * @param {object} config
+ * @param {Electron.BrowserWindow} window
+ * @param {object} auth  - Custom auth parameter.
+ * @param {object} token  - Custom token parameter.
+ */
+const authorizationCodeFlowTask = (config, window, auth, token) =&gt; {
+
+  if (!window) {
+    return Promise.reject(new Error(&quot;window is required&quot;))
+  }
+
+  const authorizeUrl = createAuthorizeUrl(config, auth)
+  window.loadURL(authorizeUrl)
+
+  return awaitRedirect(config.redirect_uri, window.webContents)
+    .then(url =&gt; {
+      debug(`redirect url: &quot;${url}&quot;`)
+
+      const query = Url.parse(url, true).query
+
+      if (!query) {
+        return Promise.reject(new Error(`invalid response: ${url}`))
+      }
+
+      if (query.error) {
+        const error = new Error(&quot;error response&quot;)
+        error.query = query
+        return Promise.reject(error)
+      }
+
+      if (!query.code) {
+        return Promise.reject(new Error(&quot;missing &apos;code&apos; response.&quot;))
+      }
+
+      if (config.state &amp;&amp; !query.state) {
+        return Promise.reject(new Error(&quot;missing &apos;state&apos; response.&quot;))
+      }
+
+      const parameter = Object.assign({}, {
+        client_id: config.client_id,
+        grant_type: &quot;authorization_code&quot;,
+        code: query.code,
+      }, token || {})
+
+      if (config.client_secret) {
+        parameter.client_secret = config.client_secret
+      }
+
+      if (config.redirect_uri) {
+        parameter.redirect_uri = config.redirect_uri
+      }
+
+      if (query.state) {
+        parameter.state = query.state
+      }
+
+      return postRequest(config.access_token_url, parameter)
+    })
+}
+
+/**
+ *
+ * @param {object} config
+ * @param {Electron.BrowserWindow} window
+ * @param {object} auth - Custom token parameter.
+ */
+const implicitFlowTask = (config, window, auth) =&gt; {
+
+  if (!window) {
+    return Promise.reject(new Error(&quot;window is required&quot;))
+  }
+
+  const authorizeUrl = createAuthorizeUrl(config, auth)
+  window.loadURL(authorizeUrl)
+
+  return awaitRedirect(config.redirect_uri, window.webContents, debug)
+    .then(url =&gt; {
+      debug(`redirect url: &quot;${url}&quot;`)
+      const hash = Url.parse(url, false).hash.replace(/^#/, &quot;&quot;)
+      return querystring.parse(hash)
+    })
+}
+
+/**
+ *
+ * @param {object} config
+ * @param {Electron.BrowserWindow} window - This is not used.
+ * @param {object} auth - This is not used.
+ * @param {object} token - Custom token parameter.
+ */
+const resourceOwnerPasswordCredentialsFlowTask = (config, window, auth, token) =&gt; {
+  const parameter = omit(config, &quot;access_token_url&quot;)
+  return postRequest(config.access_token_url, parameter, token)
+}
+
+/**
+ *
+ * @param {object} config
+ * @param {object} auth - Custom auth parameter. This is not used.
+ * @param {object} token - Custom token parameter.
+ */
+const clientCredentialsFlowTask = (config, auth, token) =&gt; {
+  const parameter = omit(config, &quot;access_token_url&quot;)
+  return postRequest(config.access_token_url, parameter, token)
+}
+
+/**
+ * @param {object} config
+ */
+
+const validate = config =&gt; {
+  const type = config.response_type || config.grant_type || &quot;code&quot;
+  /* @type {[string]} */
+  const keys = valueForType(type,
+    () =&gt; {
+      return [
+        &quot;client_id&quot;,
+        &quot;authorize_url&quot;,
+        &quot;access_token_url&quot;,
+        &quot;redirect_uri&quot;,
+      ]
+    },
+    () =&gt; {
+      return [
+        &quot;client_id&quot;,
+        &quot;authorize_url&quot;,
+        &quot;redirect_uri&quot;,
+      ]
+    },
+    () =&gt; {
+      return [
+        &quot;access_token_url&quot;,
+        &quot;username&quot;,
+        &quot;password&quot;,
+      ]
+    },
+    () =&gt; {
+      return [
+        &quot;access_token_url&quot;,
+      ]
+    })
+  const test = k =&gt; {
+    if (typeof k === &quot;string&quot;) {
+      k = [k]
+    }
+    // eslint-disable-next-line
+    return k.find(key =&gt; typeof config[key] === &quot;string&quot;)
+  }
+  const missing = keys.find(k =&gt; !test(k))
+  if (missing) {
+    return new Error(`${missing} is required for ${type}`)
+  }
+}
+
+/**
+ * @param {string} type
+ * @returns {function|undefined}
+ */
+const mapGrantTypeToTask = type =&gt; (
+  valueForType(type,
+    () =&gt; {
+      return authorizationCodeFlowTask
+    },
+    () =&gt; {
+      return implicitFlowTask
+    },
+    () =&gt; {
+      return resourceOwnerPasswordCredentialsFlowTask
+    },
+    () =&gt; {
+      return clientCredentialsFlowTask
+    })
+)
+
+/**
+ *
+ * @param {string} type
+ *
+ * @returns {boolean|undefined}
+ *
+ */
+const needWindowForGrantType = type =&gt; (
+  valueForType(type,
+    () =&gt; {
+      return true
+    },
+    () =&gt; {
+      return true
+    },
+    () =&gt; {
+      return false
+    },
+    () =&gt; {
+      return false
+    })
+)
+
+module.exports = {
+  validate,
+  mapGrantTypeToTask,
+  needWindowForGrantType,
+}
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.0.4)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

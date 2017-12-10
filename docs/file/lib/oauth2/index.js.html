@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../">
+  <title data-ice="title">lib/oauth2/index.js | electron-oauth-helper</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="Easy to use helper library for OAuth1 and OAuth2."><meta property="twitter:card" content="summary"><meta property="twitter:title" content="electron-oauth-helper"><meta property="twitter:description" content="Easy to use helper library for OAuth1 and OAuth2."></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/mironal/electron-oauth-helper.git"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  </ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">lib/oauth2/index.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">const { BrowserWindow } = require(&quot;electron&quot;)
+
+const {
+  validate,
+  mapGrantTypeToTask,
+  needWindowForGrantType,
+} = require(&quot;./helper&quot;)
+
+class OAuth2Provider {
+
+  /**
+   * @param {object} config - OAuth2 config.
+   */
+  constructor(config) {
+    const error = validate(config)
+    if (error) {
+      throw error
+    }
+    this.config = config
+    this.customAuthorizationRequestParameter = {}
+    this.customAccessTokenRequestParameter = {}
+
+    /** @type {boolean} */
+    this.finished = false
+  }
+
+  /**
+   * Sets the custom parameter for Authorization Request.
+   *
+   * This can be used to include your own parameters in your request
+   * that are not included in the OAuth2 specification.
+   *
+   * @example
+   * ```js
+   *  const provider = new OAuth2Provider({})
+   *    .withCustomAuthorizationRequestParameter({hoge: &quot;huga&quot;})
+   *    .withCustomAccessTokenRequestParameter({foo: &quot;bar&quot;})
+   * ```
+   *
+   * @param {object} param
+   */
+  withCustomAuthorizationRequestParameter(param) {
+    this.customAuthorizationRequestParameter = param
+    return this
+  }
+
+  /**
+   * Sets the custom parameter for  Access Token Request.
+   *
+   * This can be used to include your own parameters in your request
+   * that are not included in the OAuth2 specification.
+
+   * @example
+   * ```js
+   *  const provider = new OAuth2Provider(config)
+   *    .withCustomAuthorizationRequestParameter({hoge: &quot;huga&quot;})
+   *    .withCustomAccessTokenRequestParameter({foo: &quot;bar&quot;})
+   * ```
+   *
+   * @param {object} param
+   */
+  withCustomAccessTokenRequestParameter(param) {
+    this.customAccessTokenRequestParameter = param
+    return this
+  }
+
+  /**
+   * Initiate OAuth2 flow.
+   *
+   * if grant_type is &quot;code&quot; or &quot;token&quot;, you need to pass &quot;window&quot; argument.
+   * In other cases it is not necessary.
+   *
+   * @example
+   * ```js
+   *  const window = new BrowserWindow({
+   *    width: 600,
+   *    height: 800,
+   *    webPreferences: {
+   *      nodeIntegration: false // We recommend disabling nodeIntegration for security.
+   *      contextIsolation: true // We recommend enabling contextIsolation for security.
+   *      // see https://github.com/electron/electron/blob/master/docs/tutorial/security.md
+   *    },
+   *  })
+   *  const provider = new OAuth2Provider(config)
+   *  provider.perform(window)
+   *    .then(console.log)
+   *    .catch(console.error)
+   * ```
+   *
+   * @param {Electron.BrowserWindow=} window
+   * @returns {Promise&lt;any&gt;}
+   */
+  perform(window) {
+
+    const config = this.config
+    /** @type {string} */
+    const type = config.response_type || config.grant_type || &quot;code&quot;
+    const task = mapGrantTypeToTask(type)
+
+    if (needWindowForGrantType(type)) {
+      if (!window) {
+        // Backward compatibility
+        window = new BrowserWindow({
+          width: 600,
+          height: 800,
+          webPreferences: {
+            nodeIntegration: false,
+            contextIsolation: true,
+          },
+        })
+        // eslint-disable-next-line
+        console.warn(`In the future release the &quot;window&quot; parameter will be mandatory when grant_type is ${type}!`)
+        // next release: return Promise.reject(new Error(`if grant-type is &quot;${type}&quot;, window is required.`))
+      }
+      this.finished = false
+
+      window.once(&quot;close&quot;, () =&gt; {
+        if (this.finished === false) {
+          this.userCancelError = new Error(&quot;User cancelled&quot;)
+        }
+      })
+    }
+
+    return task(config, window, this.customAuthorizationRequestParameter, this.customAccessTokenRequestParameter)
+      .then(resp =&gt; {
+        this.finished = true
+
+        if (this.userCancelError) {
+          return Promise.reject(this.userCancelError)
+        }
+
+        if (resp.error) {
+          return Promise.reject(resp)
+        }
+
+        return Promise.resolve(resp)
+      })
+  }
+}
+
+module.exports = OAuth2Provider
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.0.4)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

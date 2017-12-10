@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl">
+  <title data-ice="title">Home | electron-oauth-helper</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="Easy to use helper library for OAuth1 and OAuth2."><meta property="twitter:card" content="summary"><meta property="twitter:title" content="electron-oauth-helper"><meta property="twitter:description" content="Easy to use helper library for OAuth1 and OAuth2."></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/mironal/electron-oauth-helper.git"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  </ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><div data-ice="index" class="github-markdown"><h1 id="electron-oauth-helper">Electron OAuth Helper</h1><p><a href="https://greenkeeper.io/"><img src="https://badges.greenkeeper.io/mironal/electron-oauth-helper.svg" alt="Greenkeeper badge"></a></p>
+<p><a href="https://nodei.co/npm/electron-oauth-helper/"><img src="https://nodei.co/npm/electron-oauth-helper.png" alt="NPM"></a></p>
+<p><a href="https://travis-ci.org/mironal/electron-oauth-helper"><img src="https://travis-ci.org/mironal/electron-oauth-helper.svg" alt="Build Status"></a></p>
+<h2 id="what--39-s-this">What&apos;s this</h2><p>Easy to use helper library for OAuth1 and OAuth2.</p>
+<p>All grant type supported.</p>
+<ul>
+<li>Authorization Code Grant</li>
+<li>Implicit Grant</li>
+<li>Resource Owner Password Credentials Grant</li>
+<li>Client Credentials Grant</li>
+</ul>
+<blockquote>
+<p>TODO: Refreshing an Access Token</p>
+</blockquote>
+<p>You can get a token just by calling a method of start OAuth.</p>
+<p>This library is lightweight because it depends only on <a href="https://github.com/visionmedia/debug">debug</a> module.</p>
+<h2 id="install">Install</h2><p><code>npm install electron-oauth-helper --save</code></p>
+<h2 id="usage">Usage</h2><h3 id="oauth1">OAuth1</h3><pre><code class="lang-js"><code class="source-code prettyprint">
+const { OAuth1Provider } = require(&quot;electron-oauth-helper&quot;)
+
+const window = new BrowserWindow({
+  width: 600,
+  height: 800,
+  webPreferences: {
+    nodeIntegration: false // We recommend disabling nodeIntegration for security.
+    contextIsolation: true // We recommend enabling contextIsolation for security.
+    // see https://github.com/electron/electron/blob/master/docs/tutorial/security.md
+  },
+})
+
+const config = { /* oauth config. please see example/main/config.example.js.  */}
+const provider = new OAuth1Provider(config)
+provider.perform(window)
+  .then(resp =&gt; {
+    console.log(resp)
+  })
+  .catch(error =&gt; console.error(error))</code>
+</code></pre>
+<h3 id="oauth2">OAuth2</h3><pre><code class="lang-js"><code class="source-code prettyprint">
+const { OAuth2Provider } = require(&quot;electron-oauth-helper&quot;)
+
+const window = new BrowserWindow({
+  width: 600,
+  height: 800,
+  webPreferences: {
+    nodeIntegration: false // We recommend disabling nodeIntegration for security.
+    contextIsolation: true // We recommend enabling contextIsolation for security.
+    // see https://github.com/electron/electron/blob/master/docs/tutorial/security.md
+  },
+})
+
+const config = { /* oauth config. please see example/main/config.example.js.  */}
+const provider = new OAuth2Provider(config)
+// Your can use custom parameter.
+// const provider = new OAuth2Provider(config)
+//   .withCustomAuthorizationRequestParameter({})
+//   .withCustomAccessTokenRequestParameter({})
+provider.perform(window)
+  .then(resp =&gt; {
+    console.log(resp)
+  })
+  .catch(error =&gt; console.error(error))</code>
+</code></pre>
+<h3 id="firebase-auth-integration">Firebase Auth Integration</h3><p>Electron can not use firebase auth <code>signInWithPopup</code> or <code>signInWithRedirect</code>.
+You can only use email/password authentication.</p>
+<p>But, you can use GitHub, Twitter, etc... authentication by using manually flow.</p>
+<p><a href="https://firebase.google.com/docs/auth/web/github-auth#handle_the_sign-in_flow_manually">https://firebase.google.com/docs/auth/web/github-auth#handle_the_sign-in_flow_manually</a></p>
+<pre><code class="lang-js"><code class="source-code prettyprint">
+// Github manually flow example.
+
+const { OAuth2Provider } = require(&quot;electron-oauth-helper&quot;)
+
+const config = { /* oauth config. please see example/main/config.example.js.  */}
+const provider = new OAuth2Provider(config)
+provider.perform(window)
+  .then(resp =&gt; {
+    const query = querystring.parse(resp)
+    const credential = firebase.auth.GithubAuthProvider.credential(query.access_token)
+    firebase.auth().signInWithCredential(credential)
+    .then(user =&gt; {
+        console.log(user)
+    })
+    .catch(error =&gt; console.error(error))
+  })
+  .catch(error =&gt; console.error(error))</code>
+</code></pre>
+<blockquote>
+<p>Don&apos;t forget setting firebase auth.</p>
+</blockquote>
+<h2 id="example">Example</h2><p>example electron app =&gt; <code>example/</code></p>
+<p><img src="./ss/example.png" alt="example screenshot"></p>
+<hr>
+<h1 id="which-parameters-are-required-">Which parameters are required?</h1><h2 id="-a-href--https---tools-ietf-org-html-rfc6749--oauth-2--a-"><a href="https://tools.ietf.org/html/rfc6749">OAuth 2</a></h2><p>The OAuth2 defines four grant type. Here is sample code for each.</p>
+<ol>
+<li>Authorization Code Grant</li>
+<li>Implicit Grant</li>
+<li>Resource Owner Password Credentials Grant</li>
+<li>Client Credentials Grant</li>
+</ol>
+<h3 id="authorization-code-grant">Authorization Code Grant</h3><blockquote>
+<p><a href="https://tools.ietf.org/html/rfc6749#section-4.1">RFC 6749: 4.1</a></p>
+</blockquote>
+<pre><code class="lang-js"><code class="source-code prettyprint">const provider = new OAuth2Provider({
+  authorize_url: &quot;&quot;,
+  access_token_url: &quot;&quot;,
+  response_type: &quot;code&quot;,
+  client_id: &quot;&quot;,
+  redirect_uri: &quot;&quot;, //Important! RFC says OPTIONAL. But REQUIRED for this library.
+  // other parameters are optional.
+})
+
+provider.perform()
+// Authorization Request ---&gt;
+//                       &lt;--- Authorization Response
+// Access Token Request  ---&gt;
+//                       &lt;--- Access Token Response
+.then(resp =&gt; {
+  // Got Access Token (&#x25CD;&#x2022;&#x1D17;&#x2022;&#x25CD;)
+})</code>
+</code></pre>
+<h4 id="authorization-request">Authorization Request</h4><p><code>GET /authorize?...</code></p>
+<pre><code class="lang-js"><code class="source-code prettyprint">// more detail
+{
+  // REQUIRED. Value MUST be set to &quot;code&quot;.
+  response_type: &quot;code&quot;,
+
+  // REQUIRED. The client identifier as described in Section 2.2.
+  client_id: &quot;&quot;,
+
+  // OPTIONAL. As described in Section 3.1.2.
+  redirect_uri: &quot;&quot;,
+
+  // OPTIONAL. The scope of the access request as described by Section 3.3.
+  scope: &quot;&quot;,
+
+  // RECOMMENDED.  An opaque value used by the client to maintain
+  // state between the request and callback.  The authorization
+  // server includes this value when redirecting the user-agent back
+  // to the client.  The parameter SHOULD be used for preventing
+  // cross-site request forgery as described in Section 10.12.
+  state: &quot;&quot;,
+
+  // Additional.
+  // the `code_challenge` and `code_challenge` are optional parameters
+  // defined in RFC 7636.
+
+  // REQUIRED.  Code challenge.
+  code_challenge: &quot;&quot;,
+
+  // OPTIONAL, defaults to &quot;plain&quot; if not present in the request.  Code
+  // verifier transformation method is &quot;S256&quot; or &quot;plain&quot;.
+  code_challege_method: &quot;&quot;,
+}</code>
+</code></pre>
+<h4 id="authorization-response">Authorization Response</h4><pre><code class="lang-js"><code class="source-code prettyprint">{
+  // REQUIRED.  The authorization code generated by the
+  // authorization server.
+  code: &quot;&quot;,
+
+  // REQUIRED if the &quot;state&quot; parameter was present in the client
+  // authorization request.  The exact value received from the
+  // client.
+  state: &quot;&quot;,
+}</code>
+</code></pre>
+<blockquote>
+<p><a href="https://tools.ietf.org/html/rfc6749#section-4.1.2.1">Error Response</a></p>
+</blockquote>
+<h4 id="access-token-request">Access Token Request</h4><p><code>POST /token</code></p>
+<pre><code class="lang-js"><code class="source-code prettyprint">{
+  // REQUIRED.  Value MUST be set to &quot;authorization_code&quot;.
+  grant_type: &quot;authorization_code&quot;,
+
+  // REQUIRED.  The authorization code received from the
+  // authorization server.
+  code: &quot;&quot;,
+
+  // REQUIRED, if the &quot;redirect_uri&quot; parameter was included in the
+  // authorization request as described in Section 4.1.1, and their
+  // values MUST be identical.
+  redirect_uri: &quot;&quot;,
+
+  // REQUIRED, if the client is not authenticating with the
+  // authorization server as described in Section 3.2.1.
+  client_id: &quot;&quot;,
+}</code>
+</code></pre>
+<h4 id="access-token-response">Access Token Response</h4><pre><code class="lang-js"><code class="source-code prettyprint">{
+  // REQUIRED.  The access token issued by the authorization server.
+  access_token: &quot;&quot;,
+
+  // REQUIRED.  The type of the token issued as described in
+  // Section 7.1.  Value is case insensitive.
+  token_type: &quot;&quot;,
+
+  // RECOMMENDED.  The lifetime in seconds of the access token.  For
+  // example, the value &quot;3600&quot; denotes that the access token will
+  // expire in one hour from the time the response was generated.
+  // If omitted, the authorization server SHOULD provide the
+  // expiration time via other means or document the default value.
+  expires_in: &quot;&quot;,
+
+  // OPTIONAL.  The refresh token, which can be used to obtain new
+  // access tokens using the same authorization grant as described
+  // in Section 6.
+  refresh_token: &quot;&quot;,
+
+  // OPTIONAL, if identical to the scope requested by the client;
+  // otherwise, REQUIRED.  The scope of the access token as
+  // described by Section 3.3.
+  scope: &quot;&quot;,
+}</code>
+</code></pre>
+<p><a href="https://tools.ietf.org/html/rfc6749#section-5.2">Error Response</a></p>
+<h3 id="implicit-grant">Implicit Grant</h3><blockquote>
+<p><a href="https://tools.ietf.org/html/rfc6749#section-4.2">RFC 6749: 4.2</a></p>
+</blockquote>
+<pre><code class="lang-js"><code class="source-code prettyprint">const provider = new OAuth2Provider({
+  authorize_url: &quot;&quot;,
+  response_type: &quot;token&quot;,
+  client_id: &quot;&quot;,
+  redirect_uri: &quot;&quot;, //Important! RFC says OPTIONAL. But REQUIRED for this library.
+  // other parameters are optional.
+})
+
+provider.perform()
+// Authorization Request ---&gt;
+//                       &lt;--- Access Token Response
+.then(resp =&gt; {
+  // Got Access Token (&#x25CD;&#x2022;&#x1D17;&#x2022;&#x25CD;)
+})</code>
+</code></pre>
+<h4 id="authorization-request">Authorization Request</h4><p><code>GET /authorize?...</code></p>
+<pre><code class="lang-js"><code class="source-code prettyprint">{
+  // REQUIRED. Value MUST be set to &quot;token&quot;.
+  response_type: &quot;token&quot;,
+
+  // REQUIRED. The client identifier as described in Section 2.2.
+  client_id: &quot;&quot;,
+  // OPTIONAL.  As described in Section 3.1.2.
+  redirect_uri: &quot;&quot;,
+
+  // OPTIONAL. The scope of the access request as described by
+  // Section 3.3.
+  scope: &quot;&quot;,
+
+  // RECOMMENDED.  An opaque value used by the client to maintain
+  // state between the request and callback.  The authorization
+  // server includes this value when redirecting the user-agent back
+  // to the client.  The parameter SHOULD be used for preventing
+  // cross-site request forgery as described in Section 10.12.
+  state: &quot;&quot;,
+}</code>
+</code></pre>
+<h4 id="access-token-response">Access Token Response</h4><blockquote>
+<p><a href="https://tools.ietf.org/html/rfc6749#section-4.2.2">Successful Response</a></p>
+<p><a href="https://tools.ietf.org/html/rfc6749#section-4.2.2.1">Error Response</a></p>
+</blockquote>
+<h3 id="resource-owner-password-credentials-grant">Resource Owner Password Credentials Grant</h3><blockquote>
+<p><a href="https://tools.ietf.org/html/rfc6749#section-4.3">RFC 6749: 4.3</a></p>
+</blockquote>
+<pre><code class="lang-js"><code class="source-code prettyprint">const provider = new OAuth2Provider({
+  access_token_url: &quot;&quot;,
+  response_type: &quot;password&quot;,
+  username: &quot;&quot;,
+  password: &quot;&quot;,
+  // other parameters are optional.
+})
+
+provider.perform()
+// Access Token Request ---&gt;
+//                      &lt;--- Access Token Response
+.then( resp =&gt; {
+  // Got Access Token (&#x25CD;&#x2022;&#x1D17;&#x2022;&#x25CD;)
+})</code>
+</code></pre>
+<h4 id="authorization-request-and-response">Authorization Request and Response</h4><p>No need.</p>
+<h4 id="access-token-request">Access Token Request</h4><p><code>POST /token</code></p>
+<pre><code class="lang-js"><code class="source-code prettyprint">{
+  // REQUIRED. Value MUST be set to &quot;password&quot;.
+  grant_type: &quot;password&quot;,
+
+  // REQUIRED. The resource owner username.
+  username: &quot;&quot;,
+
+  // REQUIRED. The resource owner password.
+  password: &quot;&quot;,
+
+  // OPTIONAL.  The scope of the access request as described by
+  // Section 3.3.
+  scope: &quot;&quot;,
+}</code>
+</code></pre>
+<h4 id="access-token-response">Access Token Response</h4><blockquote>
+<p><a href="https://tools.ietf.org/html/rfc6749#section-5.1">Successful Response</a></p>
+<p><a href="https://tools.ietf.org/html/rfc6749#section-5.2">Error Response</a></p>
+</blockquote>
+<h3 id="client-credentials-grant">Client Credentials Grant</h3><blockquote>
+<p><a href="https://tools.ietf.org/html/rfc6749#section-4.4">RFC 6749: 4.4</a></p>
+</blockquote>
+<pre><code class="lang-js"><code class="source-code prettyprint">const provider = new OAuth2Provider({
+  access_token_url: &quot;&quot;,
+  grant_type: &quot;client_credentials&quot;,
+  // other parameters are optional.
+})
+
+provider.perform()
+// Access Token Request ---&gt;
+//                      &lt;--- Access Token Response
+.then( resp =&gt; {
+  // Got Access Token (&#x25CD;&#x2022;&#x1D17;&#x2022;&#x25CD;)
+})</code>
+</code></pre>
+<h4 id="authorization-request-and-response">Authorization Request and Response</h4><p>No need.</p>
+<h4 id="access-token-request">Access Token Request</h4><p><code>POST /token</code></p>
+<pre><code class="lang-js"><code class="source-code prettyprint">{
+  // REQUIRED. Value MUST be set to &quot;client_credentials&quot;.
+  grant_type: &quot;client_credentials&quot;,
+
+  // OPTIONAL. The scope of the access request as described by
+  // Section 3.3.
+  scope: &quot;&quot;,
+}</code>
+</code></pre>
+<h4 id="access-token-response">Access Token Response</h4><blockquote>
+<p><a href="https://tools.ietf.org/html/rfc6749#section-5.1">Successful Response</a></p>
+<p><a href="https://tools.ietf.org/html/rfc6749#section-5.2">Error Response</a></p>
+</blockquote>
+<h3 id="refreshing-an-access-token">Refreshing an Access Token</h3><blockquote>
+<p><a href="https://tools.ietf.org/html/rfc6749#section-6">RFC 6749: 6</a></p>
+</blockquote>
+<p>TODO</p>
+</div>
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.0.4)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>
