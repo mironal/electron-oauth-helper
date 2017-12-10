@@ -5,4 +5,4 @@ docs/
 .eslintrc*
 ss/
 **/*.test.js
-*/__test_utils/*
+**/__*/
