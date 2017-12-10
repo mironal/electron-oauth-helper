@@ -6,7 +6,13 @@
     "scripts": {
         "start:example": "electron ./example/src/main/main.js",
         "lint": "eslint .",
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "lint:fix": "eslint --fix .",
+        "test": "avaron --timeout=10s",
+        "build": "parcel build --no-minify index.js",
+        "doc": "esdoc"
+    },
+    "engines": {
+        "node": ">= 8.0.0"
     },
     "keywords": [
         "oauth",
@@ -27,11 +33,43 @@
         "url": "https://github.com/mironal/electron-oauth-helper/issues"
     },
     "devDependencies": {
+        "ava": "0.24.0",
+        "avaron": "0.0.14",
+        "babel-preset-env": "1.6.1",
         "electron": "1.7.9",
-        "eslint": "4.13.0",
-        "firebase": "4.8.0"
+        "esdoc": "1.0.4",
+        "esdoc-standard-plugin": "1.0.0",
+        "eslint": "4.12.1",
+        "eslint-plugin-ava": "4.4.0",
+        "eslint-plugin-import": "2.8.0",
+        "eslint-plugin-node": "5.2.1",
+        "eslint-plugin-promise": "3.6.0",
+        "eslint-plugin-security": "1.4.0",
+        "firebase": "4.8.0",
+        "koa": "2.4.1",
+        "koa-bodyparser": "4.2.0",
+        "koa-router": "7.3.0",
+        "mockttp": "0.5.0",
+        "nock": "9.1.4",
+        "parcel-bundler": "1.0.3",
+        "testdouble": "3.2.6",
+        "unexpected": "10.36.2"
     },
     "dependencies": {
         "debug": "3.1.0"
+    },
+    "esdoc": {
+        "source": "./lib",
+        "destination": "./docs",
+        "plugins": [
+            {
+                "name": "esdoc-standard-plugin",
+                "option": {
+                    "lint": {
+                        "enable": false
+                    }
+                }
+            }
+        ]
     }
 }

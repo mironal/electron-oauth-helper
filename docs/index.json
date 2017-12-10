@@ -1,0 +1,2648 @@
+[
+  {
+    "__docId__": 1,
+    "kind": "external",
+    "name": "Infinity",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Infinity",
+    "memberof": "lib/.external-ecmascript.js",
+    "static": true,
+    "longname": "lib/.external-ecmascript.js~Infinity",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 2,
+    "kind": "external",
+    "name": "NaN",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN",
+    "memberof": "lib/.external-ecmascript.js",
+    "static": true,
+    "longname": "lib/.external-ecmascript.js~NaN",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 3,
+    "kind": "external",
+    "name": "undefined",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined",
+    "memberof": "lib/.external-ecmascript.js",
+    "static": true,
+    "longname": "lib/.external-ecmascript.js~undefined",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 4,
+    "kind": "external",
+    "name": "null",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null",
+    "memberof": "lib/.external-ecmascript.js",
+    "static": true,
+    "longname": "lib/.external-ecmascript.js~null",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 5,
+    "kind": "external",
+    "name": "Object",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object",
+    "memberof": "lib/.external-ecmascript.js",
+    "static": true,
+    "longname": "lib/.external-ecmascript.js~Object",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 6,
+    "kind": "external",
+    "name": "object",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object",
+    "memberof": "lib/.external-ecmascript.js",
+    "static": true,
+    "longname": "lib/.external-ecmascript.js~object",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 7,
+    "kind": "external",
+    "name": "Function",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function",
+    "memberof": "lib/.external-ecmascript.js",
+    "static": true,
+    "longname": "lib/.external-ecmascript.js~Function",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 8,
+    "kind": "external",
+    "name": "function",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function",
+    "memberof": "lib/.external-ecmascript.js",
+    "static": true,
+    "longname": "lib/.external-ecmascript.js~function",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 9,
+    "kind": "external",
+    "name": "Boolean",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean",
+    "memberof": "lib/.external-ecmascript.js",
+    "static": true,
+    "longname": "lib/.external-ecmascript.js~Boolean",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 10,
+    "kind": "external",
+    "name": "boolean",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean",
+    "memberof": "lib/.external-ecmascript.js",
+    "static": true,
+    "longname": "lib/.external-ecmascript.js~boolean",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 11,
+    "kind": "external",
+    "name": "Symbol",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol",
+    "memberof": "lib/.external-ecmascript.js",
+    "static": true,
+    "longname": "lib/.external-ecmascript.js~Symbol",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 12,
+    "kind": "external",
+    "name": "Error",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error",
+    "memberof": "lib/.external-ecmascript.js",
+    "static": true,
+    "longname": "lib/.external-ecmascript.js~Error",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 13,
+    "kind": "external",
+    "name": "EvalError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/EvalError",
+    "memberof": "lib/.external-ecmascript.js",
+    "static": true,
+    "longname": "lib/.external-ecmascript.js~EvalError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 14,
+    "kind": "external",
+    "name": "InternalError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/InternalError",
+    "memberof": "lib/.external-ecmascript.js",
+    "static": true,
+    "longname": "lib/.external-ecmascript.js~InternalError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 15,
+    "kind": "external",
+    "name": "RangeError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RangeError",
+    "memberof": "lib/.external-ecmascript.js",
+    "static": true,
+    "longname": "lib/.external-ecmascript.js~RangeError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 16,
+    "kind": "external",
+    "name": "ReferenceError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ReferenceError",
+    "memberof": "lib/.external-ecmascript.js",
+    "static": true,
+    "longname": "lib/.external-ecmascript.js~ReferenceError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 17,
+    "kind": "external",
+    "name": "SyntaxError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SyntaxError",
+    "memberof": "lib/.external-ecmascript.js",
+    "static": true,
+    "longname": "lib/.external-ecmascript.js~SyntaxError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 18,
+    "kind": "external",
+    "name": "TypeError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypeError",
+    "memberof": "lib/.external-ecmascript.js",
+    "static": true,
+    "longname": "lib/.external-ecmascript.js~TypeError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 19,
+    "kind": "external",
+    "name": "URIError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/URIError",
+    "memberof": "lib/.external-ecmascript.js",
+    "static": true,
+    "longname": "lib/.external-ecmascript.js~URIError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 20,
+    "kind": "external",
+    "name": "Number",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number",
+    "memberof": "lib/.external-ecmascript.js",
+    "static": true,
+    "longname": "lib/.external-ecmascript.js~Number",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 21,
+    "kind": "external",
+    "name": "number",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number",
+    "memberof": "lib/.external-ecmascript.js",
+    "static": true,
+    "longname": "lib/.external-ecmascript.js~number",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 22,
+    "kind": "external",
+    "name": "Date",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date",
+    "memberof": "lib/.external-ecmascript.js",
+    "static": true,
+    "longname": "lib/.external-ecmascript.js~Date",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 23,
+    "kind": "external",
+    "name": "String",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String",
+    "memberof": "lib/.external-ecmascript.js",
+    "static": true,
+    "longname": "lib/.external-ecmascript.js~String",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 24,
+    "kind": "external",
+    "name": "string",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String",
+    "memberof": "lib/.external-ecmascript.js",
+    "static": true,
+    "longname": "lib/.external-ecmascript.js~string",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 25,
+    "kind": "external",
+    "name": "RegExp",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp",
+    "memberof": "lib/.external-ecmascript.js",
+    "static": true,
+    "longname": "lib/.external-ecmascript.js~RegExp",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 26,
+    "kind": "external",
+    "name": "Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array",
+    "memberof": "lib/.external-ecmascript.js",
+    "static": true,
+    "longname": "lib/.external-ecmascript.js~Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 27,
+    "kind": "external",
+    "name": "Int8Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int8Array",
+    "memberof": "lib/.external-ecmascript.js",
+    "static": true,
+    "longname": "lib/.external-ecmascript.js~Int8Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 28,
+    "kind": "external",
+    "name": "Uint8Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array",
+    "memberof": "lib/.external-ecmascript.js",
+    "static": true,
+    "longname": "lib/.external-ecmascript.js~Uint8Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 29,
+    "kind": "external",
+    "name": "Uint8ClampedArray",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8ClampedArray",
+    "memberof": "lib/.external-ecmascript.js",
+    "static": true,
+    "longname": "lib/.external-ecmascript.js~Uint8ClampedArray",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 30,
+    "kind": "external",
+    "name": "Int16Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int16Array",
+    "memberof": "lib/.external-ecmascript.js",
+    "static": true,
+    "longname": "lib/.external-ecmascript.js~Int16Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 31,
+    "kind": "external",
+    "name": "Uint16Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint16Array",
+    "memberof": "lib/.external-ecmascript.js",
+    "static": true,
+    "longname": "lib/.external-ecmascript.js~Uint16Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 32,
+    "kind": "external",
+    "name": "Int32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int32Array",
+    "memberof": "lib/.external-ecmascript.js",
+    "static": true,
+    "longname": "lib/.external-ecmascript.js~Int32Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 33,
+    "kind": "external",
+    "name": "Uint32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint32Array",
+    "memberof": "lib/.external-ecmascript.js",
+    "static": true,
+    "longname": "lib/.external-ecmascript.js~Uint32Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 34,
+    "kind": "external",
+    "name": "Float32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float32Array",
+    "memberof": "lib/.external-ecmascript.js",
+    "static": true,
+    "longname": "lib/.external-ecmascript.js~Float32Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 35,
+    "kind": "external",
+    "name": "Float64Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float64Array",
+    "memberof": "lib/.external-ecmascript.js",
+    "static": true,
+    "longname": "lib/.external-ecmascript.js~Float64Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 36,
+    "kind": "external",
+    "name": "Map",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map",
+    "memberof": "lib/.external-ecmascript.js",
+    "static": true,
+    "longname": "lib/.external-ecmascript.js~Map",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 37,
+    "kind": "external",
+    "name": "Set",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set",
+    "memberof": "lib/.external-ecmascript.js",
+    "static": true,
+    "longname": "lib/.external-ecmascript.js~Set",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 38,
+    "kind": "external",
+    "name": "WeakMap",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap",
+    "memberof": "lib/.external-ecmascript.js",
+    "static": true,
+    "longname": "lib/.external-ecmascript.js~WeakMap",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 39,
+    "kind": "external",
+    "name": "WeakSet",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakSet",
+    "memberof": "lib/.external-ecmascript.js",
+    "static": true,
+    "longname": "lib/.external-ecmascript.js~WeakSet",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 40,
+    "kind": "external",
+    "name": "ArrayBuffer",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer",
+    "memberof": "lib/.external-ecmascript.js",
+    "static": true,
+    "longname": "lib/.external-ecmascript.js~ArrayBuffer",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 41,
+    "kind": "external",
+    "name": "DataView",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DataView",
+    "memberof": "lib/.external-ecmascript.js",
+    "static": true,
+    "longname": "lib/.external-ecmascript.js~DataView",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 42,
+    "kind": "external",
+    "name": "JSON",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON",
+    "memberof": "lib/.external-ecmascript.js",
+    "static": true,
+    "longname": "lib/.external-ecmascript.js~JSON",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 43,
+    "kind": "external",
+    "name": "Promise",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise",
+    "memberof": "lib/.external-ecmascript.js",
+    "static": true,
+    "longname": "lib/.external-ecmascript.js~Promise",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 44,
+    "kind": "external",
+    "name": "Generator",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Generator",
+    "memberof": "lib/.external-ecmascript.js",
+    "static": true,
+    "longname": "lib/.external-ecmascript.js~Generator",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 45,
+    "kind": "external",
+    "name": "GeneratorFunction",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/GeneratorFunction",
+    "memberof": "lib/.external-ecmascript.js",
+    "static": true,
+    "longname": "lib/.external-ecmascript.js~GeneratorFunction",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 46,
+    "kind": "external",
+    "name": "Reflect",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Reflect",
+    "memberof": "lib/.external-ecmascript.js",
+    "static": true,
+    "longname": "lib/.external-ecmascript.js~Reflect",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 47,
+    "kind": "external",
+    "name": "Proxy",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy",
+    "memberof": "lib/.external-ecmascript.js",
+    "static": true,
+    "longname": "lib/.external-ecmascript.js~Proxy",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 48,
+    "kind": "file",
+    "name": "lib/__test_utils/index.js",
+    "content": "const Koa = require(\"koa\")\nconst Router = require(\"koa-router\")\nconst bodyParser = require(\"koa-bodyparser\")\nconst net = require(\"net\")\nconst debug = require(\"debug\")(\"eoh:test_util\")\n\nconst routing = koa => routingFn => {\n  const router = new Router()\n  routingFn(router)\n  koa.use(router.routes())\n}\n\nconst startServer = async t => {\n  const port = await getPort()\n  const koa = new Koa()\n  koa.use(bodyParser())\n  const server = koa.listen(port)\n  t.context = {\n    koa,\n    port,\n    server,\n  }\n}\n\nconst stopServer = async t => {\n  if (t && t.context && t.context.server) {\n    await t.context.server.close()\n  }\n}\n\n// private\n\nconst getPort = async () => {\n\n  return new Promise((resolve, reject) => {\n\n    let port = Math.floor(Math.random() * (60000 - 5000 + 1) + 5000)\n    const server = net.createServer()\n    server.on(\"error\", error => {\n      debug(\"got error:\", error)\n      server.close(() => {\n        port += 1\n        if (error.code !== \"EADDRINUSE\" || port >= 65535) {\n          server.removeAllListeners()\n          reject(error)\n        }\n        setImmediate(() => {\n          server.listen(port)\n        })\n      })\n    })\n    server.on(\"listening\", () => {\n      debug(\"connected:\", port)\n      server.removeAllListeners()\n      server.close(() => {\n        resolve(port)\n      })\n    })\n    debug(\"try connect:\", port)\n    server.listen(port)\n  })\n}\n\nmodule.exports = {\n  startServer,\n  stopServer,\n  routing\n}\n",
+    "static": true,
+    "longname": "/Users/miro/Documents/develop/electron-oauth-helper/lib/__test_utils/index.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 49,
+    "kind": "variable",
+    "name": "Koa",
+    "memberof": "lib/__test_utils/index.js",
+    "static": true,
+    "longname": "lib/__test_utils/index.js~Koa",
+    "access": "public",
+    "export": false,
+    "importPath": "electron-oauth-helper/lib/__test_utils/index.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 1,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 50,
+    "kind": "variable",
+    "name": "Router",
+    "memberof": "lib/__test_utils/index.js",
+    "static": true,
+    "longname": "lib/__test_utils/index.js~Router",
+    "access": "public",
+    "export": false,
+    "importPath": "electron-oauth-helper/lib/__test_utils/index.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 2,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 51,
+    "kind": "variable",
+    "name": "bodyParser",
+    "memberof": "lib/__test_utils/index.js",
+    "static": true,
+    "longname": "lib/__test_utils/index.js~bodyParser",
+    "access": "public",
+    "export": false,
+    "importPath": "electron-oauth-helper/lib/__test_utils/index.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 3,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 52,
+    "kind": "variable",
+    "name": "net",
+    "memberof": "lib/__test_utils/index.js",
+    "static": true,
+    "longname": "lib/__test_utils/index.js~net",
+    "access": "public",
+    "export": false,
+    "importPath": "electron-oauth-helper/lib/__test_utils/index.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 4,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 53,
+    "kind": "variable",
+    "name": "debug",
+    "memberof": "lib/__test_utils/index.js",
+    "static": true,
+    "longname": "lib/__test_utils/index.js~debug",
+    "access": "public",
+    "export": false,
+    "importPath": "electron-oauth-helper/lib/__test_utils/index.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 5,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 54,
+    "kind": "function",
+    "name": "routing",
+    "memberof": "lib/__test_utils/index.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "lib/__test_utils/index.js~routing",
+    "access": "public",
+    "export": false,
+    "importPath": "electron-oauth-helper/lib/__test_utils/index.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 7,
+    "undocument": true,
+    "params": [
+      {
+        "name": "koa",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null,
+    "ignore": true
+  },
+  {
+    "__docId__": 55,
+    "kind": "function",
+    "name": "startServer",
+    "memberof": "lib/__test_utils/index.js",
+    "generator": false,
+    "async": true,
+    "static": true,
+    "longname": "lib/__test_utils/index.js~startServer",
+    "access": "public",
+    "export": false,
+    "importPath": "electron-oauth-helper/lib/__test_utils/index.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 13,
+    "undocument": true,
+    "params": [
+      {
+        "name": "t",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null,
+    "ignore": true
+  },
+  {
+    "__docId__": 56,
+    "kind": "function",
+    "name": "stopServer",
+    "memberof": "lib/__test_utils/index.js",
+    "generator": false,
+    "async": true,
+    "static": true,
+    "longname": "lib/__test_utils/index.js~stopServer",
+    "access": "public",
+    "export": false,
+    "importPath": "electron-oauth-helper/lib/__test_utils/index.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 25,
+    "undocument": true,
+    "params": [
+      {
+        "name": "t",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null,
+    "ignore": true
+  },
+  {
+    "__docId__": 57,
+    "kind": "function",
+    "name": "getPort",
+    "memberof": "lib/__test_utils/index.js",
+    "generator": false,
+    "async": true,
+    "static": true,
+    "longname": "lib/__test_utils/index.js~getPort",
+    "access": "public",
+    "export": false,
+    "importPath": "electron-oauth-helper/lib/__test_utils/index.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 33,
+    "undocument": true,
+    "params": [],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 58,
+    "kind": "file",
+    "name": "lib/oauth1/helper.js",
+    "content": "const debug = require(\"debug\")(\"eoh:oauth1\")\nconst crypto = require(\"crypto\")\nconst {\n  postRequest,\n} = require(\"../utils\")\n\n/**\n *\n * @param {string} method\n * @param {string} url\n * @param {object} parameter\n * @param {string} consumer_secret\n * @param {string} token_secret\n */\nconst createSignature = (method, url, parameter, consumer_secret, token_secret) => {\n\n  const sorted = Object.keys(parameter).map(key => {\n    // eslint-disable-next-line\n    return { key: encodeURIComponent(key), value: encodeURIComponent(parameter[key]) }\n  })\n    .sort((a, b) => {\n      return a.key.localeCompare(b.key)\n    })\n\n  const output = sorted.reduce((prev, current) => {\n    if (prev.length !== 0) {\n      prev = `${prev}&`\n    }\n    return `${prev}${current.key}=${current.value}`\n  }, \"\")\n\n  const signatureBaseString = `${method.toUpperCase()}&${encodeURIComponent(url)}&${encodeURIComponent(output)}`\n\n  const signKey = createSignKey(consumer_secret, token_secret)\n\n  const signature = crypto.createHmac(\"sha1\", signKey).update(signatureBaseString).digest(\"base64\")\n\n  return signature\n}\n\nconst createSignKey = (consumer_secret, token_secret) => {\n  const encoded_cs = encodeURIComponent(consumer_secret || \"\")\n  const encoded_ts = encodeURIComponent(token_secret || \"\")\n  return `${encoded_cs}&${encoded_ts}`\n}\n\nconst createOAuthHeader = request => {\n\n  const INIT = \"OAuth \"\n  const dst = Object.keys(request)\n    .sort((a, b) => {\n      return a.localeCompare(b)\n    })\n    .reduce((prev, current) => {\n      // eslint-disable-next-line\n      if (!request[current]) {\n        return prev\n      }\n      const ekey = encodeURIComponent(current)\n      // eslint-disable-next-line\n      const evalue = `\"${encodeURIComponent(request[current])}\"`\n      if (prev !== INIT) {\n        prev = `${prev}, `\n      }\n      return `${prev}${ekey}=${evalue}`\n    }, INIT)\n\n  return dst\n}\n\n/**\n * @param {string} url\n * @param {object} parameter - POST parameter\n * @returns {Promise<string>}\n */\nconst oauthPOSTRequest = (url, parameter, oauth) => {\n\n  const oauthParameter = Object.assign({}, parameter, {\n    oauth_consumer_key: oauth.oauth_consumer_key || \"\",\n    oauth_timestamp: oauth.oauth_timestamp || Math.floor((new Date().getTime() / 1000)),\n    oauth_version: oauth.oauth_version || \"1.0\",\n    oauth_nonce: oauth.oauth_nonce || crypto.createHash(\"sha256\").update(`${parameter}`).digest(\"base64\"),\n    oauth_signature_method: oauth.oauth_signature_method || \"HMAC-SHA1\"\n  })\n\n  if (oauth.oauth_callback) {\n    oauthParameter.oauth_callback = oauth.oauth_callback\n  }\n\n  if (oauth.oauth_token) {\n    oauthParameter.oauth_token = oauth.oauth_token\n  } else if (oauth.oauth_request_token) {\n    oauthParameter.oauth_token = oauth.oauth_request_token\n  }\n\n  const signature = createSignature(\"POST\", url, oauthParameter, oauth.oauth_consumer_secret, oauth.oauth_token_secret)\n  oauthParameter.oauth_signature = signature\n\n  const oauthHeader = createOAuthHeader(oauthParameter)\n  debug(\"OAuth header\", oauthHeader)\n\n  return postRequest(url, parameter, {\n    \"Authorization\": oauthHeader,\n  })\n}\n\nmodule.exports = {\n  oauthPOSTRequest\n}\n",
+    "static": true,
+    "longname": "/Users/miro/Documents/develop/electron-oauth-helper/lib/oauth1/helper.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 59,
+    "kind": "variable",
+    "name": "debug",
+    "memberof": "lib/oauth1/helper.js",
+    "static": true,
+    "longname": "lib/oauth1/helper.js~debug",
+    "access": "public",
+    "export": false,
+    "importPath": "electron-oauth-helper/lib/oauth1/helper.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 1,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 60,
+    "kind": "variable",
+    "name": "crypto",
+    "memberof": "lib/oauth1/helper.js",
+    "static": true,
+    "longname": "lib/oauth1/helper.js~crypto",
+    "access": "public",
+    "export": false,
+    "importPath": "electron-oauth-helper/lib/oauth1/helper.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 2,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 61,
+    "kind": "variable",
+    "name": "postRequest",
+    "memberof": "lib/oauth1/helper.js",
+    "static": true,
+    "longname": "lib/oauth1/helper.js~postRequest",
+    "access": "public",
+    "export": false,
+    "importPath": "electron-oauth-helper/lib/oauth1/helper.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 3,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 62,
+    "kind": "function",
+    "name": "createSignature",
+    "memberof": "lib/oauth1/helper.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "lib/oauth1/helper.js~createSignature",
+    "access": "public",
+    "export": false,
+    "importPath": "electron-oauth-helper/lib/oauth1/helper.js",
+    "importStyle": null,
+    "description": "",
+    "lineNumber": 15,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "method",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "url",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "parameter",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "consumer_secret",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "token_secret",
+        "description": ""
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 63,
+    "kind": "function",
+    "name": "createSignKey",
+    "memberof": "lib/oauth1/helper.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "lib/oauth1/helper.js~createSignKey",
+    "access": "public",
+    "export": false,
+    "importPath": "electron-oauth-helper/lib/oauth1/helper.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 41,
+    "undocument": true,
+    "params": [
+      {
+        "name": "consumer_secret",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "token_secret",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "string"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 64,
+    "kind": "function",
+    "name": "createOAuthHeader",
+    "memberof": "lib/oauth1/helper.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "lib/oauth1/helper.js~createOAuthHeader",
+    "access": "public",
+    "export": false,
+    "importPath": "electron-oauth-helper/lib/oauth1/helper.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 47,
+    "undocument": true,
+    "params": [
+      {
+        "name": "request",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 65,
+    "kind": "function",
+    "name": "oauthPOSTRequest",
+    "memberof": "lib/oauth1/helper.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "lib/oauth1/helper.js~oauthPOSTRequest",
+    "access": "public",
+    "export": false,
+    "importPath": "electron-oauth-helper/lib/oauth1/helper.js",
+    "importStyle": null,
+    "description": "",
+    "lineNumber": 76,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{Promise<string>}"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "url",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "parameter",
+        "description": "POST parameter"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Promise<string>"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 66,
+    "kind": "file",
+    "name": "lib/oauth1/index.js",
+    "content": "const Url = require(\"url\")\nconst querystring = require(\"querystring\")\nconst debug = require(\"debug\")(\"eoh:oauth1\")\nconst { BrowserWindow } = require(\"electron\")\n\nconst {\n  awaitRedirect,\n} = require(\"../utils\")\n\nconst {\n  oauthPOSTRequest,\n} = require(\"./helper\")\n\nclass OAuth1Provider {\n\n  /**\n   * @param {object} config - OAuth1 config.\n   */\n  constructor(config) {\n    this.config = config\n  }\n\n  /**\n   * @param {Electron.BrowserWindow} window\n   * @returns {Promise<any>}\n   */\n  perform(window) {\n\n    const config = this.config\n\n    this.finished = false\n    return new Promise((resolve, reject) => {\n\n      // Step 1: Obtaining a request token\n      return oauthPOSTRequest(config.request_token_url, {}, {\n        oauth_callback: config.callback_url,\n        oauth_consumer_key: config.oauth_consumer_key,\n        oauth_consumer_secret: config.oauth_consumer_secret,\n      })\n        .then(query => {\n          const resp = querystring.parse(query)\n          debug(\"Step 1 response\", resp)\n          if (!window) {\n\n            // Backward compatibility\n            window = new BrowserWindow({\n              width: 600,\n              height: 800,\n              webPreferences: {\n                nodeIntegration: false,\n                contextIsolation: true,\n              },\n            })\n            // eslint-disable-next-line\n            console.warn(`In the future release the \"window\" parameter will be mandatory when grant_type is ${type}!`)\n            // next release: return Promise.reject(new Error(`if grant-type is \"${type}\", window is required.`))\n          }\n\n          window.once(\"close\", () => {\n            if (this.finished === false) {\n              reject(new Error(\"window closed\"))\n            }\n          })\n\n          // Step 2: Redirecting the user\n          const url = `${config.authenticate_url}?oauth_token=${resp.oauth_token}`\n          window.loadURL(url)\n          return awaitRedirect(config.callback_url, window.webContents, debug)\n        })\n        .then(resp => {\n\n          debug(\"Step 2 response\", resp)\n          // Step 3: Converting the request token to an access token\n          const query = Url.parse(resp, true).query\n          if (!query.oauth_token || query.oauth_token === \"denied\" || !query.oauth_verifier) {\n            this.finished = true\n            return Promise.reject(new Error(\"User denied or invalid response\"))\n          }\n          return oauthPOSTRequest(config.access_token_url,\n            { oauth_verifier: query.oauth_verifier },\n            {\n              oauth_consumer_key: config.oauth_consumer_key,\n              oauth_consumer_secret: config.oauth_consumer_secret,\n              oauth_token: query.oauth_token\n            })\n        })\n        .then(resp => {\n          debug(\"Step 3 response\", resp)\n          this.finished = true\n          resolve(querystring.parse(resp))\n        })\n        .catch(error => reject(error))\n\n    })\n  }\n}\n\nmodule.exports = OAuth1Provider\n",
+    "static": true,
+    "longname": "/Users/miro/Documents/develop/electron-oauth-helper/lib/oauth1/index.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 67,
+    "kind": "variable",
+    "name": "Url",
+    "memberof": "lib/oauth1/index.js",
+    "static": true,
+    "longname": "lib/oauth1/index.js~Url",
+    "access": "public",
+    "export": false,
+    "importPath": "electron-oauth-helper/lib/oauth1/index.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 1,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 68,
+    "kind": "variable",
+    "name": "querystring",
+    "memberof": "lib/oauth1/index.js",
+    "static": true,
+    "longname": "lib/oauth1/index.js~querystring",
+    "access": "public",
+    "export": false,
+    "importPath": "electron-oauth-helper/lib/oauth1/index.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 2,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 69,
+    "kind": "variable",
+    "name": "debug",
+    "memberof": "lib/oauth1/index.js",
+    "static": true,
+    "longname": "lib/oauth1/index.js~debug",
+    "access": "public",
+    "export": false,
+    "importPath": "electron-oauth-helper/lib/oauth1/index.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 3,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 70,
+    "kind": "variable",
+    "name": "BrowserWindow",
+    "memberof": "lib/oauth1/index.js",
+    "static": true,
+    "longname": "lib/oauth1/index.js~BrowserWindow",
+    "access": "public",
+    "export": false,
+    "importPath": "electron-oauth-helper/lib/oauth1/index.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 4,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 71,
+    "kind": "variable",
+    "name": "awaitRedirect",
+    "memberof": "lib/oauth1/index.js",
+    "static": true,
+    "longname": "lib/oauth1/index.js~awaitRedirect",
+    "access": "public",
+    "export": false,
+    "importPath": "electron-oauth-helper/lib/oauth1/index.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 6,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 72,
+    "kind": "variable",
+    "name": "oauthPOSTRequest",
+    "memberof": "lib/oauth1/index.js",
+    "static": true,
+    "longname": "lib/oauth1/index.js~oauthPOSTRequest",
+    "access": "public",
+    "export": false,
+    "importPath": "electron-oauth-helper/lib/oauth1/index.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 10,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 73,
+    "kind": "class",
+    "name": "OAuth1Provider",
+    "memberof": "lib/oauth1/index.js",
+    "static": true,
+    "longname": "lib/oauth1/index.js~OAuth1Provider",
+    "access": "public",
+    "export": false,
+    "importPath": "electron-oauth-helper/lib/oauth1/index.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 14,
+    "undocument": true,
+    "interface": false,
+    "ignore": true
+  },
+  {
+    "__docId__": 74,
+    "kind": "constructor",
+    "name": "constructor",
+    "memberof": "lib/oauth1/index.js~OAuth1Provider",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "lib/oauth1/index.js~OAuth1Provider#constructor",
+    "access": "public",
+    "description": "",
+    "lineNumber": 19,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "config",
+        "description": "OAuth1 config."
+      }
+    ]
+  },
+  {
+    "__docId__": 75,
+    "kind": "member",
+    "name": "config",
+    "memberof": "lib/oauth1/index.js~OAuth1Provider",
+    "static": false,
+    "longname": "lib/oauth1/index.js~OAuth1Provider#config",
+    "access": "public",
+    "description": null,
+    "lineNumber": 20,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 76,
+    "kind": "method",
+    "name": "perform",
+    "memberof": "lib/oauth1/index.js~OAuth1Provider",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "lib/oauth1/index.js~OAuth1Provider#perform",
+    "access": "public",
+    "description": "",
+    "lineNumber": 27,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{Promise<any>}"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Electron.BrowserWindow"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "window",
+        "description": ""
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Promise<any>"
+      ],
+      "spread": false,
+      "description": ""
+    }
+  },
+  {
+    "__docId__": 77,
+    "kind": "member",
+    "name": "finished",
+    "memberof": "lib/oauth1/index.js~OAuth1Provider",
+    "static": false,
+    "longname": "lib/oauth1/index.js~OAuth1Provider#finished",
+    "access": "public",
+    "description": null,
+    "lineNumber": 31,
+    "undocument": true,
+    "type": {
+      "types": [
+        "boolean"
+      ]
+    }
+  },
+  {
+    "__docId__": 80,
+    "kind": "file",
+    "name": "lib/oauth2/helper.js",
+    "content": "const querystring = require(\"querystring\")\nconst Url = require(\"url\")\n\nconst debug = require(\"debug\")(\"eoh:oauth2\")\n\nconst {\n  postRequest,\n  awaitRedirect,\n  omit,\n} = require(\"../utils\")\n\nconst valueForType = (type, codeFn, tokenFn, passFn, credFn) => {\n\n  if (!type) {\n    throw new Error(\"type must not be null.\")\n  }\n\n  if (type.includes(\"id_token\")) {\n    // eslint-disable-next-line\n    console.warn(\"Multiple-Valued Response Type Combinations is not supportted. Brobably not working...\")\n  }\n\n  if (type.includes(\"code\")) {\n    return codeFn(type)\n  }\n\n  if (type.includes(\"token\")) {\n    return tokenFn(type)\n  }\n\n  if (type.includes(\"password\")) {\n    return passFn(type)\n  }\n\n  if (type.includes(\"client_credentials\")) {\n    return credFn(type)\n  }\n\n  throw new Error(`Unsupported type: ${type}`)\n}\n\nconst createAuthorizeUrl = (config, optional) => {\n\n  const keys = [\n    \"client_id\",\n    \"redirect_uri\",\n    \"scope\",\n    \"state\",\n    \"response_type\",\n  ]\n  /* eslint-disable security/detect-object-injection */\n  const parameter = Object.assign({}, keys.reduce((prev, key) => {\n    if (typeof config[key] === \"string\") {\n      prev[key] = config[key]\n    }\n    return prev\n  }, {}), optional || {})\n  /* eslint-enable */\n\n  const url = `${config.authorize_url}?${querystring.stringify(parameter)}`\n  return url\n}\n\n/**\n *\n * @param {object} config\n * @param {Electron.BrowserWindow} window\n * @param {object} auth  - Custom auth parameter.\n * @param {object} token  - Custom token parameter.\n */\nconst authorizationCodeFlowTask = (config, window, auth, token) => {\n\n  if (!window) {\n    return Promise.reject(new Error(\"window is required\"))\n  }\n\n  const authorizeUrl = createAuthorizeUrl(config, auth)\n  window.loadURL(authorizeUrl)\n\n  return awaitRedirect(config.redirect_uri, window.webContents)\n    .then(url => {\n      debug(`redirect url: \"${url}\"`)\n\n      const query = Url.parse(url, true).query\n\n      if (!query) {\n        return Promise.reject(new Error(`invalid response: ${url}`))\n      }\n\n      if (query.error) {\n        const error = new Error(\"error response\")\n        error.query = query\n        return Promise.reject(error)\n      }\n\n      if (!query.code) {\n        return Promise.reject(new Error(\"missing 'code' response.\"))\n      }\n\n      if (config.state && !query.state) {\n        return Promise.reject(new Error(\"missing 'state' response.\"))\n      }\n\n      const parameter = Object.assign({}, {\n        client_id: config.client_id,\n        grant_type: \"authorization_code\",\n        code: query.code,\n      }, token || {})\n\n      if (config.client_secret) {\n        parameter.client_secret = config.client_secret\n      }\n\n      if (config.redirect_uri) {\n        parameter.redirect_uri = config.redirect_uri\n      }\n\n      if (query.state) {\n        parameter.state = query.state\n      }\n\n      return postRequest(config.access_token_url, parameter)\n    })\n}\n\n/**\n *\n * @param {object} config\n * @param {Electron.BrowserWindow} window\n * @param {object} auth - Custom token parameter.\n */\nconst implicitFlowTask = (config, window, auth) => {\n\n  if (!window) {\n    return Promise.reject(new Error(\"window is required\"))\n  }\n\n  const authorizeUrl = createAuthorizeUrl(config, auth)\n  window.loadURL(authorizeUrl)\n\n  return awaitRedirect(config.redirect_uri, window.webContents, debug)\n    .then(url => {\n      debug(`redirect url: \"${url}\"`)\n      const hash = Url.parse(url, false).hash.replace(/^#/, \"\")\n      return querystring.parse(hash)\n    })\n}\n\n/**\n *\n * @param {object} config\n * @param {Electron.BrowserWindow} window - This is not used.\n * @param {object} auth - This is not used.\n * @param {object} token - Custom token parameter.\n */\nconst resourceOwnerPasswordCredentialsFlowTask = (config, window, auth, token) => {\n  const parameter = omit(config, \"access_token_url\")\n  return postRequest(config.access_token_url, parameter, token)\n}\n\n/**\n *\n * @param {object} config\n * @param {object} auth - Custom auth parameter. This is not used.\n * @param {object} token - Custom token parameter.\n */\nconst clientCredentialsFlowTask = (config, auth, token) => {\n  const parameter = omit(config, \"access_token_url\")\n  return postRequest(config.access_token_url, parameter, token)\n}\n\n/**\n * @param {object} config\n */\n\nconst validate = config => {\n  const type = config.response_type || config.grant_type || \"code\"\n  /* @type {[string]} */\n  const keys = valueForType(type,\n    () => {\n      return [\n        \"client_id\",\n        \"authorize_url\",\n        \"access_token_url\",\n        \"redirect_uri\",\n      ]\n    },\n    () => {\n      return [\n        \"client_id\",\n        \"authorize_url\",\n        \"redirect_uri\",\n      ]\n    },\n    () => {\n      return [\n        \"access_token_url\",\n        \"username\",\n        \"password\",\n      ]\n    },\n    () => {\n      return [\n        \"access_token_url\",\n      ]\n    })\n  const test = k => {\n    if (typeof k === \"string\") {\n      k = [k]\n    }\n    // eslint-disable-next-line\n    return k.find(key => typeof config[key] === \"string\")\n  }\n  const missing = keys.find(k => !test(k))\n  if (missing) {\n    return new Error(`${missing} is required for ${type}`)\n  }\n}\n\n/**\n * @param {string} type\n * @returns {function|undefined}\n */\nconst mapGrantTypeToTask = type => (\n  valueForType(type,\n    () => {\n      return authorizationCodeFlowTask\n    },\n    () => {\n      return implicitFlowTask\n    },\n    () => {\n      return resourceOwnerPasswordCredentialsFlowTask\n    },\n    () => {\n      return clientCredentialsFlowTask\n    })\n)\n\n/**\n *\n * @param {string} type\n *\n * @returns {boolean|undefined}\n *\n */\nconst needWindowForGrantType = type => (\n  valueForType(type,\n    () => {\n      return true\n    },\n    () => {\n      return true\n    },\n    () => {\n      return false\n    },\n    () => {\n      return false\n    })\n)\n\nmodule.exports = {\n  validate,\n  mapGrantTypeToTask,\n  needWindowForGrantType,\n}\n",
+    "static": true,
+    "longname": "/Users/miro/Documents/develop/electron-oauth-helper/lib/oauth2/helper.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 81,
+    "kind": "variable",
+    "name": "querystring",
+    "memberof": "lib/oauth2/helper.js",
+    "static": true,
+    "longname": "lib/oauth2/helper.js~querystring",
+    "access": "public",
+    "export": false,
+    "importPath": "electron-oauth-helper/lib/oauth2/helper.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 1,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 82,
+    "kind": "variable",
+    "name": "Url",
+    "memberof": "lib/oauth2/helper.js",
+    "static": true,
+    "longname": "lib/oauth2/helper.js~Url",
+    "access": "public",
+    "export": false,
+    "importPath": "electron-oauth-helper/lib/oauth2/helper.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 2,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 83,
+    "kind": "variable",
+    "name": "debug",
+    "memberof": "lib/oauth2/helper.js",
+    "static": true,
+    "longname": "lib/oauth2/helper.js~debug",
+    "access": "public",
+    "export": false,
+    "importPath": "electron-oauth-helper/lib/oauth2/helper.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 4,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 84,
+    "kind": "variable",
+    "name": "postRequest",
+    "memberof": "lib/oauth2/helper.js",
+    "static": true,
+    "longname": "lib/oauth2/helper.js~postRequest",
+    "access": "public",
+    "export": false,
+    "importPath": "electron-oauth-helper/lib/oauth2/helper.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 6,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 85,
+    "kind": "function",
+    "name": "valueForType",
+    "memberof": "lib/oauth2/helper.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "lib/oauth2/helper.js~valueForType",
+    "access": "public",
+    "export": false,
+    "importPath": "electron-oauth-helper/lib/oauth2/helper.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 12,
+    "undocument": true,
+    "params": [
+      {
+        "name": "type",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "codeFn",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "tokenFn",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "passFn",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "credFn",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 86,
+    "kind": "function",
+    "name": "createAuthorizeUrl",
+    "memberof": "lib/oauth2/helper.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "lib/oauth2/helper.js~createAuthorizeUrl",
+    "access": "public",
+    "export": false,
+    "importPath": "electron-oauth-helper/lib/oauth2/helper.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 42,
+    "undocument": true,
+    "params": [
+      {
+        "name": "config",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "optional",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 87,
+    "kind": "function",
+    "name": "authorizationCodeFlowTask",
+    "memberof": "lib/oauth2/helper.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "lib/oauth2/helper.js~authorizationCodeFlowTask",
+    "access": "public",
+    "export": false,
+    "importPath": "electron-oauth-helper/lib/oauth2/helper.js",
+    "importStyle": null,
+    "description": "",
+    "lineNumber": 71,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "config",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Electron.BrowserWindow"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "window",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "auth",
+        "description": "Custom auth parameter."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "token",
+        "description": "Custom token parameter."
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 88,
+    "kind": "function",
+    "name": "implicitFlowTask",
+    "memberof": "lib/oauth2/helper.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "lib/oauth2/helper.js~implicitFlowTask",
+    "access": "public",
+    "export": false,
+    "importPath": "electron-oauth-helper/lib/oauth2/helper.js",
+    "importStyle": null,
+    "description": "",
+    "lineNumber": 132,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "config",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Electron.BrowserWindow"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "window",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "auth",
+        "description": "Custom token parameter."
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 89,
+    "kind": "function",
+    "name": "resourceOwnerPasswordCredentialsFlowTask",
+    "memberof": "lib/oauth2/helper.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "lib/oauth2/helper.js~resourceOwnerPasswordCredentialsFlowTask",
+    "access": "public",
+    "export": false,
+    "importPath": "electron-oauth-helper/lib/oauth2/helper.js",
+    "importStyle": null,
+    "description": "",
+    "lineNumber": 156,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "config",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Electron.BrowserWindow"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "window",
+        "description": "This is not used."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "auth",
+        "description": "This is not used."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "token",
+        "description": "Custom token parameter."
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 90,
+    "kind": "function",
+    "name": "clientCredentialsFlowTask",
+    "memberof": "lib/oauth2/helper.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "lib/oauth2/helper.js~clientCredentialsFlowTask",
+    "access": "public",
+    "export": false,
+    "importPath": "electron-oauth-helper/lib/oauth2/helper.js",
+    "importStyle": null,
+    "description": "",
+    "lineNumber": 167,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "config",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "auth",
+        "description": "Custom auth parameter. This is not used."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "token",
+        "description": "Custom token parameter."
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 91,
+    "kind": "function",
+    "name": "validate",
+    "memberof": "lib/oauth2/helper.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "lib/oauth2/helper.js~validate",
+    "access": "public",
+    "export": false,
+    "importPath": "electron-oauth-helper/lib/oauth2/helper.js",
+    "importStyle": null,
+    "description": "",
+    "lineNumber": 176,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "config",
+        "description": ""
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 92,
+    "kind": "function",
+    "name": "mapGrantTypeToTask",
+    "memberof": "lib/oauth2/helper.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "lib/oauth2/helper.js~mapGrantTypeToTask",
+    "access": "public",
+    "export": false,
+    "importPath": "electron-oauth-helper/lib/oauth2/helper.js",
+    "importStyle": null,
+    "description": "",
+    "lineNumber": 224,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{function|undefined}"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "type",
+        "description": ""
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "function",
+        "undefined"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 93,
+    "kind": "function",
+    "name": "needWindowForGrantType",
+    "memberof": "lib/oauth2/helper.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "lib/oauth2/helper.js~needWindowForGrantType",
+    "access": "public",
+    "export": false,
+    "importPath": "electron-oauth-helper/lib/oauth2/helper.js",
+    "importStyle": null,
+    "description": "",
+    "lineNumber": 247,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{boolean|undefined}"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "type",
+        "description": ""
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "boolean",
+        "undefined"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 94,
+    "kind": "file",
+    "name": "lib/oauth2/index.js",
+    "content": "const { BrowserWindow } = require(\"electron\")\n\nconst {\n  validate,\n  mapGrantTypeToTask,\n  needWindowForGrantType,\n} = require(\"./helper\")\n\nclass OAuth2Provider {\n\n  /**\n   * @param {object} config - OAuth2 config.\n   */\n  constructor(config) {\n    const error = validate(config)\n    if (error) {\n      throw error\n    }\n    this.config = config\n    this.customAuthorizationRequestParameter = {}\n    this.customAccessTokenRequestParameter = {}\n\n    /** @type {boolean} */\n    this.finished = false\n  }\n\n  /**\n   * Sets the custom parameter for Authorization Request.\n   *\n   * This can be used to include your own parameters in your request\n   * that are not included in the OAuth2 specification.\n   *\n   * @example\n   * ```js\n   *  const provider = new OAuth2Provider({})\n   *    .withCustomAuthorizationRequestParameter({hoge: \"huga\"})\n   *    .withCustomAccessTokenRequestParameter({foo: \"bar\"})\n   * ```\n   *\n   * @param {object} param\n   */\n  withCustomAuthorizationRequestParameter(param) {\n    this.customAuthorizationRequestParameter = param\n    return this\n  }\n\n  /**\n   * Sets the custom parameter for  Access Token Request.\n   *\n   * This can be used to include your own parameters in your request\n   * that are not included in the OAuth2 specification.\n\n   * @example\n   * ```js\n   *  const provider = new OAuth2Provider(config)\n   *    .withCustomAuthorizationRequestParameter({hoge: \"huga\"})\n   *    .withCustomAccessTokenRequestParameter({foo: \"bar\"})\n   * ```\n   *\n   * @param {object} param\n   */\n  withCustomAccessTokenRequestParameter(param) {\n    this.customAccessTokenRequestParameter = param\n    return this\n  }\n\n  /**\n   * Initiate OAuth2 flow.\n   *\n   * if grant_type is \"code\" or \"token\", you need to pass \"window\" argument.\n   * In other cases it is not necessary.\n   *\n   * @example\n   * ```js\n   *  const window = new BrowserWindow({\n   *    width: 600,\n   *    height: 800,\n   *    webPreferences: {\n   *      nodeIntegration: false // We recommend disabling nodeIntegration for security.\n   *      contextIsolation: true // We recommend enabling contextIsolation for security.\n   *      // see https://github.com/electron/electron/blob/master/docs/tutorial/security.md\n   *    },\n   *  })\n   *  const provider = new OAuth2Provider(config)\n   *  provider.perform(window)\n   *    .then(console.log)\n   *    .catch(console.error)\n   * ```\n   *\n   * @param {Electron.BrowserWindow=} window\n   * @returns {Promise<any>}\n   */\n  perform(window) {\n\n    const config = this.config\n    /** @type {string} */\n    const type = config.response_type || config.grant_type || \"code\"\n    const task = mapGrantTypeToTask(type)\n\n    if (needWindowForGrantType(type)) {\n      if (!window) {\n        // Backward compatibility\n        window = new BrowserWindow({\n          width: 600,\n          height: 800,\n          webPreferences: {\n            nodeIntegration: false,\n            contextIsolation: true,\n          },\n        })\n        // eslint-disable-next-line\n        console.warn(`In the future release the \"window\" parameter will be mandatory when grant_type is ${type}!`)\n        // next release: return Promise.reject(new Error(`if grant-type is \"${type}\", window is required.`))\n      }\n      this.finished = false\n\n      window.once(\"close\", () => {\n        if (this.finished === false) {\n          this.userCancelError = new Error(\"User cancelled\")\n        }\n      })\n    }\n\n    return task(config, window, this.customAuthorizationRequestParameter, this.customAccessTokenRequestParameter)\n      .then(resp => {\n        this.finished = true\n\n        if (this.userCancelError) {\n          return Promise.reject(this.userCancelError)\n        }\n\n        if (resp.error) {\n          return Promise.reject(resp)\n        }\n\n        return Promise.resolve(resp)\n      })\n  }\n}\n\nmodule.exports = OAuth2Provider\n",
+    "static": true,
+    "longname": "/Users/miro/Documents/develop/electron-oauth-helper/lib/oauth2/index.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 95,
+    "kind": "variable",
+    "name": "BrowserWindow",
+    "memberof": "lib/oauth2/index.js",
+    "static": true,
+    "longname": "lib/oauth2/index.js~BrowserWindow",
+    "access": "public",
+    "export": false,
+    "importPath": "electron-oauth-helper/lib/oauth2/index.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 1,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 96,
+    "kind": "variable",
+    "name": "validate",
+    "memberof": "lib/oauth2/index.js",
+    "static": true,
+    "longname": "lib/oauth2/index.js~validate",
+    "access": "public",
+    "export": false,
+    "importPath": "electron-oauth-helper/lib/oauth2/index.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 3,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 97,
+    "kind": "class",
+    "name": "OAuth2Provider",
+    "memberof": "lib/oauth2/index.js",
+    "static": true,
+    "longname": "lib/oauth2/index.js~OAuth2Provider",
+    "access": "public",
+    "export": false,
+    "importPath": "electron-oauth-helper/lib/oauth2/index.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 9,
+    "undocument": true,
+    "interface": false,
+    "ignore": true
+  },
+  {
+    "__docId__": 98,
+    "kind": "constructor",
+    "name": "constructor",
+    "memberof": "lib/oauth2/index.js~OAuth2Provider",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "lib/oauth2/index.js~OAuth2Provider#constructor",
+    "access": "public",
+    "description": "",
+    "lineNumber": 14,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "config",
+        "description": "OAuth2 config."
+      }
+    ]
+  },
+  {
+    "__docId__": 99,
+    "kind": "member",
+    "name": "config",
+    "memberof": "lib/oauth2/index.js~OAuth2Provider",
+    "static": false,
+    "longname": "lib/oauth2/index.js~OAuth2Provider#config",
+    "access": "public",
+    "description": null,
+    "lineNumber": 19,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 100,
+    "kind": "member",
+    "name": "customAuthorizationRequestParameter",
+    "memberof": "lib/oauth2/index.js~OAuth2Provider",
+    "static": false,
+    "longname": "lib/oauth2/index.js~OAuth2Provider#customAuthorizationRequestParameter",
+    "access": "public",
+    "description": null,
+    "lineNumber": 20,
+    "undocument": true,
+    "type": {
+      "types": [
+        "{}"
+      ]
+    }
+  },
+  {
+    "__docId__": 101,
+    "kind": "member",
+    "name": "customAccessTokenRequestParameter",
+    "memberof": "lib/oauth2/index.js~OAuth2Provider",
+    "static": false,
+    "longname": "lib/oauth2/index.js~OAuth2Provider#customAccessTokenRequestParameter",
+    "access": "public",
+    "description": null,
+    "lineNumber": 21,
+    "undocument": true,
+    "type": {
+      "types": [
+        "{}"
+      ]
+    }
+  },
+  {
+    "__docId__": 102,
+    "kind": "member",
+    "name": "finished",
+    "memberof": "lib/oauth2/index.js~OAuth2Provider",
+    "static": false,
+    "longname": "lib/oauth2/index.js~OAuth2Provider#finished",
+    "access": "public",
+    "description": null,
+    "lineNumber": 24,
+    "type": {
+      "nullable": null,
+      "types": [
+        "boolean"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 103,
+    "kind": "method",
+    "name": "withCustomAuthorizationRequestParameter",
+    "memberof": "lib/oauth2/index.js~OAuth2Provider",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "lib/oauth2/index.js~OAuth2Provider#withCustomAuthorizationRequestParameter",
+    "access": "public",
+    "description": "Sets the custom parameter for Authorization Request.\n\nThis can be used to include your own parameters in your request\nthat are not included in the OAuth2 specification.",
+    "examples": [
+      "```js\n const provider = new OAuth2Provider({})\n   .withCustomAuthorizationRequestParameter({hoge: \"huga\"})\n   .withCustomAccessTokenRequestParameter({foo: \"bar\"})\n```"
+    ],
+    "lineNumber": 42,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "param",
+        "description": ""
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 105,
+    "kind": "method",
+    "name": "withCustomAccessTokenRequestParameter",
+    "memberof": "lib/oauth2/index.js~OAuth2Provider",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "lib/oauth2/index.js~OAuth2Provider#withCustomAccessTokenRequestParameter",
+    "access": "public",
+    "description": "Sets the custom parameter for  Access Token Request.\n\nThis can be used to include your own parameters in your request\nthat are not included in the OAuth2 specification.",
+    "examples": [
+      "```js\n const provider = new OAuth2Provider(config)\n   .withCustomAuthorizationRequestParameter({hoge: \"huga\"})\n   .withCustomAccessTokenRequestParameter({foo: \"bar\"})\n```"
+    ],
+    "lineNumber": 62,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "param",
+        "description": ""
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 107,
+    "kind": "method",
+    "name": "perform",
+    "memberof": "lib/oauth2/index.js~OAuth2Provider",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "lib/oauth2/index.js~OAuth2Provider#perform",
+    "access": "public",
+    "description": "Initiate OAuth2 flow.\n\nif grant_type is \"code\" or \"token\", you need to pass \"window\" argument.\nIn other cases it is not necessary.",
+    "examples": [
+      "```js\n const window = new BrowserWindow({\n   width: 600,\n   height: 800,\n   webPreferences: {\n     nodeIntegration: false // We recommend disabling nodeIntegration for security.\n     contextIsolation: true // We recommend enabling contextIsolation for security.\n     // see https://github.com/electron/electron/blob/master/docs/tutorial/security.md\n   },\n })\n const provider = new OAuth2Provider(config)\n provider.perform(window)\n   .then(console.log)\n   .catch(console.error)\n```"
+    ],
+    "lineNumber": 93,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{Promise<any>}"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Electron.BrowserWindow="
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "window",
+        "description": ""
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Promise<any>"
+      ],
+      "spread": false,
+      "description": ""
+    }
+  },
+  {
+    "__docId__": 109,
+    "kind": "member",
+    "name": "userCancelError",
+    "memberof": "lib/oauth2/index.js~OAuth2Provider",
+    "static": false,
+    "longname": "lib/oauth2/index.js~OAuth2Provider#userCancelError",
+    "access": "public",
+    "description": null,
+    "lineNumber": 119,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 111,
+    "kind": "file",
+    "name": "lib/utils/index.js",
+    "content": "\nconst {\n  convertUsefulObject,\n} = require(\"./request\")\nconst post = require(\"./request\").postRequest\n\nconst postRequest = (...args) => post(...args).then(convertUsefulObject)\n\nconst {\n  awaitRedirect,\n} = require(\"./redirect\")\n\nconst {\n  pick,\n  omit,\n} = require(\"./util\")\n\nmodule.exports = {\n  postRequest,\n  awaitRedirect,\n  pick,\n  omit,\n}\n",
+    "static": true,
+    "longname": "/Users/miro/Documents/develop/electron-oauth-helper/lib/utils/index.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 112,
+    "kind": "variable",
+    "name": "convertUsefulObject",
+    "memberof": "lib/utils/index.js",
+    "static": true,
+    "longname": "lib/utils/index.js~convertUsefulObject",
+    "access": "public",
+    "export": false,
+    "importPath": "electron-oauth-helper/lib/utils/index.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 2,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 113,
+    "kind": "variable",
+    "name": "post",
+    "memberof": "lib/utils/index.js",
+    "static": true,
+    "longname": "lib/utils/index.js~post",
+    "access": "public",
+    "export": false,
+    "importPath": "electron-oauth-helper/lib/utils/index.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 5,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 114,
+    "kind": "function",
+    "name": "postRequest",
+    "memberof": "lib/utils/index.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "lib/utils/index.js~postRequest",
+    "access": "public",
+    "export": false,
+    "importPath": "electron-oauth-helper/lib/utils/index.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 7,
+    "undocument": true,
+    "params": [
+      {
+        "name": "args",
+        "types": [
+          "...*"
+        ],
+        "spread": true
+      }
+    ],
+    "return": null,
+    "ignore": true
+  },
+  {
+    "__docId__": 115,
+    "kind": "variable",
+    "name": "awaitRedirect",
+    "memberof": "lib/utils/index.js",
+    "static": true,
+    "longname": "lib/utils/index.js~awaitRedirect",
+    "access": "public",
+    "export": false,
+    "importPath": "electron-oauth-helper/lib/utils/index.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 9,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 116,
+    "kind": "variable",
+    "name": "pick",
+    "memberof": "lib/utils/index.js",
+    "static": true,
+    "longname": "lib/utils/index.js~pick",
+    "access": "public",
+    "export": false,
+    "importPath": "electron-oauth-helper/lib/utils/index.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 13,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 117,
+    "kind": "file",
+    "name": "lib/utils/redirect.js",
+    "content": "const debug = require(\"debug\")(\"eoh:helper\")\n\n/**\n *\n * @param {string} redirectURL\n * @param {Electron.WebContents} webContents\n */\nconst awaitRedirect = (redirectURL, webContents) => {\n\n  if (!redirectURL || !webContents) {\n    return Promise.reject(new Error(\"Invalid parameter\"))\n  }\n\n  /**\n   * @param {string} url\n   */\n  const isRedirectURL = url => {\n    return url.startsWith(redirectURL)\n  }\n\n  return new Promise(resolve => {\n\n    const testWillNavigate = (event, url) => {\n      debug(\"on will-navigate:\", url)\n      if (isRedirectURL(url)) {\n        off()\n        resolve(url)\n      }\n    }\n\n    const testDidGetRedirectRequest = (event, oldUrl, newUrl) => {\n      debug(\"on did-get-redirect-request:\", newUrl)\n      if (isRedirectURL(newUrl)) {\n        off()\n        resolve(newUrl)\n      }\n    }\n\n    const off = () => {\n      webContents.removeListener(\"will-navigate\", testWillNavigate)\n      webContents.removeListener(\"did-get-redirect-request\", testDidGetRedirectRequest)\n    }\n\n    webContents.on(\"will-navigate\", testWillNavigate)\n    webContents.on(\"did-get-redirect-request\", testDidGetRedirectRequest)\n  })\n}\n\nmodule.exports = {\n  awaitRedirect\n}\n",
+    "static": true,
+    "longname": "/Users/miro/Documents/develop/electron-oauth-helper/lib/utils/redirect.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 118,
+    "kind": "variable",
+    "name": "debug",
+    "memberof": "lib/utils/redirect.js",
+    "static": true,
+    "longname": "lib/utils/redirect.js~debug",
+    "access": "public",
+    "export": false,
+    "importPath": "electron-oauth-helper/lib/utils/redirect.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 1,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 119,
+    "kind": "function",
+    "name": "awaitRedirect",
+    "memberof": "lib/utils/redirect.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "lib/utils/redirect.js~awaitRedirect",
+    "access": "public",
+    "export": false,
+    "importPath": "electron-oauth-helper/lib/utils/redirect.js",
+    "importStyle": null,
+    "description": "",
+    "lineNumber": 8,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "redirectURL",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Electron.WebContents"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "webContents",
+        "description": ""
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 120,
+    "kind": "file",
+    "name": "lib/utils/request.js",
+    "content": "const querystring = require(\"querystring\")\nconst net = require(\"electron\").net\n\n/**\n * @param {string} url\n * @param {object} parameter - post data\n * @param {object} headers\n * @returns {Promise<{statusCode: number, statusMessage: string, headers: object, body: Buffer}>}\n */\nconst postRequest = (url, parameter, headers) => {\n\n  return new Promise((resolve, reject) => {\n\n    const postData = querystring.stringify(parameter)\n\n    const request = net.request({\n      url,\n      method: \"POST\",\n      headers: Object.assign({}, {\n        \"Content-Type\": \"application/x-www-form-urlencoded\",\n        \"Content-Length\": Buffer.byteLength(postData)\n      }, headers || {})\n    })\n\n    request.on(\"response\", response => {\n\n      const datas = []\n\n      response.on(\"data\", chunk => {\n        datas.push(chunk)\n      })\n\n      response.on(\"end\", () => {\n        const body = Buffer.concat(datas)\n        const resp = {\n          headers: response.headers,\n          statusCode: response.statusCode,\n          statusMessage: response.statusMessage,\n          body: body,\n        }\n        resolve(resp)\n      })\n\n      response.on(\"error\", error => {\n        reject(error)\n      })\n    })\n\n    request.write(postData, \"utf8\")\n    request.end()\n  })\n}\n\n/**\n * @param response {object}\n * @param response.headers {object}\n * @param response.statusCode {number}\n * @param response.statusMessage {string}\n *\n * @returns Promise<object>\n */\nconst convertUsefulObject = response => {\n\n  response.body = response.body.toString(\"utf8\")\n\n  if (response.statusCode >= 400) {\n\n    const error = new Error(`Error response: ${response.statusCode} - ${response.statusMessage}`)\n    error.response = response\n    return Promise.reject(error)\n  }\n\n  if (response.headers[\"content-type\"].join(\" \").includes(\"application/json\")) {\n    response.body = JSON.parse(response.body)\n  }\n\n  return response.body\n}\n\nmodule.exports = {\n  convertUsefulObject,\n  postRequest,\n}\n",
+    "static": true,
+    "longname": "/Users/miro/Documents/develop/electron-oauth-helper/lib/utils/request.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 121,
+    "kind": "variable",
+    "name": "querystring",
+    "memberof": "lib/utils/request.js",
+    "static": true,
+    "longname": "lib/utils/request.js~querystring",
+    "access": "public",
+    "export": false,
+    "importPath": "electron-oauth-helper/lib/utils/request.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 1,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 122,
+    "kind": "variable",
+    "name": "net",
+    "memberof": "lib/utils/request.js",
+    "static": true,
+    "longname": "lib/utils/request.js~net",
+    "access": "public",
+    "export": false,
+    "importPath": "electron-oauth-helper/lib/utils/request.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 2,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 123,
+    "kind": "function",
+    "name": "postRequest",
+    "memberof": "lib/utils/request.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "lib/utils/request.js~postRequest",
+    "access": "public",
+    "export": false,
+    "importPath": "electron-oauth-helper/lib/utils/request.js",
+    "importStyle": null,
+    "description": "",
+    "lineNumber": 10,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{Promise<{statusCode: number, statusMessage: string, headers: object, body: Buffer}>}"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "url",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "parameter",
+        "description": "post data"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "headers",
+        "description": ""
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Promise<{statusCode: number, statusMessage: string, headers: object, body: Buffer}>"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 124,
+    "kind": "function",
+    "name": "convertUsefulObject",
+    "memberof": "lib/utils/request.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "lib/utils/request.js~convertUsefulObject",
+    "access": "public",
+    "export": false,
+    "importPath": "electron-oauth-helper/lib/utils/request.js",
+    "importStyle": null,
+    "description": "",
+    "lineNumber": 62,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "Promise<object>"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "*"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "response",
+        "description": "{object}"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "*"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "response.headers",
+        "description": "{object}"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "*"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "response.statusCode",
+        "description": "{number}"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "*"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "response.statusMessage",
+        "description": "{string}"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "*"
+      ],
+      "spread": false,
+      "description": "Promise<object>"
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 125,
+    "kind": "file",
+    "name": "lib/utils/util.js",
+    "content": "/**\n *\n * @param {object} obj\n * @param {string|[string]} props\n */\nconst omit = (obj, props) => {\n\n  obj = obj || {}\n  props = props || []\n\n  if (typeof props === \"string\") {\n    props = [props]\n  }\n\n  return Object.keys(obj).reduce((prev, key) => {\n    if (!props.includes(key)) {\n      // eslint-disable-next-line\n      prev[key] = obj[key]\n    }\n    return prev\n  }, {})\n}\n\n/**\n *\n * @param {object} obj\n * @param {string|[string]} props\n */\nconst pick = (obj, props) => {\n\n  obj = obj || {}\n  props = props || []\n\n  if (typeof props === \"string\") {\n    props = [props]\n  }\n\n  return Object.keys(obj).reduce((prev, key) => {\n    if (props.includes(key)) {\n      // eslint-disable-next-line\n      prev[key] = obj[key]\n    }\n    return prev\n  }, {})\n}\n\nmodule.exports = {\n  omit,\n  pick,\n}\n",
+    "static": true,
+    "longname": "/Users/miro/Documents/develop/electron-oauth-helper/lib/utils/util.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 126,
+    "kind": "function",
+    "name": "omit",
+    "memberof": "lib/utils/util.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "lib/utils/util.js~omit",
+    "access": "public",
+    "export": false,
+    "importPath": "electron-oauth-helper/lib/utils/util.js",
+    "importStyle": null,
+    "description": "",
+    "lineNumber": 6,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "obj",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string",
+          "[string]"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "props",
+        "description": ""
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 127,
+    "kind": "function",
+    "name": "pick",
+    "memberof": "lib/utils/util.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "lib/utils/util.js~pick",
+    "access": "public",
+    "export": false,
+    "importPath": "electron-oauth-helper/lib/utils/util.js",
+    "importStyle": null,
+    "description": "",
+    "lineNumber": 29,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "obj",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string",
+          "[string]"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "props",
+        "description": ""
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "kind": "index",
+    "content": "# Electron OAuth Helper\n\n[![Greenkeeper badge](https://badges.greenkeeper.io/mironal/electron-oauth-helper.svg)](https://greenkeeper.io/)\n\n[![NPM](https://nodei.co/npm/electron-oauth-helper.png)](https://nodei.co/npm/electron-oauth-helper/)\n\n[![Build Status](https://travis-ci.org/mironal/electron-oauth-helper.svg)](https://travis-ci.org/mironal/electron-oauth-helper)\n\n## What's this\n\nEasy to use helper library for OAuth1 and OAuth2.\n\nAll grant type supported.\n\n- Authorization Code Grant\n- Implicit Grant\n- Resource Owner Password Credentials Grant\n- Client Credentials Grant\n\n> TODO: Refreshing an Access Token\n\nYou can get a token just by calling a method of start OAuth.\n\nThis library is lightweight because it depends only on [debug](https://github.com/visionmedia/debug) module.\n\n## Install\n\n`npm install electron-oauth-helper --save`\n\n## Usage\n\n### OAuth1\n\n```js\n\nconst { OAuth1Provider } = require(\"electron-oauth-helper\")\n\nconst window = new BrowserWindow({\n  width: 600,\n  height: 800,\n  webPreferences: {\n    nodeIntegration: false // We recommend disabling nodeIntegration for security.\n    contextIsolation: true // We recommend enabling contextIsolation for security.\n    // see https://github.com/electron/electron/blob/master/docs/tutorial/security.md\n  },\n})\n\nconst config = { /* oauth config. please see example/main/config.example.js.  */}\nconst provider = new OAuth1Provider(config)\nprovider.perform(window)\n  .then(resp => {\n    console.log(resp)\n  })\n  .catch(error => console.error(error))\n```\n\n### OAuth2\n\n```js\n\nconst { OAuth2Provider } = require(\"electron-oauth-helper\")\n\nconst window = new BrowserWindow({\n  width: 600,\n  height: 800,\n  webPreferences: {\n    nodeIntegration: false // We recommend disabling nodeIntegration for security.\n    contextIsolation: true // We recommend enabling contextIsolation for security.\n    // see https://github.com/electron/electron/blob/master/docs/tutorial/security.md\n  },\n})\n\nconst config = { /* oauth config. please see example/main/config.example.js.  */}\nconst provider = new OAuth2Provider(config)\n// Your can use custom parameter.\n// const provider = new OAuth2Provider(config)\n//   .withCustomAuthorizationRequestParameter({})\n//   .withCustomAccessTokenRequestParameter({})\nprovider.perform(window)\n  .then(resp => {\n    console.log(resp)\n  })\n  .catch(error => console.error(error))\n```\n\n### Firebase Auth Integration\n\nElectron can not use firebase auth `signInWithPopup` or `signInWithRedirect`.\nYou can only use email/password authentication.\n\nBut, you can use GitHub, Twitter, etc... authentication by using manually flow.\n\nhttps://firebase.google.com/docs/auth/web/github-auth#handle_the_sign-in_flow_manually\n\n\n```js\n\n// Github manually flow example.\n\nconst { OAuth2Provider } = require(\"electron-oauth-helper\")\n\nconst config = { /* oauth config. please see example/main/config.example.js.  */}\nconst provider = new OAuth2Provider(config)\nprovider.perform(window)\n  .then(resp => {\n    const query = querystring.parse(resp)\n    const credential = firebase.auth.GithubAuthProvider.credential(query.access_token)\n    firebase.auth().signInWithCredential(credential)\n    .then(user => {\n        console.log(user)\n    })\n    .catch(error => console.error(error))\n  })\n  .catch(error => console.error(error))\n```\n\n> Don't forget setting firebase auth.\n\n## Example\n\nexample electron app => `example/`\n\n![example screenshot](./ss/example.png)\n\n---\n\n# Which parameters are required?\n\n## [OAuth 2](https://tools.ietf.org/html/rfc6749)\n\nThe OAuth2 defines four grant type. Here is sample code for each.\n\n1. Authorization Code Grant\n2. Implicit Grant\n3. Resource Owner Password Credentials Grant\n4. Client Credentials Grant\n\n### Authorization Code Grant\n\n> [RFC 6749: 4.1](https://tools.ietf.org/html/rfc6749#section-4.1)\n\n```js\nconst provider = new OAuth2Provider({\n  authorize_url: \"\",\n  access_token_url: \"\",\n  response_type: \"code\",\n  client_id: \"\",\n  redirect_uri: \"\", //Important! RFC says OPTIONAL. But REQUIRED for this library.\n  // other parameters are optional.\n})\n\nprovider.perform()\n// Authorization Request --->\n//                       <--- Authorization Response\n// Access Token Request  --->\n//                       <--- Access Token Response\n.then(resp => {\n  // Got Access Token (◍•ᴗ•◍)\n})\n```\n\n#### Authorization Request\n\n`GET /authorize?...`\n\n```js\n// more detail\n{\n  // REQUIRED. Value MUST be set to \"code\".\n  response_type: \"code\",\n\n  // REQUIRED. The client identifier as described in Section 2.2.\n  client_id: \"\",\n\n  // OPTIONAL. As described in Section 3.1.2.\n  redirect_uri: \"\",\n\n  // OPTIONAL. The scope of the access request as described by Section 3.3.\n  scope: \"\",\n\n  // RECOMMENDED.  An opaque value used by the client to maintain\n  // state between the request and callback.  The authorization\n  // server includes this value when redirecting the user-agent back\n  // to the client.  The parameter SHOULD be used for preventing\n  // cross-site request forgery as described in Section 10.12.\n  state: \"\",\n\n  // Additional.\n  // the `code_challenge` and `code_challenge` are optional parameters\n  // defined in RFC 7636.\n\n  // REQUIRED.  Code challenge.\n  code_challenge: \"\",\n\n  // OPTIONAL, defaults to \"plain\" if not present in the request.  Code\n  // verifier transformation method is \"S256\" or \"plain\".\n  code_challege_method: \"\",\n}\n```\n#### Authorization Response\n\n```js\n{\n  // REQUIRED.  The authorization code generated by the\n  // authorization server.\n  code: \"\",\n\n  // REQUIRED if the \"state\" parameter was present in the client\n  // authorization request.  The exact value received from the\n  // client.\n  state: \"\",\n}\n```\n\n> [Error Response](https://tools.ietf.org/html/rfc6749#section-4.1.2.1)\n\n#### Access Token Request\n\n`POST /token`\n\n```js\n{\n  // REQUIRED.  Value MUST be set to \"authorization_code\".\n  grant_type: \"authorization_code\",\n\n  // REQUIRED.  The authorization code received from the\n  // authorization server.\n  code: \"\",\n\n  // REQUIRED, if the \"redirect_uri\" parameter was included in the\n  // authorization request as described in Section 4.1.1, and their\n  // values MUST be identical.\n  redirect_uri: \"\",\n\n  // REQUIRED, if the client is not authenticating with the\n  // authorization server as described in Section 3.2.1.\n  client_id: \"\",\n}\n```\n\n#### Access Token Response\n\n```js\n{\n  // REQUIRED.  The access token issued by the authorization server.\n  access_token: \"\",\n\n  // REQUIRED.  The type of the token issued as described in\n  // Section 7.1.  Value is case insensitive.\n  token_type: \"\",\n\n  // RECOMMENDED.  The lifetime in seconds of the access token.  For\n  // example, the value \"3600\" denotes that the access token will\n  // expire in one hour from the time the response was generated.\n  // If omitted, the authorization server SHOULD provide the\n  // expiration time via other means or document the default value.\n  expires_in: \"\",\n\n  // OPTIONAL.  The refresh token, which can be used to obtain new\n  // access tokens using the same authorization grant as described\n  // in Section 6.\n  refresh_token: \"\",\n\n  // OPTIONAL, if identical to the scope requested by the client;\n  // otherwise, REQUIRED.  The scope of the access token as\n  // described by Section 3.3.\n  scope: \"\",\n}\n```\n\n[Error Response](https://tools.ietf.org/html/rfc6749#section-5.2)\n\n### Implicit Grant\n\n> [RFC 6749: 4.2](https://tools.ietf.org/html/rfc6749#section-4.2)\n\n```js\nconst provider = new OAuth2Provider({\n  authorize_url: \"\",\n  response_type: \"token\",\n  client_id: \"\",\n  redirect_uri: \"\", //Important! RFC says OPTIONAL. But REQUIRED for this library.\n  // other parameters are optional.\n})\n\nprovider.perform()\n// Authorization Request --->\n//                       <--- Access Token Response\n.then(resp => {\n  // Got Access Token (◍•ᴗ•◍)\n})\n```\n\n#### Authorization Request\n\n`GET /authorize?...`\n\n```js\n{\n  // REQUIRED. Value MUST be set to \"token\".\n  response_type: \"token\",\n\n  // REQUIRED. The client identifier as described in Section 2.2.\n  client_id: \"\",\n  // OPTIONAL.  As described in Section 3.1.2.\n  redirect_uri: \"\",\n\n  // OPTIONAL. The scope of the access request as described by\n  // Section 3.3.\n  scope: \"\",\n\n  // RECOMMENDED.  An opaque value used by the client to maintain\n  // state between the request and callback.  The authorization\n  // server includes this value when redirecting the user-agent back\n  // to the client.  The parameter SHOULD be used for preventing\n  // cross-site request forgery as described in Section 10.12.\n  state: \"\",\n}\n```\n\n#### Access Token Response\n\n> [Successful Response](https://tools.ietf.org/html/rfc6749#section-4.2.2)\n\n> [Error Response](https://tools.ietf.org/html/rfc6749#section-4.2.2.1)\n\n### Resource Owner Password Credentials Grant\n\n> [RFC 6749: 4.3](https://tools.ietf.org/html/rfc6749#section-4.3)\n\n```js\nconst provider = new OAuth2Provider({\n  access_token_url: \"\",\n  response_type: \"password\",\n  username: \"\",\n  password: \"\",\n  // other parameters are optional.\n})\n\nprovider.perform()\n// Access Token Request --->\n//                      <--- Access Token Response\n.then( resp => {\n  // Got Access Token (◍•ᴗ•◍)\n})\n```\n\n#### Authorization Request and Response\n\nNo need.\n\n#### Access Token Request\n\n`POST /token`\n\n```js\n{\n  // REQUIRED. Value MUST be set to \"password\".\n  grant_type: \"password\",\n\n  // REQUIRED. The resource owner username.\n  username: \"\",\n\n  // REQUIRED. The resource owner password.\n  password: \"\",\n\n  // OPTIONAL.  The scope of the access request as described by\n  // Section 3.3.\n  scope: \"\",\n}\n```\n\n#### Access Token Response\n\n> [Successful Response](https://tools.ietf.org/html/rfc6749#section-5.1)\n\n> [Error Response](https://tools.ietf.org/html/rfc6749#section-5.2)\n\n### Client Credentials Grant\n\n> [RFC 6749: 4.4](https://tools.ietf.org/html/rfc6749#section-4.4)\n\n```js\nconst provider = new OAuth2Provider({\n  access_token_url: \"\",\n  grant_type: \"client_credentials\",\n  // other parameters are optional.\n})\n\nprovider.perform()\n// Access Token Request --->\n//                      <--- Access Token Response\n.then( resp => {\n  // Got Access Token (◍•ᴗ•◍)\n})\n\n```\n#### Authorization Request and Response\n\nNo need.\n\n#### Access Token Request\n\n`POST /token`\n\n```js\n{\n  // REQUIRED. Value MUST be set to \"client_credentials\".\n  grant_type: \"client_credentials\",\n\n  // OPTIONAL. The scope of the access request as described by\n  // Section 3.3.\n  scope: \"\",\n}\n```\n\n#### Access Token Response\n\n> [Successful Response](https://tools.ietf.org/html/rfc6749#section-5.1)\n\n> [Error Response](https://tools.ietf.org/html/rfc6749#section-5.2)\n\n\n### Refreshing an Access Token\n\n> [RFC 6749: 6](https://tools.ietf.org/html/rfc6749#section-6)\n\nTODO\n",
+    "longname": "/Users/miro/Documents/develop/electron-oauth-helper/README.md",
+    "name": "./README.md",
+    "static": true,
+    "access": "public"
+  },
+  {
+    "kind": "packageJSON",
+    "content": "{\n    \"name\": \"electron-oauth-helper\",\n    \"version\": \"1.0.2\",\n    \"description\": \"Easy to use helper library for OAuth1 and OAuth2.\",\n    \"main\": \"index.js\",\n    \"scripts\": {\n        \"start:example\": \"electron ./example/src/main/main.js\",\n        \"lint\": \"eslint .\",\n        \"lint:fix\": \"eslint --fix .\",\n        \"test\": \"avaron --timeout=10s\",\n        \"build\": \"parcel build --no-minify index.js\",\n        \"doc\": \"esdoc\"\n    },\n    \"engines\": {\n        \"node\": \">= 8.0.0\"\n    },\n    \"keywords\": [\n        \"oauth\",\n        \"oauth1\",\n        \"oauth2\",\n        \"electron\",\n        \"auth\",\n        \"api\"\n    ],\n    \"author\": \"mironal\",\n    \"license\": \"MIT\",\n    \"repository\": {\n        \"type\": \"git\",\n        \"url\": \"https://github.com/mironal/electron-oauth-helper.git\"\n    },\n    \"homepage\": \"https://github.com/mironal/electron-oauth-helper\",\n    \"bugs\": {\n        \"url\": \"https://github.com/mironal/electron-oauth-helper/issues\"\n    },\n    \"devDependencies\": {\n        \"ava\": \"0.24.0\",\n        \"avaron\": \"0.0.14\",\n        \"babel-preset-env\": \"1.6.1\",\n        \"electron\": \"1.7.9\",\n        \"esdoc\": \"1.0.4\",\n        \"esdoc-standard-plugin\": \"1.0.0\",\n        \"eslint\": \"4.12.1\",\n        \"eslint-plugin-ava\": \"4.4.0\",\n        \"eslint-plugin-import\": \"2.8.0\",\n        \"eslint-plugin-node\": \"5.2.1\",\n        \"eslint-plugin-promise\": \"3.6.0\",\n        \"eslint-plugin-security\": \"1.4.0\",\n        \"firebase\": \"4.8.0\",\n        \"koa\": \"2.4.1\",\n        \"koa-bodyparser\": \"4.2.0\",\n        \"koa-router\": \"7.3.0\",\n        \"mockttp\": \"0.5.0\",\n        \"nock\": \"9.1.4\",\n        \"parcel-bundler\": \"1.0.3\",\n        \"testdouble\": \"3.2.6\",\n        \"unexpected\": \"10.36.2\"\n    },\n    \"dependencies\": {\n        \"debug\": \"3.1.0\"\n    },\n    \"esdoc\": {\n        \"source\": \"./lib\",\n        \"destination\": \"./docs\",\n        \"plugins\": [\n            {\n                \"name\": \"esdoc-standard-plugin\",\n                \"option\": {\n                    \"lint\": {\n                        \"enable\": false\n                    }\n                }\n            }\n        ]\n    }\n}\n",
+    "longname": "/Users/miro/Documents/develop/electron-oauth-helper/package.json",
+    "name": "package.json",
+    "static": true,
+    "access": "public"
+  }
+]

@@ -4,15 +4,24 @@ node_js:
 - '7'
 - '8'
 
+addons:
+  apt:
+    packages:
+      - xvfb
+
 # https://github.com/greenkeeperio/greenkeeper-lockfile
 
 before_install:
 - npm install -g npm
 - npm install -g greenkeeper-lockfile@1
 - npm install -g codecov
+- export DISPLAY=':99.0'
+- Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
 before_script: greenkeeper-lockfile-update
 # Only the node version 6 job will upload the lockfile
 after_script: greenkeeper-lockfile-upload
 
 script:
 - npm run lint
+- npm run test
+

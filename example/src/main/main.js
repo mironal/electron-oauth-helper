@@ -12,9 +12,11 @@ const {
 
 const firebase = require("firebase")
 
+// eslint-disable-next-line node/no-missing-require
 const mapTypeToConfig = require("./config")
-
-firebase.initializeApp(mapTypeToConfig("Firebase"))
+if (mapTypeToConfig("Firebase")) {
+  firebase.initializeApp(mapTypeToConfig("Firebase"))
+}
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -81,9 +83,29 @@ ipc.on("oauth", (event, type) => {
   })()
 
   const provider = new Provider(config)
-  provider.perform()
+
+  const options = Object.assign({
+    show: false,
+    width: 800,
+    height: 800,
+    webPreferences: {
+      nodeIntegration: false,
+      contextIsolation: true,
+    },
+  })
+
+  let window = new BrowserWindow(options)
+  window.once("ready-to-show", () => {
+    window.show()
+  })
+  window.once("closed", () => {
+    window = null
+  })
+
+  provider.perform(window)
     .then(resp => {
-      console.log(resp)
+      window.close()
+      console.log("Got response (◍•ᴗ•◍):", resp)
     })
     .catch(error => console.error(error))
 })
