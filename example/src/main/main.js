@@ -12,6 +12,7 @@ const {
 
 const firebase = require("firebase")
 
+// eslint-disable-next-line node/no-missing-require
 const mapTypeToConfig = require("./config")
 if (mapTypeToConfig("Firebase")) {
   firebase.initializeApp(mapTypeToConfig("Firebase"))
