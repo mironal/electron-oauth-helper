@@ -38,7 +38,6 @@
     "devDependencies": {
         "ava": "0.24.0",
         "avaron": "0.0.14",
-        "babel-preset-env": "1.6.1",
         "electron": "1.7.9",
         "esdoc": "1.0.4",
         "esdoc-standard-plugin": "1.0.0",
@@ -51,12 +50,7 @@
         "firebase": "4.8.0",
         "koa": "2.4.1",
         "koa-bodyparser": "4.2.0",
-        "koa-router": "7.3.0",
-        "mockttp": "0.5.0",
-        "nock": "9.1.4",
-        "parcel-bundler": "1.2.0",
-        "testdouble": "3.2.6",
-        "unexpected": "10.36.2"
+        "koa-router": "7.3.0"
     },
     "dependencies": {
         "debug": "3.1.0"
