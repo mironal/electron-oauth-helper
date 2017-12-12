@@ -54,7 +54,7 @@
         "koa-router": "7.3.0",
         "mockttp": "0.5.0",
         "nock": "9.1.4",
-        "parcel-bundler": "1.0.3",
+        "parcel-bundler": "1.2.0",
         "testdouble": "3.2.6",
         "unexpected": "10.36.2"
     },
