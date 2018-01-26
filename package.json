@@ -36,7 +36,7 @@
         "url": "https://github.com/mironal/electron-oauth-helper/issues"
     },
     "devDependencies": {
-        "ava": "0.24.0",
+        "ava": "0.25.0",
         "avaron": "0.0.14",
         "electron": "1.7.10",
         "esdoc": "1.0.4",
