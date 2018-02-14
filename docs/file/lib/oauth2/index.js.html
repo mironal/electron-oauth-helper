@@ -150,10 +150,12 @@ class OAuth2Provider {
       }
       this.finished = false
 
-      window.once(&quot;close&quot;, () =&gt; {
-        if (this.finished === false) {
-          this.userCancelError = new Error(&quot;User cancelled&quot;)
-        }
+      window.once(&quot;show&quot;, () =&gt; {
+        window.once(&quot;close&quot;, () =&gt; {
+          if (this.finished === false) {
+            this.userCancelError = new Error(&quot;User cancelled&quot;)
+          }
+        })
       })
     }
 
