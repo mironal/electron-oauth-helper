@@ -37,7 +37,7 @@
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">const Url = require(&quot;url&quot;)
 const querystring = require(&quot;querystring&quot;)
 const debug = require(&quot;debug&quot;)(&quot;eoh:oauth1&quot;)
-const { BrowserWindow } = require(&quot;electron&quot;)
+const { BrowserWindow } = require(&quot;electron&quot;).remote || require(&quot;electron&quot;)
 
 const {
   awaitRedirect,

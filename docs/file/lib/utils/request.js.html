@@ -35,7 +35,7 @@
 
 <div class="content" data-ice="content"><h1 data-ice="title">lib/utils/request.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">const querystring = require(&quot;querystring&quot;)
-const net = require(&quot;electron&quot;).net
+const net = require(&quot;electron&quot;).net || require(&quot;electron&quot;).remote.net
 
 /**
  * @param {string} url

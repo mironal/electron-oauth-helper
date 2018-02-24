@@ -34,7 +34,7 @@
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">lib/oauth2/index.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">const { BrowserWindow } = require(&quot;electron&quot;)
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">const { BrowserWindow } = require(&quot;electron&quot;).remote || require(&quot;electron&quot;)
 
 const {
   validate,
