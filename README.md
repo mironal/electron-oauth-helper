@@ -426,3 +426,12 @@ No need.
 > [RFC 6749: 6](https://tools.ietf.org/html/rfc6749#section-6)
 
 TODO
+
+---
+
+
+## How to release
+
+1. `npm version patch | minor | major |...`
+2. `npm publish`
+
