@@ -38,7 +38,7 @@
     "devDependencies": {
         "ava": "0.25.0",
         "avaron": "0.0.14",
-        "electron": "1.8.4",
+        "electron": "2.0.0",
         "esdoc": "1.0.4",
         "esdoc-standard-plugin": "1.0.0",
         "eslint": "4.19.1",
