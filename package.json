@@ -49,7 +49,7 @@
         "eslint-plugin-security": "1.4.0",
         "firebase": "4.13.0",
         "koa": "2.5.0",
-        "koa-bodyparser": "4.2.0",
+        "koa-bodyparser": "4.2.1",
         "koa-router": "7.4.0"
     },
     "dependencies": {
