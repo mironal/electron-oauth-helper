@@ -45,7 +45,7 @@
         "eslint-plugin-ava": "4.5.1",
         "eslint-plugin-import": "2.12.0",
         "eslint-plugin-node": "6.0.1",
-        "eslint-plugin-promise": "3.7.0",
+        "eslint-plugin-promise": "4.0.1",
         "eslint-plugin-security": "1.4.0",
         "firebase": "5.0.2",
         "koa": "2.5.0",
