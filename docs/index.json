@@ -1309,7 +1309,7 @@
     "__docId__": 80,
     "kind": "file",
     "name": "lib/oauth2/helper.js",
-    "content": "const querystring = require(\"querystring\")\nconst Url = require(\"url\")\n\nconst debug = require(\"debug\")(\"eoh:oauth2\")\n\nconst {\n  postRequest,\n  awaitRedirect,\n  omit,\n} = require(\"../utils\")\n\nconst valueForType = (type, codeFn, tokenFn, passFn, credFn) => {\n\n  if (!type) {\n    throw new Error(\"type must not be null.\")\n  }\n\n  if (type.includes(\"id_token\")) {\n    // eslint-disable-next-line\n    console.warn(\"Multiple-Valued Response Type Combinations is not supportted. Brobably not working...\")\n  }\n\n  if (type.includes(\"code\")) {\n    return codeFn(type)\n  }\n\n  if (type.includes(\"token\")) {\n    return tokenFn(type)\n  }\n\n  if (type.includes(\"password\")) {\n    return passFn(type)\n  }\n\n  if (type.includes(\"client_credentials\")) {\n    return credFn(type)\n  }\n\n  throw new Error(`Unsupported type: ${type}`)\n}\n\nconst createAuthorizeUrl = (config, optional) => {\n\n  const keys = [\n    \"client_id\",\n    \"redirect_uri\",\n    \"scope\",\n    \"state\",\n    \"response_type\",\n  ]\n  /* eslint-disable security/detect-object-injection */\n  const parameter = Object.assign({}, keys.reduce((prev, key) => {\n    if (typeof config[key] === \"string\") {\n      prev[key] = config[key]\n    }\n    return prev\n  }, {}), optional || {})\n  /* eslint-enable */\n\n  const url = `${config.authorize_url}?${querystring.stringify(parameter)}`\n  return url\n}\n\n/**\n *\n * @param {object} config\n * @param {Electron.BrowserWindow} window\n * @param {object} auth  - Custom auth parameter.\n * @param {object} token  - Custom token parameter.\n */\nconst authorizationCodeFlowTask = (config, window, auth, token) => {\n\n  if (!window) {\n    return Promise.reject(new Error(\"window is required\"))\n  }\n\n  const authorizeUrl = createAuthorizeUrl(config, auth)\n  window.loadURL(authorizeUrl)\n\n  return awaitRedirect(config.redirect_uri, window.webContents)\n    .then(url => {\n      debug(`redirect url: \"${url}\"`)\n\n      const query = Url.parse(url, true).query\n\n      if (!query) {\n        return Promise.reject(new Error(`invalid response: ${url}`))\n      }\n\n      if (query.error) {\n        const error = new Error(\"error response\")\n        error.query = query\n        return Promise.reject(error)\n      }\n\n      if (!query.code) {\n        return Promise.reject(new Error(\"missing 'code' response.\"))\n      }\n\n      if (config.state && !query.state) {\n        return Promise.reject(new Error(\"missing 'state' response.\"))\n      }\n\n      const parameter = Object.assign({}, {\n        client_id: config.client_id,\n        grant_type: \"authorization_code\",\n        code: query.code,\n      }, token || {})\n\n      if (config.client_secret) {\n        parameter.client_secret = config.client_secret\n      }\n\n      if (config.redirect_uri) {\n        parameter.redirect_uri = config.redirect_uri\n      }\n\n      if (query.state) {\n        parameter.state = query.state\n      }\n\n      return postRequest(config.access_token_url, parameter)\n    })\n}\n\n/**\n *\n * @param {object} config\n * @param {Electron.BrowserWindow} window\n * @param {object} auth - Custom token parameter.\n */\nconst implicitFlowTask = (config, window, auth) => {\n\n  if (!window) {\n    return Promise.reject(new Error(\"window is required\"))\n  }\n\n  const authorizeUrl = createAuthorizeUrl(config, auth)\n  window.loadURL(authorizeUrl)\n\n  return awaitRedirect(config.redirect_uri, window.webContents, debug)\n    .then(url => {\n      debug(`redirect url: \"${url}\"`)\n      const hash = Url.parse(url, false).hash.replace(/^#/, \"\")\n      return querystring.parse(hash)\n    })\n}\n\n/**\n *\n * @param {object} config\n * @param {Electron.BrowserWindow} window - This is not used.\n * @param {object} auth - This is not used.\n * @param {object} token - Custom token parameter.\n */\nconst resourceOwnerPasswordCredentialsFlowTask = (config, window, auth, token) => {\n  const parameter = omit(config, \"access_token_url\")\n  return postRequest(config.access_token_url, parameter, token)\n}\n\n/**\n *\n * @param {object} config\n * @param {object} auth - Custom auth parameter. This is not used.\n * @param {object} token - Custom token parameter.\n */\nconst clientCredentialsFlowTask = (config, auth, token) => {\n  const parameter = omit(config, \"access_token_url\")\n  return postRequest(config.access_token_url, parameter, token)\n}\n\n/**\n * @param {object} config\n */\n\nconst validate = config => {\n  const type = config.response_type || config.grant_type || \"code\"\n  /* @type {[string]} */\n  const keys = valueForType(type,\n    () => {\n      return [\n        \"client_id\",\n        \"authorize_url\",\n        \"access_token_url\",\n        \"redirect_uri\",\n      ]\n    },\n    () => {\n      return [\n        \"client_id\",\n        \"authorize_url\",\n        \"redirect_uri\",\n      ]\n    },\n    () => {\n      return [\n        \"access_token_url\",\n        \"username\",\n        \"password\",\n      ]\n    },\n    () => {\n      return [\n        \"access_token_url\",\n      ]\n    })\n  const test = k => {\n    if (typeof k === \"string\") {\n      k = [k]\n    }\n    // eslint-disable-next-line\n    return k.find(key => typeof config[key] === \"string\")\n  }\n  const missing = keys.find(k => !test(k))\n  if (missing) {\n    return new Error(`${missing} is required for ${type}`)\n  }\n}\n\n/**\n * @param {string} type\n * @returns {function|undefined}\n */\nconst mapGrantTypeToTask = type => (\n  valueForType(type,\n    () => {\n      return authorizationCodeFlowTask\n    },\n    () => {\n      return implicitFlowTask\n    },\n    () => {\n      return resourceOwnerPasswordCredentialsFlowTask\n    },\n    () => {\n      return clientCredentialsFlowTask\n    })\n)\n\n/**\n *\n * @param {string} type\n *\n * @returns {boolean|undefined}\n *\n */\nconst needWindowForGrantType = type => (\n  valueForType(type,\n    () => {\n      return true\n    },\n    () => {\n      return true\n    },\n    () => {\n      return false\n    },\n    () => {\n      return false\n    })\n)\n\nmodule.exports = {\n  validate,\n  mapGrantTypeToTask,\n  needWindowForGrantType,\n}\n",
+    "content": "const querystring = require(\"querystring\")\nconst Url = require(\"url\")\n\nconst debug = require(\"debug\")(\"eoh:oauth2\")\n\nconst {\n  postRequest,\n  awaitRedirect,\n  omit,\n} = require(\"../utils\")\n\nconst valueForType = (type, codeFn, tokenFn, passFn, credFn) => {\n\n  if (!type) {\n    throw new Error(\"type must not be null.\")\n  }\n\n  if (type.includes(\"id_token\")) {\n    // eslint-disable-next-line\n    console.warn(\"Multiple-Valued Response Type Combinations is not supportted. Brobably not working...\")\n  }\n\n  if (type.includes(\"code\")) {\n    return codeFn(type)\n  }\n\n  if (type.includes(\"token\")) {\n    return tokenFn(type)\n  }\n\n  if (type.includes(\"password\")) {\n    return passFn(type)\n  }\n\n  if (type.includes(\"client_credentials\")) {\n    return credFn(type)\n  }\n\n  throw new Error(`Unsupported type: ${type}`)\n}\n\nconst createAuthorizeUrl = (config, optional) => {\n\n  const keys = [\n    \"client_id\",\n    \"redirect_uri\",\n    \"scope\",\n    \"state\",\n    \"response_type\",\n  ]\n  /* eslint-disable security/detect-object-injection */\n  const parameter = Object.assign({}, keys.reduce((prev, key) => {\n    if (typeof config[key] === \"string\") {\n      prev[key] = config[key]\n    }\n    return prev\n  }, {}), optional || {})\n  /* eslint-enable */\n\n  const url = `${config.authorize_url}?${querystring.stringify(parameter)}`\n  return url\n}\n\n/**\n *\n * @param {object} config\n * @param {Electron.BrowserWindow} window\n * @param {object} auth  - Custom auth parameter.\n * @param {object} token  - Custom token parameter.\n */\nconst authorizationCodeFlowTask = (config, window, auth, token) => {\n\n  if (!window) {\n    return Promise.reject(new Error(\"window is required\"))\n  }\n\n  const authorizeUrl = createAuthorizeUrl(config, auth)\n  window.loadURL(authorizeUrl)\n\n  return awaitRedirect(config.redirect_uri, window.webContents)\n    .then(url => {\n      debug(`redirect url: \"${url}\"`)\n\n      const query = Url.parse(url, true).query\n\n      if (!query) {\n        return Promise.reject(new Error(`invalid response: ${url}`))\n      }\n\n      if (query.error) {\n        const error = new Error(\"error response\")\n        error.query = query\n        return Promise.reject(error)\n      }\n\n      if (!query.code) {\n        return Promise.reject(new Error(\"missing 'code' response.\"))\n      }\n\n      if (config.state && !query.state) {\n        return Promise.reject(new Error(\"missing 'state' response.\"))\n      }\n\n      const parameter = Object.assign({}, {\n        client_id: config.client_id,\n        grant_type: \"authorization_code\",\n        code: query.code,\n      }, token || {})\n\n      if (config.client_secret) {\n        parameter.client_secret = config.client_secret\n      }\n\n      if (config.redirect_uri) {\n        parameter.redirect_uri = config.redirect_uri\n      }\n\n      if (query.state) {\n        parameter.state = query.state\n      }\n\n      return postRequest(config.access_token_url, parameter)\n    })\n}\n\n/**\n *\n * @param {object} config\n * @param {Electron.BrowserWindow} window\n * @param {object} auth - Custom token parameter.\n */\nconst implicitFlowTask = (config, window, auth) => {\n\n  if (!window) {\n    return Promise.reject(new Error(\"window is required\"))\n  }\n\n  const authorizeUrl = createAuthorizeUrl(config, auth)\n  setTimeout(() => {\n    window.loadURL(authorizeUrl)\n  }, 100)\n  debug(\"start implicitFlowTask:\", authorizeUrl, config.redirect_uri)\n  return awaitRedirect(config.redirect_uri, window.webContents, debug)\n    .then(url => {\n      debug(`redirect url: \"${url}\"`)\n      const hash = Url.parse(url, false).hash.replace(/^#/, \"\")\n      return querystring.parse(hash)\n    })\n}\n\n/**\n *\n * @param {object} config\n * @param {Electron.BrowserWindow} window - This is not used.\n * @param {object} auth - This is not used.\n * @param {object} token - Custom token parameter.\n */\nconst resourceOwnerPasswordCredentialsFlowTask = (config, window, auth, token) => {\n  const parameter = omit(config, \"access_token_url\")\n  return postRequest(config.access_token_url, parameter, token)\n}\n\n/**\n *\n * @param {object} config\n * @param {object} auth - Custom auth parameter. This is not used.\n * @param {object} token - Custom token parameter.\n */\nconst clientCredentialsFlowTask = (config, auth, token) => {\n  const parameter = omit(config, \"access_token_url\")\n  return postRequest(config.access_token_url, parameter, token)\n}\n\n/**\n * @param {object} config\n */\n\nconst validate = config => {\n  const type = config.response_type || config.grant_type || \"code\"\n  /* @type {[string]} */\n  const keys = valueForType(type,\n    () => {\n      return [\n        \"client_id\",\n        \"authorize_url\",\n        \"access_token_url\",\n        \"redirect_uri\",\n      ]\n    },\n    () => {\n      return [\n        \"client_id\",\n        \"authorize_url\",\n        \"redirect_uri\",\n      ]\n    },\n    () => {\n      return [\n        \"access_token_url\",\n        \"username\",\n        \"password\",\n      ]\n    },\n    () => {\n      return [\n        \"access_token_url\",\n      ]\n    })\n  const test = k => {\n    if (typeof k === \"string\") {\n      k = [k]\n    }\n    // eslint-disable-next-line\n    return k.find(key => typeof config[key] === \"string\")\n  }\n  const missing = keys.find(k => !test(k))\n  if (missing) {\n    return new Error(`${missing} is required for ${type}`)\n  }\n}\n\n/**\n * @param {string} type\n * @returns {function|undefined}\n */\nconst mapGrantTypeToTask = type => (\n  valueForType(type,\n    () => {\n      return authorizationCodeFlowTask\n    },\n    () => {\n      return implicitFlowTask\n    },\n    () => {\n      return resourceOwnerPasswordCredentialsFlowTask\n    },\n    () => {\n      return clientCredentialsFlowTask\n    })\n)\n\n/**\n *\n * @param {string} type\n *\n * @returns {boolean|undefined}\n *\n */\nconst needWindowForGrantType = type => (\n  valueForType(type,\n    () => {\n      return true\n    },\n    () => {\n      return true\n    },\n    () => {\n      return false\n    },\n    () => {\n      return false\n    })\n)\n\nmodule.exports = {\n  validate,\n  mapGrantTypeToTask,\n  needWindowForGrantType,\n}\n",
     "static": true,
     "longname": "/Users/miro/Documents/develop/electron-oauth-helper/lib/oauth2/helper.js",
     "access": "public",
@@ -1624,7 +1624,7 @@
     "importPath": "electron-oauth-helper/lib/oauth2/helper.js",
     "importStyle": null,
     "description": "",
-    "lineNumber": 156,
+    "lineNumber": 158,
     "params": [
       {
         "nullable": null,
@@ -1688,7 +1688,7 @@
     "importPath": "electron-oauth-helper/lib/oauth2/helper.js",
     "importStyle": null,
     "description": "",
-    "lineNumber": 167,
+    "lineNumber": 169,
     "params": [
       {
         "nullable": null,
@@ -1742,7 +1742,7 @@
     "importPath": "electron-oauth-helper/lib/oauth2/helper.js",
     "importStyle": null,
     "description": "",
-    "lineNumber": 176,
+    "lineNumber": 178,
     "params": [
       {
         "nullable": null,
@@ -1776,7 +1776,7 @@
     "importPath": "electron-oauth-helper/lib/oauth2/helper.js",
     "importStyle": null,
     "description": "",
-    "lineNumber": 224,
+    "lineNumber": 226,
     "unknown": [
       {
         "tagName": "@returns",
@@ -1820,7 +1820,7 @@
     "importPath": "electron-oauth-helper/lib/oauth2/helper.js",
     "importStyle": null,
     "description": "",
-    "lineNumber": 247,
+    "lineNumber": 249,
     "unknown": [
       {
         "tagName": "@returns",
@@ -1854,7 +1854,7 @@
     "__docId__": 94,
     "kind": "file",
     "name": "lib/oauth2/index.js",
-    "content": "const { BrowserWindow } = require(\"electron\").remote || require(\"electron\")\n\nconst {\n  validate,\n  mapGrantTypeToTask,\n  needWindowForGrantType,\n} = require(\"./helper\")\n\nclass OAuth2Provider {\n\n  /**\n   * @param {object} config - OAuth2 config.\n   */\n  constructor(config) {\n    const error = validate(config)\n    if (error) {\n      throw error\n    }\n    this.config = config\n    this.customAuthorizationRequestParameter = {}\n    this.customAccessTokenRequestParameter = {}\n\n    /** @type {boolean} */\n    this.finished = false\n  }\n\n  /**\n   * Sets the custom parameter for Authorization Request.\n   *\n   * This can be used to include your own parameters in your request\n   * that are not included in the OAuth2 specification.\n   *\n   * @example\n   * ```js\n   *  const provider = new OAuth2Provider({})\n   *    .withCustomAuthorizationRequestParameter({hoge: \"huga\"})\n   *    .withCustomAccessTokenRequestParameter({foo: \"bar\"})\n   * ```\n   *\n   * @param {object} param\n   */\n  withCustomAuthorizationRequestParameter(param) {\n    this.customAuthorizationRequestParameter = param\n    return this\n  }\n\n  /**\n   * Sets the custom parameter for  Access Token Request.\n   *\n   * This can be used to include your own parameters in your request\n   * that are not included in the OAuth2 specification.\n\n   * @example\n   * ```js\n   *  const provider = new OAuth2Provider(config)\n   *    .withCustomAuthorizationRequestParameter({hoge: \"huga\"})\n   *    .withCustomAccessTokenRequestParameter({foo: \"bar\"})\n   * ```\n   *\n   * @param {object} param\n   */\n  withCustomAccessTokenRequestParameter(param) {\n    this.customAccessTokenRequestParameter = param\n    return this\n  }\n\n  /**\n   * Initiate OAuth2 flow.\n   *\n   * if grant_type is \"code\" or \"token\", you need to pass \"window\" argument.\n   * In other cases it is not necessary.\n   *\n   * @example\n   * ```js\n   *  const window = new BrowserWindow({\n   *    width: 600,\n   *    height: 800,\n   *    webPreferences: {\n   *      nodeIntegration: false // We recommend disabling nodeIntegration for security.\n   *      contextIsolation: true // We recommend enabling contextIsolation for security.\n   *      // see https://github.com/electron/electron/blob/master/docs/tutorial/security.md\n   *    },\n   *  })\n   *  const provider = new OAuth2Provider(config)\n   *  provider.perform(window)\n   *    .then(console.log)\n   *    .catch(console.error)\n   * ```\n   *\n   * @param {Electron.BrowserWindow=} window\n   * @returns {Promise<any>}\n   */\n  perform(window) {\n\n    const config = this.config\n    /** @type {string} */\n    const type = config.response_type || config.grant_type || \"code\"\n    const task = mapGrantTypeToTask(type)\n\n    if (needWindowForGrantType(type)) {\n      if (!window) {\n        // Backward compatibility\n        window = new BrowserWindow({\n          width: 600,\n          height: 800,\n          webPreferences: {\n            nodeIntegration: false,\n            contextIsolation: true,\n          },\n        })\n        // eslint-disable-next-line\n        console.warn(`In the future release the \"window\" parameter will be mandatory when grant_type is ${type}!`)\n        // next release: return Promise.reject(new Error(`if grant-type is \"${type}\", window is required.`))\n      }\n      this.finished = false\n\n      window.once(\"show\", () => {\n        window.once(\"close\", () => {\n          if (this.finished === false) {\n            this.userCancelError = new Error(\"User cancelled\")\n          }\n        })\n      })\n    }\n\n    return task(config, window, this.customAuthorizationRequestParameter, this.customAccessTokenRequestParameter)\n      .then(resp => {\n        this.finished = true\n\n        if (this.userCancelError) {\n          return Promise.reject(this.userCancelError)\n        }\n\n        if (resp.error) {\n          return Promise.reject(resp)\n        }\n\n        return Promise.resolve(resp)\n      })\n  }\n}\n\nmodule.exports = OAuth2Provider\n",
+    "content": "const { BrowserWindow } = require(\"electron\").remote || require(\"electron\")\nconst debug = require(\"debug\")(\"eoh:oauth2\")\n\nconst {\n  validate,\n  mapGrantTypeToTask,\n  needWindowForGrantType,\n} = require(\"./helper\")\n\nclass OAuth2Provider {\n\n  /**\n   * @param {object} config - OAuth2 config.\n   */\n  constructor(config) {\n    const error = validate(config)\n    if (error) {\n      throw error\n    }\n    this.config = config\n    this.customAuthorizationRequestParameter = {}\n    this.customAccessTokenRequestParameter = {}\n\n    /** @type {boolean} */\n    this.finished = false\n  }\n\n  /**\n   * Sets the custom parameter for Authorization Request.\n   *\n   * This can be used to include your own parameters in your request\n   * that are not included in the OAuth2 specification.\n   *\n   * @example\n   * ```js\n   *  const provider = new OAuth2Provider({})\n   *    .withCustomAuthorizationRequestParameter({hoge: \"huga\"})\n   *    .withCustomAccessTokenRequestParameter({foo: \"bar\"})\n   * ```\n   *\n   * @param {object} param\n   */\n  withCustomAuthorizationRequestParameter(param) {\n    this.customAuthorizationRequestParameter = param\n    return this\n  }\n\n  /**\n   * Sets the custom parameter for  Access Token Request.\n   *\n   * This can be used to include your own parameters in your request\n   * that are not included in the OAuth2 specification.\n\n   * @example\n   * ```js\n   *  const provider = new OAuth2Provider(config)\n   *    .withCustomAuthorizationRequestParameter({hoge: \"huga\"})\n   *    .withCustomAccessTokenRequestParameter({foo: \"bar\"})\n   * ```\n   *\n   * @param {object} param\n   */\n  withCustomAccessTokenRequestParameter(param) {\n    this.customAccessTokenRequestParameter = param\n    return this\n  }\n\n  /**\n   * Initiate OAuth2 flow.\n   *\n   * if grant_type is \"code\" or \"token\", you need to pass \"window\" argument.\n   * In other cases it is not necessary.\n   *\n   * @example\n   * ```js\n   *  const window = new BrowserWindow({\n   *    width: 600,\n   *    height: 800,\n   *    webPreferences: {\n   *      nodeIntegration: false // We recommend disabling nodeIntegration for security.\n   *      contextIsolation: true // We recommend enabling contextIsolation for security.\n   *      // see https://github.com/electron/electron/blob/master/docs/tutorial/security.md\n   *    },\n   *  })\n   *  const provider = new OAuth2Provider(config)\n   *  provider.perform(window)\n   *    .then(console.log)\n   *    .catch(console.error)\n   * ```\n   *\n   * @param {Electron.BrowserWindow=} window\n   * @returns {Promise<any>}\n   */\n  perform(window) {\n\n    const config = this.config\n    /** @type {string} */\n    const type = config.response_type || config.grant_type || \"code\"\n    const task = mapGrantTypeToTask(type)\n\n    if (needWindowForGrantType(type)) {\n      if (!window) {\n        // Backward compatibility\n        window = new BrowserWindow({\n          width: 600,\n          height: 800,\n          webPreferences: {\n            nodeIntegration: false,\n            contextIsolation: true,\n          },\n        })\n        // eslint-disable-next-line\n        console.warn(`In the future release the \"window\" parameter will be mandatory when grant_type is ${type}!`)\n        // next release: return Promise.reject(new Error(`if grant-type is \"${type}\", window is required.`))\n      }\n      this.finished = false\n\n      window.once(\"show\", () => {\n        window.once(\"close\", () => {\n          if (this.finished === false) {\n            this.userCancelError = new Error(\"User cancelled\")\n          }\n        })\n      })\n    }\n\n    debug(\"start OAUTH2\")\n    return task(config, window, this.customAuthorizationRequestParameter, this.customAccessTokenRequestParameter)\n      .then(resp => {\n        this.finished = true\n\n        if (this.userCancelError) {\n          return Promise.reject(this.userCancelError)\n        }\n\n        if (resp.error) {\n          return Promise.reject(resp)\n        }\n\n        return Promise.resolve(resp)\n      })\n  }\n}\n\nmodule.exports = OAuth2Provider\n",
     "static": true,
     "longname": "/Users/miro/Documents/develop/electron-oauth-helper/lib/oauth2/index.js",
     "access": "public",
@@ -1885,16 +1885,16 @@
   {
     "__docId__": 96,
     "kind": "variable",
-    "name": "validate",
+    "name": "debug",
     "memberof": "lib/oauth2/index.js",
     "static": true,
-    "longname": "lib/oauth2/index.js~validate",
+    "longname": "lib/oauth2/index.js~debug",
     "access": "public",
     "export": false,
     "importPath": "electron-oauth-helper/lib/oauth2/index.js",
     "importStyle": null,
     "description": null,
-    "lineNumber": 3,
+    "lineNumber": 2,
     "undocument": true,
     "type": {
       "types": [
@@ -1905,6 +1905,27 @@
   },
   {
     "__docId__": 97,
+    "kind": "variable",
+    "name": "validate",
+    "memberof": "lib/oauth2/index.js",
+    "static": true,
+    "longname": "lib/oauth2/index.js~validate",
+    "access": "public",
+    "export": false,
+    "importPath": "electron-oauth-helper/lib/oauth2/index.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 4,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 98,
     "kind": "class",
     "name": "OAuth2Provider",
     "memberof": "lib/oauth2/index.js",
@@ -1915,13 +1936,13 @@
     "importPath": "electron-oauth-helper/lib/oauth2/index.js",
     "importStyle": null,
     "description": null,
-    "lineNumber": 9,
+    "lineNumber": 10,
     "undocument": true,
     "interface": false,
     "ignore": true
   },
   {
-    "__docId__": 98,
+    "__docId__": 99,
     "kind": "constructor",
     "name": "constructor",
     "memberof": "lib/oauth2/index.js~OAuth2Provider",
@@ -1931,7 +1952,7 @@
     "longname": "lib/oauth2/index.js~OAuth2Provider#constructor",
     "access": "public",
     "description": "",
-    "lineNumber": 14,
+    "lineNumber": 15,
     "params": [
       {
         "nullable": null,
@@ -1946,7 +1967,7 @@
     ]
   },
   {
-    "__docId__": 99,
+    "__docId__": 100,
     "kind": "member",
     "name": "config",
     "memberof": "lib/oauth2/index.js~OAuth2Provider",
@@ -1954,7 +1975,7 @@
     "longname": "lib/oauth2/index.js~OAuth2Provider#config",
     "access": "public",
     "description": null,
-    "lineNumber": 19,
+    "lineNumber": 20,
     "undocument": true,
     "type": {
       "types": [
@@ -1963,29 +1984,12 @@
     }
   },
   {
-    "__docId__": 100,
+    "__docId__": 101,
     "kind": "member",
     "name": "customAuthorizationRequestParameter",
     "memberof": "lib/oauth2/index.js~OAuth2Provider",
     "static": false,
     "longname": "lib/oauth2/index.js~OAuth2Provider#customAuthorizationRequestParameter",
-    "access": "public",
-    "description": null,
-    "lineNumber": 20,
-    "undocument": true,
-    "type": {
-      "types": [
-        "{}"
-      ]
-    }
-  },
-  {
-    "__docId__": 101,
-    "kind": "member",
-    "name": "customAccessTokenRequestParameter",
-    "memberof": "lib/oauth2/index.js~OAuth2Provider",
-    "static": false,
-    "longname": "lib/oauth2/index.js~OAuth2Provider#customAccessTokenRequestParameter",
     "access": "public",
     "description": null,
     "lineNumber": 21,
@@ -1999,13 +2003,30 @@
   {
     "__docId__": 102,
     "kind": "member",
+    "name": "customAccessTokenRequestParameter",
+    "memberof": "lib/oauth2/index.js~OAuth2Provider",
+    "static": false,
+    "longname": "lib/oauth2/index.js~OAuth2Provider#customAccessTokenRequestParameter",
+    "access": "public",
+    "description": null,
+    "lineNumber": 22,
+    "undocument": true,
+    "type": {
+      "types": [
+        "{}"
+      ]
+    }
+  },
+  {
+    "__docId__": 103,
+    "kind": "member",
     "name": "finished",
     "memberof": "lib/oauth2/index.js~OAuth2Provider",
     "static": false,
     "longname": "lib/oauth2/index.js~OAuth2Provider#finished",
     "access": "public",
     "description": null,
-    "lineNumber": 24,
+    "lineNumber": 25,
     "type": {
       "nullable": null,
       "types": [
@@ -2016,7 +2037,7 @@
     }
   },
   {
-    "__docId__": 103,
+    "__docId__": 104,
     "kind": "method",
     "name": "withCustomAuthorizationRequestParameter",
     "memberof": "lib/oauth2/index.js~OAuth2Provider",
@@ -2029,7 +2050,7 @@
     "examples": [
       "```js\n const provider = new OAuth2Provider({})\n   .withCustomAuthorizationRequestParameter({hoge: \"huga\"})\n   .withCustomAccessTokenRequestParameter({foo: \"bar\"})\n```"
     ],
-    "lineNumber": 42,
+    "lineNumber": 43,
     "params": [
       {
         "nullable": null,
@@ -2049,7 +2070,7 @@
     }
   },
   {
-    "__docId__": 105,
+    "__docId__": 106,
     "kind": "method",
     "name": "withCustomAccessTokenRequestParameter",
     "memberof": "lib/oauth2/index.js~OAuth2Provider",
@@ -2062,7 +2083,7 @@
     "examples": [
       "```js\n const provider = new OAuth2Provider(config)\n   .withCustomAuthorizationRequestParameter({hoge: \"huga\"})\n   .withCustomAccessTokenRequestParameter({foo: \"bar\"})\n```"
     ],
-    "lineNumber": 62,
+    "lineNumber": 63,
     "params": [
       {
         "nullable": null,
@@ -2082,7 +2103,7 @@
     }
   },
   {
-    "__docId__": 107,
+    "__docId__": 108,
     "kind": "method",
     "name": "perform",
     "memberof": "lib/oauth2/index.js~OAuth2Provider",
@@ -2095,7 +2116,7 @@
     "examples": [
       "```js\n const window = new BrowserWindow({\n   width: 600,\n   height: 800,\n   webPreferences: {\n     nodeIntegration: false // We recommend disabling nodeIntegration for security.\n     contextIsolation: true // We recommend enabling contextIsolation for security.\n     // see https://github.com/electron/electron/blob/master/docs/tutorial/security.md\n   },\n })\n const provider = new OAuth2Provider(config)\n provider.perform(window)\n   .then(console.log)\n   .catch(console.error)\n```"
     ],
-    "lineNumber": 93,
+    "lineNumber": 94,
     "unknown": [
       {
         "tagName": "@returns",
@@ -2124,7 +2145,7 @@
     }
   },
   {
-    "__docId__": 109,
+    "__docId__": 110,
     "kind": "member",
     "name": "userCancelError",
     "memberof": "lib/oauth2/index.js~OAuth2Provider",
@@ -2132,7 +2153,7 @@
     "longname": "lib/oauth2/index.js~OAuth2Provider#userCancelError",
     "access": "public",
     "description": null,
-    "lineNumber": 120,
+    "lineNumber": 121,
     "undocument": true,
     "type": {
       "types": [
@@ -2141,7 +2162,7 @@
     }
   },
   {
-    "__docId__": 111,
+    "__docId__": 112,
     "kind": "file",
     "name": "lib/utils/index.js",
     "content": "\nconst {\n  convertUsefulObject,\n} = require(\"./request\")\nconst post = require(\"./request\").postRequest\n\nconst postRequest = (...args) => post(...args).then(convertUsefulObject)\n\nconst {\n  awaitRedirect,\n} = require(\"./redirect\")\n\nconst {\n  pick,\n  omit,\n} = require(\"./util\")\n\nmodule.exports = {\n  postRequest,\n  awaitRedirect,\n  pick,\n  omit,\n}\n",
@@ -2152,7 +2173,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 112,
+    "__docId__": 113,
     "kind": "variable",
     "name": "convertUsefulObject",
     "memberof": "lib/utils/index.js",
@@ -2173,7 +2194,7 @@
     "ignore": true
   },
   {
-    "__docId__": 113,
+    "__docId__": 114,
     "kind": "variable",
     "name": "post",
     "memberof": "lib/utils/index.js",
@@ -2194,7 +2215,7 @@
     "ignore": true
   },
   {
-    "__docId__": 114,
+    "__docId__": 115,
     "kind": "function",
     "name": "postRequest",
     "memberof": "lib/utils/index.js",
@@ -2222,7 +2243,7 @@
     "ignore": true
   },
   {
-    "__docId__": 115,
+    "__docId__": 116,
     "kind": "variable",
     "name": "awaitRedirect",
     "memberof": "lib/utils/index.js",
@@ -2243,7 +2264,7 @@
     "ignore": true
   },
   {
-    "__docId__": 116,
+    "__docId__": 117,
     "kind": "variable",
     "name": "pick",
     "memberof": "lib/utils/index.js",
@@ -2264,10 +2285,10 @@
     "ignore": true
   },
   {
-    "__docId__": 117,
+    "__docId__": 118,
     "kind": "file",
     "name": "lib/utils/redirect.js",
-    "content": "const debug = require(\"debug\")(\"eoh:helper\")\n\n/**\n *\n * @param {string} redirectURL\n * @param {Electron.WebContents} webContents\n */\nconst awaitRedirect = (redirectURL, webContents) => {\n\n  if (!redirectURL || !webContents) {\n    return Promise.reject(new Error(\"Invalid parameter\"))\n  }\n\n  /**\n   * @param {string} url\n   */\n  const isRedirectURL = url => {\n    return url.startsWith(redirectURL)\n  }\n\n  return new Promise(resolve => {\n\n    const testWillNavigate = (event, url) => {\n      debug(\"on will-navigate:\", url)\n      if (isRedirectURL(url)) {\n        off()\n        resolve(url)\n      }\n    }\n\n    const testDidGetRedirectRequest = (event, oldUrl, newUrl) => {\n      debug(\"on did-get-redirect-request:\", newUrl)\n      if (isRedirectURL(newUrl)) {\n        off()\n        resolve(newUrl)\n      }\n    }\n\n    const off = () => {\n      webContents.removeListener(\"will-navigate\", testWillNavigate)\n      webContents.removeListener(\"did-get-redirect-request\", testDidGetRedirectRequest)\n    }\n\n    webContents.on(\"will-navigate\", testWillNavigate)\n    webContents.on(\"did-get-redirect-request\", testDidGetRedirectRequest)\n  })\n}\n\nmodule.exports = {\n  awaitRedirect\n}\n",
+    "content": "const debug = require(\"debug\")(\"eoh:helper\")\n\n/**\n *\n * @param {string} redirectURL\n * @param {Electron.WebContents} webContents\n */\nconst awaitRedirect = (redirectURL, webContents) => {\n\n  if (!redirectURL || !webContents) {\n    return Promise.reject(new Error(\"Invalid parameter\"))\n  }\n\n  /**\n   * @param {string} url\n   */\n  const isRedirectURL = url => {\n    return url.startsWith(redirectURL)\n  }\n\n  return new Promise(resolve => {\n\n    webContents.session.webRequest.onBeforeRedirect(\n      { urls: [redirectURL] },\n      detail => {\n        debug(\"will redirect\", detail.redirectURL)\n        if (isRedirectURL(detail.redirectURL)) {\n          resolve(detail.redirectURL)\n        }\n      }\n    )\n  })\n}\n\nmodule.exports = {\n  awaitRedirect\n}\n",
     "static": true,
     "longname": "/Users/miro/Documents/develop/electron-oauth-helper/lib/utils/redirect.js",
     "access": "public",
@@ -2275,7 +2296,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 118,
+    "__docId__": 119,
     "kind": "variable",
     "name": "debug",
     "memberof": "lib/utils/redirect.js",
@@ -2296,7 +2317,7 @@
     "ignore": true
   },
   {
-    "__docId__": 119,
+    "__docId__": 120,
     "kind": "function",
     "name": "awaitRedirect",
     "memberof": "lib/utils/redirect.js",
@@ -2340,7 +2361,7 @@
     "ignore": true
   },
   {
-    "__docId__": 120,
+    "__docId__": 121,
     "kind": "file",
     "name": "lib/utils/request.js",
     "content": "const querystring = require(\"querystring\")\nconst net = require(\"electron\").net || require(\"electron\").remote.net\n\n/**\n * @param {string} url\n * @param {object} parameter - post data\n * @param {object} headers\n * @returns {Promise<{statusCode: number, statusMessage: string, headers: object, body: Buffer}>}\n */\nconst postRequest = (url, parameter, headers) => {\n\n  return new Promise((resolve, reject) => {\n\n    const postData = querystring.stringify(parameter)\n\n    const request = net.request({\n      url,\n      method: \"POST\",\n      headers: Object.assign({}, {\n        \"Content-Type\": \"application/x-www-form-urlencoded\",\n        \"Content-Length\": Buffer.byteLength(postData)\n      }, headers || {})\n    })\n\n    request.on(\"response\", response => {\n\n      const datas = []\n\n      response.on(\"data\", chunk => {\n        datas.push(chunk)\n      })\n\n      response.on(\"end\", () => {\n        const body = Buffer.concat(datas)\n        const resp = {\n          headers: response.headers,\n          statusCode: response.statusCode,\n          statusMessage: response.statusMessage,\n          body: body,\n        }\n        resolve(resp)\n      })\n\n      response.on(\"error\", error => {\n        reject(error)\n      })\n    })\n\n    request.write(postData, \"utf8\")\n    request.end()\n  })\n}\n\n/**\n * @param response {object}\n * @param response.headers {object}\n * @param response.statusCode {number}\n * @param response.statusMessage {string}\n *\n * @returns Promise<object>\n */\nconst convertUsefulObject = response => {\n\n  response.body = response.body.toString(\"utf8\")\n\n  if (response.statusCode >= 400) {\n\n    const error = new Error(`Error response: ${response.statusCode} - ${response.statusMessage}`)\n    error.response = response\n    return Promise.reject(error)\n  }\n\n  if (response.headers[\"content-type\"].join(\" \").includes(\"application/json\")) {\n    response.body = JSON.parse(response.body)\n  }\n\n  return response.body\n}\n\nmodule.exports = {\n  convertUsefulObject,\n  postRequest,\n}\n",
@@ -2351,7 +2372,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 121,
+    "__docId__": 122,
     "kind": "variable",
     "name": "querystring",
     "memberof": "lib/utils/request.js",
@@ -2372,7 +2393,7 @@
     "ignore": true
   },
   {
-    "__docId__": 122,
+    "__docId__": 123,
     "kind": "variable",
     "name": "net",
     "memberof": "lib/utils/request.js",
@@ -2393,7 +2414,7 @@
     "ignore": true
   },
   {
-    "__docId__": 123,
+    "__docId__": 124,
     "kind": "function",
     "name": "postRequest",
     "memberof": "lib/utils/request.js",
@@ -2456,7 +2477,7 @@
     "ignore": true
   },
   {
-    "__docId__": 124,
+    "__docId__": 125,
     "kind": "function",
     "name": "convertUsefulObject",
     "memberof": "lib/utils/request.js",
@@ -2529,7 +2550,7 @@
     "ignore": true
   },
   {
-    "__docId__": 125,
+    "__docId__": 126,
     "kind": "file",
     "name": "lib/utils/util.js",
     "content": "/**\n *\n * @param {object} obj\n * @param {string|[string]} props\n */\nconst omit = (obj, props) => {\n\n  obj = obj || {}\n  props = props || []\n\n  if (typeof props === \"string\") {\n    props = [props]\n  }\n\n  return Object.keys(obj).reduce((prev, key) => {\n    if (!props.includes(key)) {\n      // eslint-disable-next-line\n      prev[key] = obj[key]\n    }\n    return prev\n  }, {})\n}\n\n/**\n *\n * @param {object} obj\n * @param {string|[string]} props\n */\nconst pick = (obj, props) => {\n\n  obj = obj || {}\n  props = props || []\n\n  if (typeof props === \"string\") {\n    props = [props]\n  }\n\n  return Object.keys(obj).reduce((prev, key) => {\n    if (props.includes(key)) {\n      // eslint-disable-next-line\n      prev[key] = obj[key]\n    }\n    return prev\n  }, {})\n}\n\nmodule.exports = {\n  omit,\n  pick,\n}\n",
@@ -2540,7 +2561,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 126,
+    "__docId__": 127,
     "kind": "function",
     "name": "omit",
     "memberof": "lib/utils/util.js",
@@ -2585,7 +2606,7 @@
     "ignore": true
   },
   {
-    "__docId__": 127,
+    "__docId__": 128,
     "kind": "function",
     "name": "pick",
     "memberof": "lib/utils/util.js",
@@ -2631,7 +2652,7 @@
   },
   {
     "kind": "index",
-    "content": "# Electron OAuth Helper\n\n[![Greenkeeper badge](https://badges.greenkeeper.io/mironal/electron-oauth-helper.svg)](https://greenkeeper.io/)\n\n[![NPM](https://nodei.co/npm/electron-oauth-helper.png)](https://nodei.co/npm/electron-oauth-helper/)\n\n[![Build Status](https://travis-ci.org/mironal/electron-oauth-helper.svg)](https://travis-ci.org/mironal/electron-oauth-helper)\n\n## What's this\n\nEasy to use helper library for OAuth1 and OAuth2.\n\nAll grant type supported.\n\n- Authorization Code Grant\n- Implicit Grant\n- Resource Owner Password Credentials Grant\n- Client Credentials Grant\n\n> TODO: Refreshing an Access Token\n\nYou can get a token just by calling a method of start OAuth.\n\nThis library is lightweight because it depends only on [debug](https://github.com/visionmedia/debug) module.\n\n## Install\n\n`npm install electron-oauth-helper --save`\n\n## Usage\n\n### OAuth1\n\n```js\n\nconst { OAuth1Provider } = require(\"electron-oauth-helper\")\n\nconst window = new BrowserWindow({\n  width: 600,\n  height: 800,\n  webPreferences: {\n    nodeIntegration: false // We recommend disabling nodeIntegration for security.\n    contextIsolation: true // We recommend enabling contextIsolation for security.\n    // see https://github.com/electron/electron/blob/master/docs/tutorial/security.md\n  },\n})\n\nconst config = { /* oauth config. please see example/main/config.example.js.  */}\nconst provider = new OAuth1Provider(config)\nprovider.perform(window)\n  .then(resp => {\n    console.log(resp)\n  })\n  .catch(error => console.error(error))\n```\n\n### OAuth2\n\n```js\n\nconst { OAuth2Provider } = require(\"electron-oauth-helper\")\n\nconst window = new BrowserWindow({\n  width: 600,\n  height: 800,\n  webPreferences: {\n    nodeIntegration: false // We recommend disabling nodeIntegration for security.\n    contextIsolation: true // We recommend enabling contextIsolation for security.\n    // see https://github.com/electron/electron/blob/master/docs/tutorial/security.md\n  },\n})\n\nconst config = { /* oauth config. please see example/main/config.example.js.  */}\nconst provider = new OAuth2Provider(config)\n// Your can use custom parameter.\n// const provider = new OAuth2Provider(config)\n//   .withCustomAuthorizationRequestParameter({})\n//   .withCustomAccessTokenRequestParameter({})\nprovider.perform(window)\n  .then(resp => {\n    console.log(resp)\n  })\n  .catch(error => console.error(error))\n```\n\n### Firebase Auth Integration\n\nElectron can not use firebase auth `signInWithPopup` or `signInWithRedirect`.\nYou can only use email/password authentication.\n\nBut, you can use GitHub, Twitter, etc... authentication by using manually flow.\n\nhttps://firebase.google.com/docs/auth/web/github-auth#handle_the_sign-in_flow_manually\n\n\n```js\n\n// Github manually flow example.\n\nconst { OAuth2Provider } = require(\"electron-oauth-helper\")\n\nconst config = { /* oauth config. please see example/main/config.example.js.  */}\nconst provider = new OAuth2Provider(config)\nprovider.perform(window)\n  .then(resp => {\n    const query = querystring.parse(resp)\n    const credential = firebase.auth.GithubAuthProvider.credential(query.access_token)\n    firebase.auth().signInWithCredential(credential)\n    .then(user => {\n        console.log(user)\n    })\n    .catch(error => console.error(error))\n  })\n  .catch(error => console.error(error))\n```\n\n> Don't forget setting firebase auth.\n\n## Example\n\nexample electron app => `example/`\n\n![example screenshot](./ss/example.png)\n\n---\n\n# Which parameters are required?\n\n## [OAuth 2](https://tools.ietf.org/html/rfc6749)\n\nThe OAuth2 defines four grant type. Here is sample code for each.\n\n1. Authorization Code Grant\n2. Implicit Grant\n3. Resource Owner Password Credentials Grant\n4. Client Credentials Grant\n\n### Authorization Code Grant\n\n> [RFC 6749: 4.1](https://tools.ietf.org/html/rfc6749#section-4.1)\n\n```js\nconst provider = new OAuth2Provider({\n  authorize_url: \"\",\n  access_token_url: \"\",\n  response_type: \"code\",\n  client_id: \"\",\n  redirect_uri: \"\", //Important! RFC says OPTIONAL. But REQUIRED for this library.\n  // other parameters are optional.\n})\n\nprovider.perform()\n// Authorization Request --->\n//                       <--- Authorization Response\n// Access Token Request  --->\n//                       <--- Access Token Response\n.then(resp => {\n  // Got Access Token (◍•ᴗ•◍)\n})\n```\n\n#### Authorization Request\n\n`GET /authorize?...`\n\n```js\n// more detail\n{\n  // REQUIRED. Value MUST be set to \"code\".\n  response_type: \"code\",\n\n  // REQUIRED. The client identifier as described in Section 2.2.\n  client_id: \"\",\n\n  // OPTIONAL. As described in Section 3.1.2.\n  redirect_uri: \"\",\n\n  // OPTIONAL. The scope of the access request as described by Section 3.3.\n  scope: \"\",\n\n  // RECOMMENDED.  An opaque value used by the client to maintain\n  // state between the request and callback.  The authorization\n  // server includes this value when redirecting the user-agent back\n  // to the client.  The parameter SHOULD be used for preventing\n  // cross-site request forgery as described in Section 10.12.\n  state: \"\",\n\n  // Additional.\n  // the `code_challenge` and `code_challenge` are optional parameters\n  // defined in RFC 7636.\n\n  // REQUIRED.  Code challenge.\n  code_challenge: \"\",\n\n  // OPTIONAL, defaults to \"plain\" if not present in the request.  Code\n  // verifier transformation method is \"S256\" or \"plain\".\n  code_challege_method: \"\",\n}\n```\n#### Authorization Response\n\n```js\n{\n  // REQUIRED.  The authorization code generated by the\n  // authorization server.\n  code: \"\",\n\n  // REQUIRED if the \"state\" parameter was present in the client\n  // authorization request.  The exact value received from the\n  // client.\n  state: \"\",\n}\n```\n\n> [Error Response](https://tools.ietf.org/html/rfc6749#section-4.1.2.1)\n\n#### Access Token Request\n\n`POST /token`\n\n```js\n{\n  // REQUIRED.  Value MUST be set to \"authorization_code\".\n  grant_type: \"authorization_code\",\n\n  // REQUIRED.  The authorization code received from the\n  // authorization server.\n  code: \"\",\n\n  // REQUIRED, if the \"redirect_uri\" parameter was included in the\n  // authorization request as described in Section 4.1.1, and their\n  // values MUST be identical.\n  redirect_uri: \"\",\n\n  // REQUIRED, if the client is not authenticating with the\n  // authorization server as described in Section 3.2.1.\n  client_id: \"\",\n}\n```\n\n#### Access Token Response\n\n```js\n{\n  // REQUIRED.  The access token issued by the authorization server.\n  access_token: \"\",\n\n  // REQUIRED.  The type of the token issued as described in\n  // Section 7.1.  Value is case insensitive.\n  token_type: \"\",\n\n  // RECOMMENDED.  The lifetime in seconds of the access token.  For\n  // example, the value \"3600\" denotes that the access token will\n  // expire in one hour from the time the response was generated.\n  // If omitted, the authorization server SHOULD provide the\n  // expiration time via other means or document the default value.\n  expires_in: \"\",\n\n  // OPTIONAL.  The refresh token, which can be used to obtain new\n  // access tokens using the same authorization grant as described\n  // in Section 6.\n  refresh_token: \"\",\n\n  // OPTIONAL, if identical to the scope requested by the client;\n  // otherwise, REQUIRED.  The scope of the access token as\n  // described by Section 3.3.\n  scope: \"\",\n}\n```\n\n[Error Response](https://tools.ietf.org/html/rfc6749#section-5.2)\n\n### Implicit Grant\n\n> [RFC 6749: 4.2](https://tools.ietf.org/html/rfc6749#section-4.2)\n\n```js\nconst provider = new OAuth2Provider({\n  authorize_url: \"\",\n  response_type: \"token\",\n  client_id: \"\",\n  redirect_uri: \"\", //Important! RFC says OPTIONAL. But REQUIRED for this library.\n  // other parameters are optional.\n})\n\nprovider.perform()\n// Authorization Request --->\n//                       <--- Access Token Response\n.then(resp => {\n  // Got Access Token (◍•ᴗ•◍)\n})\n```\n\n#### Authorization Request\n\n`GET /authorize?...`\n\n```js\n{\n  // REQUIRED. Value MUST be set to \"token\".\n  response_type: \"token\",\n\n  // REQUIRED. The client identifier as described in Section 2.2.\n  client_id: \"\",\n  // OPTIONAL.  As described in Section 3.1.2.\n  redirect_uri: \"\",\n\n  // OPTIONAL. The scope of the access request as described by\n  // Section 3.3.\n  scope: \"\",\n\n  // RECOMMENDED.  An opaque value used by the client to maintain\n  // state between the request and callback.  The authorization\n  // server includes this value when redirecting the user-agent back\n  // to the client.  The parameter SHOULD be used for preventing\n  // cross-site request forgery as described in Section 10.12.\n  state: \"\",\n}\n```\n\n#### Access Token Response\n\n> [Successful Response](https://tools.ietf.org/html/rfc6749#section-4.2.2)\n\n> [Error Response](https://tools.ietf.org/html/rfc6749#section-4.2.2.1)\n\n### Resource Owner Password Credentials Grant\n\n> [RFC 6749: 4.3](https://tools.ietf.org/html/rfc6749#section-4.3)\n\n```js\nconst provider = new OAuth2Provider({\n  access_token_url: \"\",\n  response_type: \"password\",\n  username: \"\",\n  password: \"\",\n  // other parameters are optional.\n})\n\nprovider.perform()\n// Access Token Request --->\n//                      <--- Access Token Response\n.then( resp => {\n  // Got Access Token (◍•ᴗ•◍)\n})\n```\n\n#### Authorization Request and Response\n\nNo need.\n\n#### Access Token Request\n\n`POST /token`\n\n```js\n{\n  // REQUIRED. Value MUST be set to \"password\".\n  grant_type: \"password\",\n\n  // REQUIRED. The resource owner username.\n  username: \"\",\n\n  // REQUIRED. The resource owner password.\n  password: \"\",\n\n  // OPTIONAL.  The scope of the access request as described by\n  // Section 3.3.\n  scope: \"\",\n}\n```\n\n#### Access Token Response\n\n> [Successful Response](https://tools.ietf.org/html/rfc6749#section-5.1)\n\n> [Error Response](https://tools.ietf.org/html/rfc6749#section-5.2)\n\n### Client Credentials Grant\n\n> [RFC 6749: 4.4](https://tools.ietf.org/html/rfc6749#section-4.4)\n\n```js\nconst provider = new OAuth2Provider({\n  access_token_url: \"\",\n  grant_type: \"client_credentials\",\n  // other parameters are optional.\n})\n\nprovider.perform()\n// Access Token Request --->\n//                      <--- Access Token Response\n.then( resp => {\n  // Got Access Token (◍•ᴗ•◍)\n})\n\n```\n#### Authorization Request and Response\n\nNo need.\n\n#### Access Token Request\n\n`POST /token`\n\n```js\n{\n  // REQUIRED. Value MUST be set to \"client_credentials\".\n  grant_type: \"client_credentials\",\n\n  // OPTIONAL. The scope of the access request as described by\n  // Section 3.3.\n  scope: \"\",\n}\n```\n\n#### Access Token Response\n\n> [Successful Response](https://tools.ietf.org/html/rfc6749#section-5.1)\n\n> [Error Response](https://tools.ietf.org/html/rfc6749#section-5.2)\n\n\n### Refreshing an Access Token\n\n> [RFC 6749: 6](https://tools.ietf.org/html/rfc6749#section-6)\n\nTODO\n",
+    "content": "# Electron OAuth Helper\n\n[![Greenkeeper badge](https://badges.greenkeeper.io/mironal/electron-oauth-helper.svg)](https://greenkeeper.io/)\n\n[![NPM](https://nodei.co/npm/electron-oauth-helper.png)](https://nodei.co/npm/electron-oauth-helper/)\n\n[![Build Status](https://travis-ci.org/mironal/electron-oauth-helper.svg)](https://travis-ci.org/mironal/electron-oauth-helper)\n\n## What's this\n\nEasy to use helper library for OAuth1 and OAuth2.\n\nAll grant type supported.\n\n- Authorization Code Grant\n- Implicit Grant\n- Resource Owner Password Credentials Grant\n- Client Credentials Grant\n\n> TODO: Refreshing an Access Token\n\nYou can get a token just by calling a method of start OAuth.\n\nThis library is lightweight because it depends only on [debug](https://github.com/visionmedia/debug) module.\n\n## Install\n\n`npm install electron-oauth-helper --save`\n\n## Usage\n\n### OAuth1\n\n```js\n\nconst { OAuth1Provider } = require(\"electron-oauth-helper\")\n\nconst window = new BrowserWindow({\n  width: 600,\n  height: 800,\n  webPreferences: {\n    nodeIntegration: false // We recommend disabling nodeIntegration for security.\n    contextIsolation: true // We recommend enabling contextIsolation for security.\n    // see https://github.com/electron/electron/blob/master/docs/tutorial/security.md\n  },\n})\n\nconst config = { /* oauth config. please see example/main/config.example.js.  */}\nconst provider = new OAuth1Provider(config)\nprovider.perform(window)\n  .then(resp => {\n    console.log(resp)\n  })\n  .catch(error => console.error(error))\n```\n\n### OAuth2\n\n```js\n\nconst { OAuth2Provider } = require(\"electron-oauth-helper\")\n\nconst window = new BrowserWindow({\n  width: 600,\n  height: 800,\n  webPreferences: {\n    nodeIntegration: false // We recommend disabling nodeIntegration for security.\n    contextIsolation: true // We recommend enabling contextIsolation for security.\n    // see https://github.com/electron/electron/blob/master/docs/tutorial/security.md\n  },\n})\n\nconst config = { /* oauth config. please see example/main/config.example.js.  */}\nconst provider = new OAuth2Provider(config)\n// Your can use custom parameter.\n// const provider = new OAuth2Provider(config)\n//   .withCustomAuthorizationRequestParameter({})\n//   .withCustomAccessTokenRequestParameter({})\nprovider.perform(window)\n  .then(resp => {\n    console.log(resp)\n  })\n  .catch(error => console.error(error))\n```\n\n### Firebase Auth Integration\n\nElectron can not use firebase auth `signInWithPopup` or `signInWithRedirect`.\nYou can only use email/password authentication.\n\nBut, you can use GitHub, Twitter, etc... authentication by using manually flow.\n\nhttps://firebase.google.com/docs/auth/web/github-auth#handle_the_sign-in_flow_manually\n\n\n```js\n\n// Github manually flow example.\n\nconst { OAuth2Provider } = require(\"electron-oauth-helper\")\n\nconst config = { /* oauth config. please see example/main/config.example.js.  */}\nconst provider = new OAuth2Provider(config)\nprovider.perform(window)\n  .then(resp => {\n    const query = querystring.parse(resp)\n    const credential = firebase.auth.GithubAuthProvider.credential(query.access_token)\n    firebase.auth().signInWithCredential(credential)\n    .then(user => {\n        console.log(user)\n    })\n    .catch(error => console.error(error))\n  })\n  .catch(error => console.error(error))\n```\n\n> Don't forget setting firebase auth.\n\n## Example\n\nexample electron app => `example/`\n\n![example screenshot](./ss/example.png)\n\n---\n\n# Which parameters are required?\n\n## [OAuth 2](https://tools.ietf.org/html/rfc6749)\n\nThe OAuth2 defines four grant type. Here is sample code for each.\n\n1. Authorization Code Grant\n2. Implicit Grant\n3. Resource Owner Password Credentials Grant\n4. Client Credentials Grant\n\n### Authorization Code Grant\n\n> [RFC 6749: 4.1](https://tools.ietf.org/html/rfc6749#section-4.1)\n\n```js\nconst provider = new OAuth2Provider({\n  authorize_url: \"\",\n  access_token_url: \"\",\n  response_type: \"code\",\n  client_id: \"\",\n  redirect_uri: \"\", //Important! RFC says OPTIONAL. But REQUIRED for this library.\n  // other parameters are optional.\n})\n\nprovider.perform()\n// Authorization Request --->\n//                       <--- Authorization Response\n// Access Token Request  --->\n//                       <--- Access Token Response\n.then(resp => {\n  // Got Access Token (◍•ᴗ•◍)\n})\n```\n\n#### Authorization Request\n\n`GET /authorize?...`\n\n```js\n// more detail\n{\n  // REQUIRED. Value MUST be set to \"code\".\n  response_type: \"code\",\n\n  // REQUIRED. The client identifier as described in Section 2.2.\n  client_id: \"\",\n\n  // OPTIONAL. As described in Section 3.1.2.\n  redirect_uri: \"\",\n\n  // OPTIONAL. The scope of the access request as described by Section 3.3.\n  scope: \"\",\n\n  // RECOMMENDED.  An opaque value used by the client to maintain\n  // state between the request and callback.  The authorization\n  // server includes this value when redirecting the user-agent back\n  // to the client.  The parameter SHOULD be used for preventing\n  // cross-site request forgery as described in Section 10.12.\n  state: \"\",\n\n  // Additional.\n  // the `code_challenge` and `code_challenge` are optional parameters\n  // defined in RFC 7636.\n\n  // REQUIRED.  Code challenge.\n  code_challenge: \"\",\n\n  // OPTIONAL, defaults to \"plain\" if not present in the request.  Code\n  // verifier transformation method is \"S256\" or \"plain\".\n  code_challege_method: \"\",\n}\n```\n#### Authorization Response\n\n```js\n{\n  // REQUIRED.  The authorization code generated by the\n  // authorization server.\n  code: \"\",\n\n  // REQUIRED if the \"state\" parameter was present in the client\n  // authorization request.  The exact value received from the\n  // client.\n  state: \"\",\n}\n```\n\n> [Error Response](https://tools.ietf.org/html/rfc6749#section-4.1.2.1)\n\n#### Access Token Request\n\n`POST /token`\n\n```js\n{\n  // REQUIRED.  Value MUST be set to \"authorization_code\".\n  grant_type: \"authorization_code\",\n\n  // REQUIRED.  The authorization code received from the\n  // authorization server.\n  code: \"\",\n\n  // REQUIRED, if the \"redirect_uri\" parameter was included in the\n  // authorization request as described in Section 4.1.1, and their\n  // values MUST be identical.\n  redirect_uri: \"\",\n\n  // REQUIRED, if the client is not authenticating with the\n  // authorization server as described in Section 3.2.1.\n  client_id: \"\",\n}\n```\n\n#### Access Token Response\n\n```js\n{\n  // REQUIRED.  The access token issued by the authorization server.\n  access_token: \"\",\n\n  // REQUIRED.  The type of the token issued as described in\n  // Section 7.1.  Value is case insensitive.\n  token_type: \"\",\n\n  // RECOMMENDED.  The lifetime in seconds of the access token.  For\n  // example, the value \"3600\" denotes that the access token will\n  // expire in one hour from the time the response was generated.\n  // If omitted, the authorization server SHOULD provide the\n  // expiration time via other means or document the default value.\n  expires_in: \"\",\n\n  // OPTIONAL.  The refresh token, which can be used to obtain new\n  // access tokens using the same authorization grant as described\n  // in Section 6.\n  refresh_token: \"\",\n\n  // OPTIONAL, if identical to the scope requested by the client;\n  // otherwise, REQUIRED.  The scope of the access token as\n  // described by Section 3.3.\n  scope: \"\",\n}\n```\n\n[Error Response](https://tools.ietf.org/html/rfc6749#section-5.2)\n\n### Implicit Grant\n\n> [RFC 6749: 4.2](https://tools.ietf.org/html/rfc6749#section-4.2)\n\n```js\nconst provider = new OAuth2Provider({\n  authorize_url: \"\",\n  response_type: \"token\",\n  client_id: \"\",\n  redirect_uri: \"\", //Important! RFC says OPTIONAL. But REQUIRED for this library.\n  // other parameters are optional.\n})\n\nprovider.perform()\n// Authorization Request --->\n//                       <--- Access Token Response\n.then(resp => {\n  // Got Access Token (◍•ᴗ•◍)\n})\n```\n\n#### Authorization Request\n\n`GET /authorize?...`\n\n```js\n{\n  // REQUIRED. Value MUST be set to \"token\".\n  response_type: \"token\",\n\n  // REQUIRED. The client identifier as described in Section 2.2.\n  client_id: \"\",\n  // OPTIONAL.  As described in Section 3.1.2.\n  redirect_uri: \"\",\n\n  // OPTIONAL. The scope of the access request as described by\n  // Section 3.3.\n  scope: \"\",\n\n  // RECOMMENDED.  An opaque value used by the client to maintain\n  // state between the request and callback.  The authorization\n  // server includes this value when redirecting the user-agent back\n  // to the client.  The parameter SHOULD be used for preventing\n  // cross-site request forgery as described in Section 10.12.\n  state: \"\",\n}\n```\n\n#### Access Token Response\n\n> [Successful Response](https://tools.ietf.org/html/rfc6749#section-4.2.2)\n\n> [Error Response](https://tools.ietf.org/html/rfc6749#section-4.2.2.1)\n\n### Resource Owner Password Credentials Grant\n\n> [RFC 6749: 4.3](https://tools.ietf.org/html/rfc6749#section-4.3)\n\n```js\nconst provider = new OAuth2Provider({\n  access_token_url: \"\",\n  response_type: \"password\",\n  username: \"\",\n  password: \"\",\n  // other parameters are optional.\n})\n\nprovider.perform()\n// Access Token Request --->\n//                      <--- Access Token Response\n.then( resp => {\n  // Got Access Token (◍•ᴗ•◍)\n})\n```\n\n#### Authorization Request and Response\n\nNo need.\n\n#### Access Token Request\n\n`POST /token`\n\n```js\n{\n  // REQUIRED. Value MUST be set to \"password\".\n  grant_type: \"password\",\n\n  // REQUIRED. The resource owner username.\n  username: \"\",\n\n  // REQUIRED. The resource owner password.\n  password: \"\",\n\n  // OPTIONAL.  The scope of the access request as described by\n  // Section 3.3.\n  scope: \"\",\n}\n```\n\n#### Access Token Response\n\n> [Successful Response](https://tools.ietf.org/html/rfc6749#section-5.1)\n\n> [Error Response](https://tools.ietf.org/html/rfc6749#section-5.2)\n\n### Client Credentials Grant\n\n> [RFC 6749: 4.4](https://tools.ietf.org/html/rfc6749#section-4.4)\n\n```js\nconst provider = new OAuth2Provider({\n  access_token_url: \"\",\n  grant_type: \"client_credentials\",\n  // other parameters are optional.\n})\n\nprovider.perform()\n// Access Token Request --->\n//                      <--- Access Token Response\n.then( resp => {\n  // Got Access Token (◍•ᴗ•◍)\n})\n\n```\n#### Authorization Request and Response\n\nNo need.\n\n#### Access Token Request\n\n`POST /token`\n\n```js\n{\n  // REQUIRED. Value MUST be set to \"client_credentials\".\n  grant_type: \"client_credentials\",\n\n  // OPTIONAL. The scope of the access request as described by\n  // Section 3.3.\n  scope: \"\",\n}\n```\n\n#### Access Token Response\n\n> [Successful Response](https://tools.ietf.org/html/rfc6749#section-5.1)\n\n> [Error Response](https://tools.ietf.org/html/rfc6749#section-5.2)\n\n\n### Refreshing an Access Token\n\n> [RFC 6749: 6](https://tools.ietf.org/html/rfc6749#section-6)\n\nTODO\n\n---\n\n\n## How to release\n\n1. `npm version patch | minor | major |...`\n2. `npm publish`\n\n",
     "longname": "/Users/miro/Documents/develop/electron-oauth-helper/README.md",
     "name": "./README.md",
     "static": true,
@@ -2639,7 +2660,7 @@
   },
   {
     "kind": "packageJSON",
-    "content": "{\n    \"name\": \"electron-oauth-helper\",\n    \"version\": \"2.0.3\",\n    \"description\": \"Easy to use helper library for OAuth1 and OAuth2.\",\n    \"main\": \"index.js\",\n    \"scripts\": {\n        \"start:example\": \"electron ./example/src/main/main.js\",\n        \"lint\": \"eslint .\",\n        \"lint:fix\": \"eslint --fix .\",\n        \"test\": \"avaron --timeout=10s\",\n        \"build\": \"parcel build --no-minify index.js\",\n        \"doc\": \"esdoc\",\n        \"preversion\": \"npm run lint && npm run test\",\n        \"version\": \"npm run doc && git add -A\",\n        \"postversion\": \"git push && git push --tags\"\n    },\n    \"engines\": {\n        \"node\": \">= 8.0.0\"\n    },\n    \"keywords\": [\n        \"oauth\",\n        \"oauth1\",\n        \"oauth2\",\n        \"electron\",\n        \"auth\",\n        \"api\"\n    ],\n    \"author\": \"mironal\",\n    \"license\": \"MIT\",\n    \"repository\": {\n        \"type\": \"git\",\n        \"url\": \"https://github.com/mironal/electron-oauth-helper.git\"\n    },\n    \"homepage\": \"https://github.com/mironal/electron-oauth-helper\",\n    \"bugs\": {\n        \"url\": \"https://github.com/mironal/electron-oauth-helper/issues\"\n    },\n    \"devDependencies\": {\n        \"ava\": \"0.25.0\",\n        \"avaron\": \"0.0.14\",\n        \"electron\": \"1.8.2\",\n        \"esdoc\": \"1.0.4\",\n        \"esdoc-standard-plugin\": \"1.0.0\",\n        \"eslint\": \"4.18.1\",\n        \"eslint-plugin-ava\": \"4.5.1\",\n        \"eslint-plugin-import\": \"2.9.0\",\n        \"eslint-plugin-node\": \"6.0.1\",\n        \"eslint-plugin-promise\": \"3.6.0\",\n        \"eslint-plugin-security\": \"1.4.0\",\n        \"firebase\": \"4.10.1\",\n        \"koa\": \"2.5.0\",\n        \"koa-bodyparser\": \"4.2.0\",\n        \"koa-router\": \"7.4.0\"\n    },\n    \"dependencies\": {\n        \"debug\": \"3.1.0\"\n    },\n    \"esdoc\": {\n        \"source\": \"./lib\",\n        \"destination\": \"./docs\",\n        \"plugins\": [\n            {\n                \"name\": \"esdoc-standard-plugin\",\n                \"option\": {\n                    \"lint\": {\n                        \"enable\": false\n                    }\n                }\n            }\n        ]\n    }\n}\n",
+    "content": "{\n    \"name\": \"electron-oauth-helper\",\n    \"version\": \"3.0.0\",\n    \"description\": \"Easy to use helper library for OAuth1 and OAuth2.\",\n    \"main\": \"index.js\",\n    \"scripts\": {\n        \"start:example\": \"electron ./example/src/main/main.js\",\n        \"lint\": \"eslint .\",\n        \"lint:fix\": \"eslint --fix .\",\n        \"test\": \"echo skip\",\n        \"build\": \"parcel build --no-minify index.js\",\n        \"doc\": \"esdoc\",\n        \"preversion\": \"npm run lint && npm run test\",\n        \"version\": \"npm run doc && git add -A\",\n        \"postversion\": \"git push && git push --tags\"\n    },\n    \"engines\": {\n        \"node\": \">= 8.0.0\"\n    },\n    \"keywords\": [\n        \"oauth\",\n        \"oauth1\",\n        \"oauth2\",\n        \"electron\",\n        \"auth\",\n        \"api\"\n    ],\n    \"author\": \"mironal\",\n    \"license\": \"MIT\",\n    \"repository\": {\n        \"type\": \"git\",\n        \"url\": \"https://github.com/mironal/electron-oauth-helper.git\"\n    },\n    \"homepage\": \"https://github.com/mironal/electron-oauth-helper\",\n    \"bugs\": {\n        \"url\": \"https://github.com/mironal/electron-oauth-helper/issues\"\n    },\n    \"devDependencies\": {\n        \"ava\": \"0.25.0\",\n        \"avaron\": \"0.2.0\",\n        \"babel-core\": \"6.26.3\",\n        \"babel-preset-env\": \"1.7.0\",\n        \"electron\": \"3.0.10\",\n        \"esdoc\": \"1.1.0\",\n        \"esdoc-standard-plugin\": \"1.0.0\",\n        \"eslint\": \"5.9.0\",\n        \"eslint-plugin-ava\": \"5.1.1\",\n        \"eslint-plugin-import\": \"2.14.0\",\n        \"eslint-plugin-node\": \"8.0.0\",\n        \"eslint-plugin-promise\": \"4.0.1\",\n        \"eslint-plugin-security\": \"1.4.0\",\n        \"firebase\": \"5.6.0\",\n        \"koa\": \"2.6.2\",\n        \"koa-bodyparser\": \"4.2.1\",\n        \"koa-router\": \"7.4.0\"\n    },\n    \"dependencies\": {\n        \"debug\": \"4.1.0\"\n    },\n    \"esdoc\": {\n        \"source\": \"./lib\",\n        \"destination\": \"./docs\",\n        \"plugins\": [\n            {\n                \"name\": \"esdoc-standard-plugin\",\n                \"option\": {\n                    \"lint\": {\n                        \"enable\": false\n                    }\n                }\n            }\n        ]\n    }\n}\n",
     "longname": "/Users/miro/Documents/develop/electron-oauth-helper/package.json",
     "name": "package.json",
     "static": true,
