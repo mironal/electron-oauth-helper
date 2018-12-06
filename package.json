@@ -7,7 +7,7 @@
         "start:example": "electron ./example/src/main/main.js",
         "lint": "eslint .",
         "lint:fix": "eslint --fix .",
-        "test": "avaron --timeout=10s",
+        "test": "echo skip",
         "build": "parcel build --no-minify index.js",
         "doc": "esdoc",
         "preversion": "npm run lint && npm run test",
