@@ -28,6 +28,7 @@ module.exports = {
     "security"
   ],
   "rules": {
+    "node/no-deprecated-api": "off",
     "node/no-unpublished-require": ["error", {
       "allowModules": ["electron"]
     }],
