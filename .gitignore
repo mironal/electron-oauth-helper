@@ -60,6 +60,9 @@ typings/
 # vscode
 .vscode
 
+# JetBrains
+.idea
+
 # example
 example/src/main/config.js
 
