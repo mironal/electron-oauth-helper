@@ -36,26 +36,26 @@
         "url": "https://github.com/mironal/electron-oauth-helper/issues"
     },
     "devDependencies": {
-        "ava": "0.25.0",
+        "ava": "1.4.1",
         "avaron": "0.2.0",
         "babel-core": "6.26.3",
         "babel-preset-env": "1.7.0",
-        "electron": "3.0.10",
+        "electron": "4.1.4",
         "esdoc": "1.1.0",
         "esdoc-standard-plugin": "1.0.0",
-        "eslint": "5.9.0",
-        "eslint-plugin-ava": "5.1.1",
-        "eslint-plugin-import": "2.14.0",
-        "eslint-plugin-node": "8.0.0",
-        "eslint-plugin-promise": "4.0.1",
+        "eslint": "5.16.0",
+        "eslint-plugin-ava": "6.0.0",
+        "eslint-plugin-import": "2.17.1",
+        "eslint-plugin-node": "8.0.1",
+        "eslint-plugin-promise": "4.1.1",
         "eslint-plugin-security": "1.4.0",
-        "firebase": "5.6.0",
-        "koa": "2.6.2",
+        "firebase": "5.9.4",
+        "koa": "2.7.0",
         "koa-bodyparser": "4.2.1",
         "koa-router": "7.4.0"
     },
     "dependencies": {
-        "debug": "4.1.0"
+        "debug": "4.1.1"
     },
     "esdoc": {
         "source": "./lib",
