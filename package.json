@@ -52,7 +52,8 @@
         "firebase": "5.9.4",
         "koa": "2.7.0",
         "koa-bodyparser": "4.2.1",
-        "koa-router": "7.4.0"
+        "koa-router": "7.4.0",
+        "typescript": "3.4.3"
     },
     "dependencies": {
         "debug": "4.1.1"
