@@ -8,7 +8,7 @@ const ipc = require("electron").ipcMain
 const {
   OAuth1Provider,
   OAuth2Provider,
-} = require("../../../")
+} = require("../../..")
 
 const firebase = require("firebase")
 

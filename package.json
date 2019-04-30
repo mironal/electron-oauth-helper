@@ -7,12 +7,15 @@
         "start:example": "electron ./example/src/main/main.js",
         "lint": "eslint .",
         "lint:fix": "eslint --fix .",
-        "test": "echo skip",
-        "build": "parcel build --no-minify index.js",
+        "test": "jest",
+        "test:w": "nodemon --watch lib --delay 1 --exec 'npm test'",
+        "build": "tsc",
         "doc": "esdoc",
         "preversion": "npm run lint && npm run test",
         "version": "npm run doc && git add -A",
-        "postversion": "git push && git push --tags"
+        "postversion": "git push && git push --tags",
+        "_fmt": "prettier --config .prettierrc '{*,src/**/*}.{js,jsx,css,ts,tsx,json}'",
+        "fmt": "npm run _fmt -- --write"
     },
     "engines": {
         "node": ">= 8.0.0"
@@ -36,24 +39,33 @@
         "url": "https://github.com/mironal/electron-oauth-helper/issues"
     },
     "devDependencies": {
-        "ava": "1.4.1",
-        "avaron": "0.2.0",
+        "@jest-runner/electron": "1.1.1",
+        "@types/debug": "4.1.4",
+        "@types/jest": "24.0.11",
+        "@types/koa": "2.0.48",
+        "@types/koa-bodyparser": "4.2.2",
+        "@types/koa-router": "7.0.40",
+        "@types/node": "11.13.6",
+        "@typescript-eslint/eslint-plugin": "1.7.0",
         "babel-core": "6.26.3",
         "babel-preset-env": "1.7.0",
         "electron": "4.1.4",
         "esdoc": "1.1.0",
         "esdoc-standard-plugin": "1.0.0",
         "eslint": "5.16.0",
-        "eslint-plugin-ava": "6.0.0",
-        "eslint-plugin-import": "2.17.1",
+        "eslint-plugin-import": "2.17.2",
         "eslint-plugin-node": "8.0.1",
         "eslint-plugin-promise": "4.1.1",
         "eslint-plugin-security": "1.4.0",
-        "firebase": "5.9.4",
+        "firebase": "5.10.0",
+        "jest": "24.7.1",
         "koa": "2.7.0",
         "koa-bodyparser": "4.2.1",
         "koa-router": "7.4.0",
-        "typescript": "3.4.3"
+        "nodemon": "1.18.11",
+        "prettier": "^1.15.3",
+        "ts-jest": "24.0.2",
+        "typescript": "3.4.4"
     },
     "dependencies": {
         "debug": "4.1.1"

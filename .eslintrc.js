@@ -5,6 +5,7 @@ module.exports = {
       "experimentalObjectRestSpread": true
     }
   },
+  "parser": "@typescript-eslint/parser",
   "env": {
     "browser": true,
     "es6": true,

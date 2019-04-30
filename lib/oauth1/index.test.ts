@@ -1,32 +1,27 @@
-const test = require("ava")
-const { BrowserWindow } = require("electron")
-const querystring = require("querystring")
+import { routing, startServer, stopServer, TestServder } from "../__test_utils"
+import querystring from "querystring"
+import path from "path"
+import { BrowserWindow } from "electron"
+import { OAuth1Provider } from "."
 
-const {
-  routing,
-  startServer,
-  stopServer,
-} = require("../__test_utils")
+let server: TestServder
 
-const OAuth1Provider = require("./")
-
-test.beforeEach(async t => {
-  await startServer(t)
+beforeEach(async () => {
+  server = await startServer()
 })
 
-test.afterEach.always(async t => {
-  await stopServer(t)
+afterEach(async () => {
+  await stopServer(server)
 })
 
-test("Success", async t => {
-
-  const { koa, port } = t.context
+it("Success", async () => {
+  const { koa, port } = server
 
   routing(koa)(router => {
-
     router.post("/oauth/request", ctx => {
-
-      t.true(ctx.headers["authorization"].startsWith("OAuth oauth_callback="))
+      expect(ctx.headers["authorization"]).toEqual(
+        expect.stringMatching(/^OAuth /),
+      )
 
       ctx.body = querystring.stringify({
         oauth_token: "oauth token1",
@@ -36,7 +31,7 @@ test("Success", async t => {
     })
 
     router.get("/oauth/authorize", ctx => {
-      t.deepEqual(ctx.query, {
+      expect(ctx.query).toEqual({
         oauth_token: "oauth token1",
       })
 
@@ -46,11 +41,11 @@ test("Success", async t => {
       })
 
       const redirectUrl = `http://localhost:${port}/callback?${query}`
-      ctx.redirect(redirectUrl, 303)
+      ctx.redirect(redirectUrl)
     })
 
     router.post("/oauth/access", ctx => {
-      t.deepEqual(ctx.request.body, {
+      expect(ctx.request.body).toEqual({
         oauth_verifier: "oauth verifier",
       })
 
@@ -67,32 +62,29 @@ test("Success", async t => {
 
   const provider = new OAuth1Provider({
     oauth_consumer_key: "consumer key",
-    oauth_consumer_secret: "consumer secret",
     request_token_url: `http://localhost:${port}/oauth/request`,
     authenticate_url: `http://localhost:${port}/oauth/authorize`,
     access_token_url: `http://localhost:${port}/oauth/access`,
-    callback_url: `http://localhost:${port}/callback`,
+    oauth_callback: `http://localhost:${port}/callback`,
   })
 
   const window = new BrowserWindow({
-    width: 600,
-    height: 600,
     show: false,
   })
 
   const resp = await provider.perform(window)
-  t.deepEqual(resp, {
+  expect(resp).toEqual({
     oauth_token: "oauth token2",
-    oauth_token_secret: "oauth secret2"
+    oauth_token_secret: "oauth secret2",
   })
-})
 
-test("Request Token failed", async t => {
+  window.close()
+}, 10000)
 
-  const { koa, port } = t.context
+test("Request Token failed", async () => {
+  const { koa, port } = server
 
   routing(koa)(router => {
-
     router.post("/oauth/request", ctx => {
       ctx.status = 400
       ctx.body = "error message"
@@ -101,11 +93,10 @@ test("Request Token failed", async t => {
 
   const provider = new OAuth1Provider({
     oauth_consumer_key: "consumer key",
-    oauth_consumer_secret: "consumer secret",
     request_token_url: `http://localhost:${port}/oauth/request`,
     authenticate_url: `http://localhost:${port}/oauth/authorize`,
     access_token_url: `http://localhost:${port}/oauth/access`,
-    callback_url: `http://localhost:${port}/callback`,
+    oauth_callback: `http://localhost:${port}/callback`,
   })
 
   const window = new BrowserWindow({
@@ -114,20 +105,19 @@ test("Request Token failed", async t => {
     show: false,
   })
 
-  const error = await t.throws(provider.perform(window))
-  t.is(error.message, "Error response: 400 - Bad Request")
-  t.is(error.response.body, "error message")
-})
+  await expect(provider.perform(window)).rejects.toThrowError(
+    /400 - Bad Request : error message/,
+  )
+  window.close()
+}, 10000)
 
-test("Authorization failed", async t => {
-
-  const { koa, port } = t.context
-
+test("Authorization failed", async () => {
+  const { koa, port } = server
   routing(koa)(router => {
-
     router.post("/oauth/request", ctx => {
-
-      t.true(ctx.headers["authorization"].startsWith("OAuth oauth_callback="))
+      expect(ctx.headers["authorization"]).toEqual(
+        expect.stringMatching(/^OAuth /),
+      )
 
       ctx.body = querystring.stringify({
         oauth_token: "oauth token1",
@@ -137,7 +127,7 @@ test("Authorization failed", async t => {
     })
 
     router.get("/oauth/authorize", ctx => {
-      t.deepEqual(ctx.query, {
+      expect(ctx.query).toEqual({
         oauth_token: "oauth token1",
       })
 
@@ -146,17 +136,16 @@ test("Authorization failed", async t => {
       })
 
       const redirectUrl = `http://localhost:${port}/callback?${query}`
-      ctx.redirect(redirectUrl, 303)
+      ctx.redirect(redirectUrl)
     })
   })
 
   const provider = new OAuth1Provider({
     oauth_consumer_key: "consumer key",
-    oauth_consumer_secret: "consumer secret",
     request_token_url: `http://localhost:${port}/oauth/request`,
     authenticate_url: `http://localhost:${port}/oauth/authorize`,
     access_token_url: `http://localhost:${port}/oauth/access`,
-    callback_url: `http://localhost:${port}/callback`,
+    oauth_callback: `http://localhost:${port}/callback`,
   })
 
   const window = new BrowserWindow({
@@ -164,20 +153,19 @@ test("Authorization failed", async t => {
     height: 600,
     show: false,
   })
-
-  const error = await t.throws(provider.perform(window))
-  t.is(error.message, "User denied or invalid response")
+  await expect(provider.perform(window)).rejects.toThrowError(
+    /User denied or invalid response/,
+  )
 })
 
-test("Access Token failed", async t => {
-
-  const { koa, port } = t.context
+test("Access Token failed", async () => {
+  const { koa, port } = server
 
   routing(koa)(router => {
-
     router.post("/oauth/request", ctx => {
-
-      t.true(ctx.headers["authorization"].startsWith("OAuth oauth_callback="))
+      expect(ctx.headers["authorization"]).toEqual(
+        expect.stringMatching(/^OAuth /),
+      )
 
       ctx.body = querystring.stringify({
         oauth_token: "oauth token1",
@@ -187,7 +175,7 @@ test("Access Token failed", async t => {
     })
 
     router.get("/oauth/authorize", ctx => {
-      t.deepEqual(ctx.query, {
+      expect(ctx.query).toEqual({
         oauth_token: "oauth token1",
       })
 
@@ -197,11 +185,11 @@ test("Access Token failed", async t => {
       })
 
       const redirectUrl = `http://localhost:${port}/callback?${query}`
-      ctx.redirect(redirectUrl, 303)
+      ctx.redirect(redirectUrl)
     })
 
     router.post("/oauth/access", ctx => {
-      t.deepEqual(ctx.request.body, {
+      expect(ctx.request.body).toEqual({
         oauth_verifier: "oauth verifier",
       })
 
@@ -215,11 +203,10 @@ test("Access Token failed", async t => {
 
   const provider = new OAuth1Provider({
     oauth_consumer_key: "consumer key",
-    oauth_consumer_secret: "consumer secret",
     request_token_url: `http://localhost:${port}/oauth/request`,
     authenticate_url: `http://localhost:${port}/oauth/authorize`,
     access_token_url: `http://localhost:${port}/oauth/access`,
-    callback_url: `http://localhost:${port}/callback`,
+    oauth_callback: `http://localhost:${port}/callback`,
   })
 
   const window = new BrowserWindow({
@@ -228,6 +215,7 @@ test("Access Token failed", async t => {
     show: false,
   })
 
-  const error = await t.throws(provider.perform(window))
-  t.is(error.message, "Error response: 400 - Bad Request")
+  await expect(provider.perform(window)).rejects.toThrowError(
+    /400 - Bad Request : Bad Request/,
+  )
 })
