@@ -1,12 +1,13 @@
 import Debug from "debug"
+import { WebRequest } from "electron"
 
 const debug = Debug("eoh:helper")
 
 export const awaitRedirect = (
   redirectURL: string,
-  webContents: Electron.webContents,
+  webRequest: WebRequest,
 ): Promise<string> => {
-  if (!redirectURL || !webContents) {
+  if (!redirectURL || !webRequest) {
     return Promise.reject(new Error("Invalid parameter"))
   }
 
@@ -21,7 +22,7 @@ export const awaitRedirect = (
       filterUrl += "*"
     }
 
-    webContents.session.webRequest.onBeforeRequest((detail, callback) => {
+    webRequest.onBeforeRequest((detail, callback) => {
       debug("will request", detail)
       if (isRedirectURL(detail.url)) {
         callback({ cancel: true })
@@ -32,16 +33,13 @@ export const awaitRedirect = (
       callback({ cancel: false })
     })
 
-    webContents.session.webRequest.onBeforeRedirect(
-      { urls: [filterUrl] },
-      detail => {
-        debug("will redirect", detail)
-        if (isRedirectURL(detail.redirectURL)) {
-          debug("resolve with", detail.redirectURL)
-          resolve(detail.redirectURL)
-          return
-        }
-      },
-    )
+    webRequest.onBeforeRedirect({ urls: [filterUrl] }, detail => {
+      debug("will redirect", detail)
+      if (isRedirectURL(detail.redirectURL)) {
+        debug("resolve with", detail.redirectURL)
+        resolve(detail.redirectURL)
+        return
+      }
+    })
   })
 }

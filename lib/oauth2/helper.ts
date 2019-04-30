@@ -63,7 +63,10 @@ export const authorizationCodeFlowTask: TaskFunction<
   })
   debug("start authorizationCodeFlowTask")
 
-  return awaitRedirect(config.redirect_uri, window.webContents).then(url => {
+  return awaitRedirect(
+    config.redirect_uri,
+    window.webContents.session.webRequest,
+  ).then(url => {
     debug(`redirect url: "${url}"`)
 
     const query = Url.parse(url, true).query
@@ -135,7 +138,10 @@ export const implicitFlowTask: TaskFunction<ImplicitGrantConfig> = async (
   })
 
   debug("start implicitFlowTask:", authorizeUrl, config.redirect_uri)
-  const url = await awaitRedirect(config.redirect_uri, window.webContents)
+  const url = await awaitRedirect(
+    config.redirect_uri,
+    window.webContents.session.webRequest,
+  )
   debug(`redirect url: "${url}"`)
   const hash = (Url.parse(url, false).hash || "").replace(/^#/, "")
   return querystring.parse(hash)

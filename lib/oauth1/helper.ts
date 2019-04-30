@@ -161,7 +161,10 @@ export const redirectAuthPage = async <
   const pageUrl = `${url}?oauth_token=${oauth_token}`
 
   window.loadURL(pageUrl)
-  const resp = await awaitRedirect(config.oauth_callback, window.webContents)
+  const resp = await awaitRedirect(
+    config.oauth_callback,
+    window.webContents.session.webRequest,
+  )
   const query = Url.parse(resp, true).query
 
   if (
