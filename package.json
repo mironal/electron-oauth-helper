@@ -1,87 +1,87 @@
 {
-    "name": "electron-oauth-helper",
-    "version": "3.0.0",
-    "description": "Easy to use helper library for OAuth1 and OAuth2.",
-    "main": "index.js",
-    "scripts": {
-        "start:example": "electron ./example/src/main/main.js",
-        "lint": "eslint .",
-        "lint:fix": "eslint --fix .",
-        "test": "jest",
-        "test:w": "nodemon --watch lib --delay 1 --exec 'npm test'",
-        "build": "tsc",
-        "doc": "esdoc",
-        "preversion": "npm run lint && npm run test",
-        "version": "npm run doc && git add -A",
-        "postversion": "git push && git push --tags",
-        "_fmt": "prettier --config .prettierrc '{*,src/**/*}.{js,jsx,css,ts,tsx,json}'",
-        "fmt": "npm run _fmt -- --write"
-    },
-    "engines": {
-        "node": ">= 8.0.0"
-    },
-    "keywords": [
-        "oauth",
-        "oauth1",
-        "oauth2",
-        "electron",
-        "auth",
-        "api"
-    ],
-    "author": "mironal",
-    "license": "MIT",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/mironal/electron-oauth-helper.git"
-    },
-    "homepage": "https://github.com/mironal/electron-oauth-helper",
-    "bugs": {
-        "url": "https://github.com/mironal/electron-oauth-helper/issues"
-    },
-    "devDependencies": {
-        "@jest-runner/electron": "1.1.1",
-        "@types/debug": "4.1.4",
-        "@types/jest": "24.0.11",
-        "@types/koa": "2.0.48",
-        "@types/koa-bodyparser": "4.2.2",
-        "@types/koa-router": "7.0.40",
-        "@types/node": "11.13.6",
-        "@typescript-eslint/eslint-plugin": "1.7.0",
-        "babel-core": "6.26.3",
-        "babel-preset-env": "1.7.0",
-        "electron": "4.1.4",
-        "esdoc": "1.1.0",
-        "esdoc-standard-plugin": "1.0.0",
-        "eslint": "5.16.0",
-        "eslint-plugin-import": "2.17.2",
-        "eslint-plugin-node": "8.0.1",
-        "eslint-plugin-promise": "4.1.1",
-        "eslint-plugin-security": "1.4.0",
-        "firebase": "5.10.0",
-        "jest": "24.7.1",
-        "koa": "2.7.0",
-        "koa-bodyparser": "4.2.1",
-        "koa-router": "7.4.0",
-        "nodemon": "1.18.11",
-        "prettier": "^1.15.3",
-        "ts-jest": "24.0.2",
-        "typescript": "3.4.4"
-    },
-    "dependencies": {
-        "debug": "4.1.1"
-    },
-    "esdoc": {
-        "source": "./lib",
-        "destination": "./docs",
-        "plugins": [
-            {
-                "name": "esdoc-standard-plugin",
-                "option": {
-                    "lint": {
-                        "enable": false
-                    }
-                }
-            }
-        ]
-    }
+  "name": "electron-oauth-helper",
+  "version": "3.0.0",
+  "description": "Easy to use helper library for OAuth1 and OAuth2.",
+  "main": "index.js",
+  "scripts": {
+    "start:example": "electron ./example/src/main/main.js",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix .",
+    "test": "jest",
+    "test:w": "nodemon --watch lib --delay 1 --exec 'npm test'",
+    "build": "tsc",
+    "doc": "esdoc",
+    "preversion": "npm run lint && npm run test",
+    "version": "npm run doc && git add -A",
+    "postversion": "git push && git push --tags",
+    "_fmt": "prettier --config .prettierrc '{*,src/**/*}.{js,jsx,css,ts,tsx,json}'",
+    "fmt": "npm run _fmt -- --write"
+  },
+  "engines": {
+    "node": ">= 8.0.0"
+  },
+  "keywords": [
+    "oauth",
+    "oauth1",
+    "oauth2",
+    "electron",
+    "auth",
+    "api"
+  ],
+  "author": "mironal",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mironal/electron-oauth-helper.git"
+  },
+  "homepage": "https://github.com/mironal/electron-oauth-helper",
+  "bugs": {
+    "url": "https://github.com/mironal/electron-oauth-helper/issues"
+  },
+  "devDependencies": {
+    "@jest-runner/electron": "1.1.1",
+    "@types/debug": "4.1.4",
+    "@types/jest": "24.0.11",
+    "@types/koa": "2.0.48",
+    "@types/koa-bodyparser": "4.2.2",
+    "@types/koa-router": "7.0.40",
+    "@types/node": "11.13.6",
+    "@typescript-eslint/eslint-plugin": "1.7.0",
+    "babel-core": "6.26.3",
+    "babel-preset-env": "1.7.0",
+    "electron": "4.1.4",
+    "esdoc": "1.1.0",
+    "esdoc-standard-plugin": "1.0.0",
+    "eslint": "5.16.0",
+    "eslint-plugin-import": "2.17.2",
+    "eslint-plugin-node": "8.0.1",
+    "eslint-plugin-promise": "4.1.1",
+    "eslint-plugin-security": "1.4.0",
+    "firebase": "5.10.0",
+    "jest": "24.7.1",
+    "koa": "2.7.0",
+    "koa-bodyparser": "4.2.1",
+    "koa-router": "7.4.0",
+    "nodemon": "1.18.11",
+    "prettier": "^1.15.3",
+    "ts-jest": "24.0.2",
+    "typescript": "3.4.4"
+  },
+  "dependencies": {
+    "debug": "4.1.1"
+  },
+  "esdoc": {
+    "source": "./lib",
+    "destination": "./docs",
+    "plugins": [
+      {
+        "name": "esdoc-standard-plugin",
+        "option": {
+          "lint": {
+            "enable": false
+          }
+        }
+      }
+    ]
+  }
 }
