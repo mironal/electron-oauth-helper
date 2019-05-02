@@ -9,7 +9,6 @@
     "lint:fix": "eslint --fix .",
     "test": "jest lib/**/*.ts",
     "build": "tsc",
-    "doc": "esdoc",
     "preversion": "npm run lint && npm run test",
     "version": "npm run doc && git add -A",
     "postversion": "git push && git push --tags",
@@ -49,8 +48,6 @@
     "babel-core": "6.26.3",
     "babel-preset-env": "1.7.0",
     "electron": "4.1.4",
-    "esdoc": "1.1.0",
-    "esdoc-standard-plugin": "1.0.0",
     "eslint": "5.16.0",
     "eslint-plugin-import": "2.17.2",
     "eslint-plugin-node": "8.0.1",
@@ -68,19 +65,5 @@
   },
   "dependencies": {
     "debug": "4.1.1"
-  },
-  "esdoc": {
-    "source": "./lib",
-    "destination": "./docs",
-    "plugins": [
-      {
-        "name": "esdoc-standard-plugin",
-        "option": {
-          "lint": {
-            "enable": false
-          }
-        }
-      }
-    ]
   }
 }
