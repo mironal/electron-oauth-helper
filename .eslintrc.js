@@ -14,14 +14,13 @@ module.exports = {
   },
   extends: [
     "eslint:recommended",
-    "plugin:ava/recommended",
     "plugin:node/recommended",
     "plugin:promise/recommended",
     "plugin:security/recommended",
     "plugin:import/errors",
     "plugin:import/warnings",
   ],
-  plugins: ["ava", "node", "import", "promise", "security"],
+  plugins: ["node", "import", "promise", "security"],
   rules: {
     "node/no-deprecated-api": "off",
     "node/no-unpublished-require": [

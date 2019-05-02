@@ -1,4 +1,4 @@
-import { BrowserWindow, EventEmitter } from "electron"
+import { BrowserWindow } from "electron"
 import {
   authorizationCodeFlowTask,
   implicitFlowTask,
