@@ -4,6 +4,7 @@ import { BrowserWindow } from "electron"
 import { validate, needWindowForGrantType } from "./helper"
 import { flowTaskFor } from "./tasks"
 import { EventEmitter } from "events"
+import { ResponseType } from "../utils"
 
 const debug = Debug("eoh:oauth2")
 
@@ -70,7 +71,7 @@ export class OAuth2Provider extends EventEmitter implements OAuth2EmitterType {
    * ```
    *
    */
-  async perform(window?: BrowserWindow): Promise<any> {
+  async perform(window?: BrowserWindow): Promise<ResponseType | string> {
     const config = this.config
 
     const task = flowTaskFor(config)
@@ -96,10 +97,6 @@ export class OAuth2Provider extends EventEmitter implements OAuth2EmitterType {
     if (this.userCancelError) {
       debug("User cancelled")
       return Promise.reject(this.userCancelError)
-    }
-    if (resp.error) {
-      debug(`error: ${resp.error}`)
-      return Promise.reject(resp)
     }
     debug("success", resp)
     return Promise.resolve(resp)

@@ -1,7 +1,7 @@
 import Url, { URL } from "url"
 import querystring from "querystring"
 import Debug from "debug"
-import { awaitRedirect, omit, postRequest } from "../utils"
+import { awaitRedirect, omit, postRequest, ResponseType } from "../utils"
 import {
   OAuthConfigType,
   AuthorizationCodeGrantConfig,
@@ -42,11 +42,11 @@ const createAuthorizeParameters = (config: OAuthConfigType) => {
 
 export const authorizationCodeFlowTask: TaskFunction<
   AuthorizationCodeGrantConfig
-> = (
+> = async (
   config: AuthorizationCodeGrantConfig,
   emitter: OAuth2EmitterType,
   window?: BrowserWindow,
-) => {
+): Promise<ResponseType> => {
   if (!window) {
     return Promise.reject(new Error("window is required"))
   }
@@ -63,65 +63,57 @@ export const authorizationCodeFlowTask: TaskFunction<
   })
   debug("start authorizationCodeFlowTask")
 
-  return awaitRedirect(
+  const url = await awaitRedirect(
     config.redirect_uri,
     window.webContents.session.webRequest,
-  ).then(url => {
-    debug(`redirect url: "${url}"`)
-
-    const query = Url.parse(url, true).query
-
-    if (!query) {
-      return Promise.reject(new Error(`invalid response: ${url}`))
-    }
-
-    if (query.error) {
-      const error = new EOHError("error response")
-      error.query = url
-      return Promise.reject(error)
-    }
-
-    if (!query.code) {
-      return Promise.reject(new Error("missing 'code' response."))
-    }
-
-    if (config.state && !query.state) {
-      return Promise.reject(new Error("missing 'state' response."))
-    }
-
-    const parameters: AccessTokenRequestParameter = {
-      client_id: config.client_id,
-      client_secret: config.client_secret,
-      grant_type: "authorization_code",
-      code: query.code as string,
-      redirect_uri: config.redirect_uri,
-    }
-    if (query.state) {
-      parameters.state = query.state as string
-    }
-
-    const headers = {
-      "Content-Type": "application/x-www-form-urlencoded",
-    }
-
-    emitter.emit("before-access-token-request", parameters, headers)
-    const postdata = querystring.stringify(parameters)
-
-    return postRequest(
-      {
-        url: config.access_token_url,
-        headers,
-      },
-      postdata,
-    )
-  })
+  )
+  debug(`redirect url: "${url}"`)
+  const query = Url.parse(url, true).query
+  if (!query) {
+    return Promise.reject(new Error(`invalid response: ${url}`))
+  }
+  if (query.error) {
+    const error = new EOHError(`Error response: ${query.error}`)
+    error.query = url
+    return Promise.reject(error)
+  }
+  if (!query.code) {
+    return Promise.reject(new Error("missing 'code' response."))
+  }
+  if (config.state && !query.state) {
+    return Promise.reject(new Error("missing 'state' response."))
+  }
+  const parameters: AccessTokenRequestParameter = {
+    client_id: config.client_id,
+    grant_type: "authorization_code",
+    code: query.code as string,
+    redirect_uri: config.redirect_uri,
+  }
+  if (config.client_secret) {
+    parameters.client_secret = config.client_secret
+  }
+  if (query.state) {
+    parameters.state = query.state as string
+  }
+  const headers = {
+    "Content-Type": "application/x-www-form-urlencoded",
+  }
+  emitter.emit("before-access-token-request", parameters, headers)
+  const postdata = querystring.stringify(parameters)
+  return await postRequest(
+    {
+      url: config.access_token_url,
+      headers,
+    },
+    postdata,
+  )
 }
 
 export const implicitFlowTask: TaskFunction<ImplicitGrantConfig> = async (
   config: ImplicitGrantConfig,
   emitter: OAuth2EmitterType,
   window?: BrowserWindow,
-) => {
+): Promise<string> => {
   if (!window) {
     return Promise.reject(new Error("window is required"))
   }
@@ -144,7 +136,10 @@ export const implicitFlowTask: TaskFunction<ImplicitGrantConfig> = async (
   )
   debug(`redirect url: "${url}"`)
   const hash = (Url.parse(url, false).hash || "").replace(/^#/, "")
-  return querystring.parse(hash)
+  if (hash.includes("error=")) {
+    return Promise.reject(new Error(`Error response: ${hash}`))
+  }
+  return hash
 }
 
 export const resourceOwnerPasswordCredentialsFlowTask: TaskFunction<
