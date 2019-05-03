@@ -6,6 +6,8 @@
 
 [![Build Status](https://travis-ci.org/mironal/electron-oauth-helper.svg)](https://travis-ci.org/mironal/electron-oauth-helper)
 
+Tested by Electron 4.2.0.
+
 ## What's this
 
 Easy to use helper library for OAuth1 and OAuth2.
