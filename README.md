@@ -73,9 +73,15 @@ const window = new BrowserWindow({
 const config = { /* oauth config. please see example/main/config.example.js.  */}
 const provider = new OAuth2Provider(config)
 // Your can use custom parameter.
-// const provider = new OAuth2Provider(config)
-//   .withCustomAuthorizationRequestParameter({})
-//   .withCustomAccessTokenRequestParameter({})
+provider.on("before-authorize-request", parameter => {
+    parameter["XXXX-Hoge"] = "hogehoge"
+})
+
+provider.on("before-access-token-request", (parameter, headers) => {
+    parameter["XXXX-Hoge"] = "hogehoge"
+    headers["Huga"] = "hugahgua"
+})
+
 provider.perform(window)
   .then(resp => {
     console.log(resp)

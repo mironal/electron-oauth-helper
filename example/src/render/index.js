@@ -4,7 +4,7 @@ const ipc = require("electron").ipcRenderer
 const {
   OAuth1Provider,
   OAuth2Provider,
-} = require("electron").remote.require("../../../")
+} = require("electron").remote.require("../../../dist")
 
 const { BrowserWindow } = require("electron").remote
 
