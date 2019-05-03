@@ -1,4 +1,4 @@
-import { OAuth2Provider } from "."
+import OAuth2Provider from "."
 import { routing, startServer, stopServer, TestServder } from "../__test_utils"
 import { BrowserWindow } from "electron"
 import querystring from "querystring"

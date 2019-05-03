@@ -1,7 +1,7 @@
 import { routing, startServer, stopServer, TestServder } from "../__test_utils"
 import querystring from "querystring"
 import { BrowserWindow } from "electron"
-import { OAuth1Provider } from "."
+import OAuth1Provider from "."
 
 let server: TestServder
 
