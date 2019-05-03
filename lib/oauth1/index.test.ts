@@ -1,6 +1,5 @@
 import { routing, startServer, stopServer, TestServder } from "../__test_utils"
 import querystring from "querystring"
-import path from "path"
 import { BrowserWindow } from "electron"
 import { OAuth1Provider } from "."
 
@@ -105,7 +104,7 @@ test("Request Token failed", async () => {
     show: false,
   })
 
-  await expect(provider.perform(window)).rejects.toThrowError(
+  await expect(provider.perform(window)).rejects.toThrow(
     /400 - Bad Request : error message/,
   )
   window.close()
@@ -153,7 +152,7 @@ test("Authorization failed", async () => {
     height: 600,
     show: false,
   })
-  await expect(provider.perform(window)).rejects.toThrowError(
+  await expect(provider.perform(window)).rejects.toThrow(
     /User denied or invalid response/,
   )
 })
@@ -215,7 +214,7 @@ test("Access Token failed", async () => {
     show: false,
   })
 
-  await expect(provider.perform(window)).rejects.toThrowError(
+  await expect(provider.perform(window)).rejects.toThrow(
     /400 - Bad Request : Bad Request/,
   )
 })
