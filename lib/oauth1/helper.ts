@@ -75,6 +75,7 @@ const createOAuthHeader = (request: { [key: string]: any }) => {
 
 export type OAuth1Config = {
   oauth_consumer_key: string
+  oauth_consumer_secret?: string
   oauth_callback: string
 }
 
@@ -121,6 +122,8 @@ const makeOAuthParameter = <
   cloned.oauth_signature_method =
     parameter.oauth_signature_method || "HMAC-SHA1"
 
+  cloned.oauth_consumer_key = parameter.oauth_consumer_key
+
   return cloned
 }
 
@@ -132,7 +135,12 @@ export const requestOAuthToken = async (
 ): Promise<string> => {
   const parameter = makeOAuthParameter(config)
 
-  const signature = createSignature("POST", url, parameter)
+  const signature = createSignature(
+    "POST",
+    url,
+    parameter,
+    config.oauth_consumer_secret,
+  )
   parameter.oauth_signature = signature
 
   const oauthHeader = createOAuthHeader(parameter)
@@ -141,7 +149,6 @@ export const requestOAuthToken = async (
     url,
     headers: { Authorization: oauthHeader },
   })
-
   const body = querystring.parse(resp.body)
   if (typeof body.oauth_token === "string") {
     return Promise.resolve(body.oauth_token)

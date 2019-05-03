@@ -17,7 +17,11 @@ export class OAuth1Provider {
   private finished: Boolean = false
 
   constructor(config: OAuth1Config & OAuth1URLs) {
-    this.config = pick(config, ["oauth_consumer_key", "oauth_callback"])
+    this.config = pick(config, [
+      "oauth_consumer_key",
+      "oauth_consumer_secret",
+      "oauth_callback",
+    ])
 
     this.urls = pick(config, [
       "request_token_url",
