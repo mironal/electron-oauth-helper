@@ -123,9 +123,15 @@ provider.perform(<span class="hljs-built_in">window</span>)
 <span class="hljs-keyword">const</span> config = { <span class="hljs-comment">/* oauth config. please see example/main/config.example.js.  */</span>}
 <span class="hljs-keyword">const</span> provider = <span class="hljs-keyword">new</span> OAuth2Provider(config)
 <span class="hljs-comment">// Your can use custom parameter.</span>
-<span class="hljs-comment">// const provider = new OAuth2Provider(config)</span>
-<span class="hljs-comment">//   .withCustomAuthorizationRequestParameter({})</span>
-<span class="hljs-comment">//   .withCustomAccessTokenRequestParameter({})</span>
+provider.on(<span class="hljs-string">"before-authorize-request"</span>, parameter =&gt; {
+    parameter[<span class="hljs-string">"XXXX-Hoge"</span>] = <span class="hljs-string">"hogehoge"</span>
+})
+
+provider.on(<span class="hljs-string">"before-access-token-request"</span>, (parameter, headers) =&gt; {
+    parameter[<span class="hljs-string">"XXXX-Hoge"</span>] = <span class="hljs-string">"hogehoge"</span>
+    headers[<span class="hljs-string">"Huga"</span>] = <span class="hljs-string">"hugahgua"</span>
+})
+
 provider.perform(<span class="hljs-built_in">window</span>)
   .then(<span class="hljs-function"><span class="hljs-params">resp</span> =&gt;</span> {
     <span class="hljs-built_in">console</span>.log(resp)
