@@ -131,7 +131,7 @@ test("Authorization Code Grant: request success", async () => {
       refresh_token: "refresh",
     })
   } else {
-    fail()
+    throw new Error("Invalid response")
   }
 })
 
@@ -198,7 +198,7 @@ test("Authorization Code Grant: request success with custom parameter", async ()
       refresh_token: "refresh",
     })
   } else {
-    fail()
+    throw new Error("Invalid response")
   }
 })
 
@@ -280,7 +280,7 @@ test("Authorization Code Grant: token request failure", async () => {
   })
 
   await expect(provider.perform(window)).rejects.toThrow(
-    /^400 - Bad Request : {\"error\":\"invalid_request\"}/,
+    /^400 - Bad Request : {"error":"invalid_request"}/,
   )
 })
 
@@ -320,7 +320,7 @@ test("Implicit Grant: request success", async () => {
       token_type: "bearer",
     })
   } else {
-    fail()
+    throw new Error("Invalid response")
   }
 })
 
@@ -365,7 +365,7 @@ test("Implicit Grant: request success with custom parameter", async () => {
       token_type: "bearer",
     })
   } else {
-    fail()
+    throw new Error("Invalid response")
   }
 })
 
@@ -431,8 +431,7 @@ test("Resource Owner Password Credentials Grant", async () => {
 
   const resp = await provider.perform()
   if (typeof resp === "string") {
-    fail()
-    return
+    throw new Error("Invalid response")
   }
 
   expect(JSON.parse(resp.body)).toEqual({
@@ -466,8 +465,7 @@ test("Client Credentials Grant", async () => {
 
   const resp = await provider.perform()
   if (typeof resp === "string") {
-    fail()
-    return
+    throw new Error("Invalid response")
   }
 
   expect(JSON.parse(resp.body)).toEqual({

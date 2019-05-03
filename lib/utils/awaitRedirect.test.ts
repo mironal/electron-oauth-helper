@@ -1,4 +1,4 @@
-import electron, { BrowserWindow } from "electron"
+import { BrowserWindow } from "electron"
 import { awaitRedirect } from "./awaitRedirect"
 import { TestServder, startServer, stopServer, routing } from "../__test_utils"
 

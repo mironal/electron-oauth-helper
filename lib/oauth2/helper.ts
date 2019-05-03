@@ -1,4 +1,4 @@
-import Url, { URL } from "url"
+import Url from "url"
 import querystring from "querystring"
 import Debug from "debug"
 import { awaitRedirect, omit, postRequest, ResponseType } from "../utils"
