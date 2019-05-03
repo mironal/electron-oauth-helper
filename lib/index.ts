@@ -65,11 +65,6 @@ export type ClientCredentialsGrantConfig = Required<
   Pick<OAuthConfigType, "grant_type" | "access_token_url">
 >
 
-import { OAuth1Provider } from "./lib/oauth1"
-import { OAuth2Provider } from "./lib/oauth2"
-
-export { OAuth1Provider, OAuth2Provider }
-
 export class EOHError extends Error {
   public query?: string
   constructor(message?: string) {

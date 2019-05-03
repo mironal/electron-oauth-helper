@@ -7,3 +7,9 @@ docs/
 ss/
 **/*.test.js
 **/__*/
+lib/
+.eslintignore
+.prettierrc
+.travis.yml
+.DS_Store
+jest.config.js

@@ -11,7 +11,7 @@ import {
   ImplicitGrantConfig,
   EOHError,
   OAuthFlowType,
-} from "../.."
+} from "../"
 import { BrowserWindow } from "electron"
 import { TaskFunction } from "./tasks"
 import { OAuth2EmitterType } from "."

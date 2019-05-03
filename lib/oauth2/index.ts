@@ -1,5 +1,5 @@
 import Debug from "debug"
-import { OAuthConfigType } from "../.."
+import { OAuthConfigType } from "../"
 import { BrowserWindow } from "electron"
 import { validate, needWindowForGrantType } from "./helper"
 import { flowTaskFor } from "./tasks"
@@ -17,7 +17,7 @@ export interface OAuth2EmitterType {
   ): boolean
 }
 
-export interface OAuth2Provider {
+export default interface OAuth2Provider {
   on(
     event: "before-authorize-request",
     listener: (query: { [key: string]: any }) => void,
@@ -32,7 +32,8 @@ export interface OAuth2Provider {
   ): this
 }
 
-export class OAuth2Provider extends EventEmitter implements OAuth2EmitterType {
+export default class OAuth2Provider extends EventEmitter
+  implements OAuth2EmitterType {
   config: OAuthConfigType
   finished: boolean
   userCancelError?: Error

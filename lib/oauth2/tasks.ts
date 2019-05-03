@@ -5,7 +5,7 @@ import {
   resourceOwnerPasswordCredentialsFlowTask,
   clientCredentialsFlowTask,
 } from "./helper"
-import { OAuthConfigType } from "../.."
+import { OAuthConfigType } from "../"
 import { OAuth2EmitterType } from "."
 
 export type TaskFunction<C> = (

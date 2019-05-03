@@ -5,10 +5,8 @@ const path = require("path")
 const url = require("url")
 const ipc = require("electron").ipcMain
 
-const {
-  OAuth1Provider,
-  OAuth2Provider,
-} = require("../../../dist")
+const OAuth1Provider = require("../../../dist/oauth1")
+const OAuth2Provider = require("../../../dist/oauth2")
 
 const firebase = require("firebase")
 
@@ -22,16 +20,18 @@ if (mapTypeToConfig("Firebase")) {
 // be closed automatically when the JavaScript object is garbage collected.
 let win
 
-function createWindow () {
+function createWindow() {
   // Create the browser window.
-  win = new BrowserWindow({width: 800, height: 600})
+  win = new BrowserWindow({ width: 800, height: 600 })
 
   // and load the index.html of the app.
-  win.loadURL(url.format({
-    pathname: path.join(__dirname,"../render", "index.html"),
-    protocol: "file:",
-    slashes: true
-  }))
+  win.loadURL(
+    url.format({
+      pathname: path.join(__dirname, "../render", "index.html"),
+      protocol: "file:",
+      slashes: true,
+    }),
+  )
 
   // Open the DevTools.
   win.webContents.openDevTools()
@@ -68,7 +68,6 @@ app.on("activate", () => {
 })
 
 ipc.on("oauth", (event, type) => {
-
   const config = mapTypeToConfig(type)
   if (!config) {
     console.warn(`Unknown type: "${type}"`)
@@ -102,7 +101,8 @@ ipc.on("oauth", (event, type) => {
     window = null
   })
 
-  provider.perform(window)
+  provider
+    .perform(window)
     .then(resp => {
       window.close()
       console.log("Got response (◍•ᴗ•◍):", resp)

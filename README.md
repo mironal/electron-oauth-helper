@@ -35,7 +35,7 @@ This library is lightweight because it depends only on [debug](https://github.co
 
 ```js
 
-const { OAuth1Provider } = require("electron-oauth-helper")
+import OAuth1Provider from "electron-oauth-helper/oauth1"
 
 const window = new BrowserWindow({
   width: 600,
@@ -60,7 +60,7 @@ provider.perform(window)
 
 ```js
 
-const { OAuth2Provider } = require("electron-oauth-helper")
+import OAuth2Provider from "electron-oauth-helper/oauth2"
 
 const window = new BrowserWindow({
   width: 600,

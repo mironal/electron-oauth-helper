@@ -2,7 +2,8 @@
   "name": "electron-oauth-helper",
   "version": "5.0.0",
   "description": "Easy to use helper library for OAuth1 and OAuth2.",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "start:example": "electron ./example/src/main/main.js",
     "lint": "eslint lib/**/*",

@@ -68,3 +68,5 @@ example/src/main/config.js
 
 dist/*
 .cache/*
+
+.DS_Store

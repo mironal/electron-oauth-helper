@@ -11,7 +11,7 @@ import { pick } from "../utils"
 
 const debug = Debug("eoh:oauth1")
 
-export class OAuth1Provider {
+export default class OAuth1Provider {
   public config: OAuth1Config
   public urls: OAuth1URLs
   private finished: Boolean = false
