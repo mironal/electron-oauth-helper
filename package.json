@@ -8,6 +8,7 @@
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
     "test": "jest lib/**/*.ts",
+    "doc": "typedoc --out docs lib",
     "build": "tsc",
     "preversion": "npm run lint && npm run test",
     "version": "npm run doc && git add -A",
@@ -60,6 +61,7 @@
     "koa-router": "7.4.0",
     "prettier": "^1.15.3",
     "ts-jest": "24.0.2",
+    "typedoc": "0.14.2",
     "typescript": "3.4.5"
   },
   "dependencies": {
