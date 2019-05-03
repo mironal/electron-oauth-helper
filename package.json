@@ -1,6 +1,6 @@
 {
   "name": "electron-oauth-helper",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "description": "Easy to use helper library for OAuth1 and OAuth2.",
   "main": "index.js",
   "scripts": {
