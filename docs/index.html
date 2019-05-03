@@ -88,7 +88,7 @@
 				<h2 id="usage">Usage</h2>
 				<h3 id="oauth1">OAuth1</h3>
 				<pre><code class="language-js">
-<span class="hljs-keyword">const</span> { OAuth1Provider } = <span class="hljs-built_in">require</span>(<span class="hljs-string">"electron-oauth-helper"</span>)
+<span class="hljs-keyword">import</span> OAuth1Provider <span class="hljs-keyword">from</span> <span class="hljs-string">"electron-oauth-helper/oauth1"</span>
 
 <span class="hljs-keyword">const</span> <span class="hljs-built_in">window</span> = <span class="hljs-keyword">new</span> BrowserWindow({
   <span class="hljs-attr">width</span>: <span class="hljs-number">600</span>,
@@ -109,7 +109,7 @@ provider.perform(<span class="hljs-built_in">window</span>)
   .catch(<span class="hljs-function"><span class="hljs-params">error</span> =&gt;</span> <span class="hljs-built_in">console</span>.error(error))</code></pre>
 				<h3 id="oauth2">OAuth2</h3>
 				<pre><code class="language-js">
-<span class="hljs-keyword">const</span> { OAuth2Provider } = <span class="hljs-built_in">require</span>(<span class="hljs-string">"electron-oauth-helper"</span>)
+<span class="hljs-keyword">import</span> OAuth2Provider <span class="hljs-keyword">from</span> <span class="hljs-string">"electron-oauth-helper/oauth2"</span>
 
 <span class="hljs-keyword">const</span> <span class="hljs-built_in">window</span> = <span class="hljs-keyword">new</span> BrowserWindow({
   <span class="hljs-attr">width</span>: <span class="hljs-number">600</span>,
@@ -437,56 +437,50 @@ provider.perform()
 					<li class="globals  ">
 						<a href="globals.html"><em>Globals</em></a>
 					</li>
-					<li class="label tsd-is-external">
-						<span>Internals</span>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/___test_utils_index_.html">"__test_<wbr>utils/index"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="modules/_lib___test_utils_index_.html">"lib/__test_<wbr>utils/index"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_lib_oauth1_helper_.html">"lib/oauth1/helper"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_lib_oauth1_index_.html">"lib/oauth1/index"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_lib_oauth1_index_test_.html">"lib/oauth1/index.test"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_lib_oauth2_helper_.html">"lib/oauth2/helper"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_lib_oauth2_index_.html">"lib/oauth2/index"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_lib_oauth2_index_test_.html">"lib/oauth2/index.test"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_lib_oauth2_tasks_.html">"lib/oauth2/tasks"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_lib_utils_awaitredirect_.html">"lib/utils/await<wbr>Redirect"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_lib_utils_awaitredirect_test_.html">"lib/utils/await<wbr>Redirect.test"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_lib_utils_index_.html">"lib/utils/index"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_lib_utils_request_.html">"lib/utils/request"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_lib_utils_util_.html">"lib/utils/util"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_lib_utils_util_test_.html">"lib/utils/util.test"</a>
-					</li>
-					<li class="label tsd-is-external">
-						<span>Externals</span>
-					</li>
-					<li class=" tsd-kind-external-module tsd-is-external">
 						<a href="modules/_index_.html">"index"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_oauth1_helper_.html">"oauth1/helper"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_oauth1_index_.html">"oauth1/index"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_oauth1_index_test_.html">"oauth1/index.test"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_oauth2_helper_.html">"oauth2/helper"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_oauth2_index_.html">"oauth2/index"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_oauth2_index_test_.html">"oauth2/index.test"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_oauth2_tasks_.html">"oauth2/tasks"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_utils_awaitredirect_.html">"utils/await<wbr>Redirect"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_utils_awaitredirect_test_.html">"utils/await<wbr>Redirect.test"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_utils_index_.html">"utils/index"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_utils_request_.html">"utils/request"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_utils_util_.html">"utils/util"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_utils_util_test_.html">"utils/util.test"</a>
 					</li>
 				</ul>
 			</nav>

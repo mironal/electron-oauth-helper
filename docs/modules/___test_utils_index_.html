@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>&quot;lib/utils/request&quot; | electron-oauth-helper</title>
+	<title>&quot;__test_utils/index&quot; | electron-oauth-helper</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,10 +56,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="_lib_utils_request_.html">&quot;lib/utils/request&quot;</a>
+					<a href="___test_utils_index_.html">&quot;__test_utils/index&quot;</a>
 				</li>
 			</ul>
-			<h1>External module &quot;lib/utils/request&quot;</h1>
+			<h1>External module &quot;__test_utils/index&quot;</h1>
 		</div>
 	</div>
 </header>
@@ -73,19 +73,22 @@
 						<section class="tsd-index-section ">
 							<h3>Type aliases</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-type-alias tsd-parent-kind-external-module"><a href="_lib_utils_request_.html#responsetype" class="tsd-kind-icon">Response<wbr>Type</a></li>
+								<li class="tsd-kind-type-alias tsd-parent-kind-external-module"><a href="___test_utils_index_.html#testservder" class="tsd-kind-icon">Test<wbr>Servder</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section tsd-is-not-exported">
 							<h3>Variables</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported"><a href="_lib_utils_request_.html#net" class="tsd-kind-icon">net</a></li>
+								<li class="tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported"><a href="___test_utils_index_.html#debug" class="tsd-kind-icon">debug</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Functions</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_lib_utils_request_.html#postrequest" class="tsd-kind-icon">post<wbr>Request</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported"><a href="___test_utils_index_.html#getport" class="tsd-kind-icon">get<wbr>Port</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="___test_utils_index_.html#routing" class="tsd-kind-icon">routing</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="___test_utils_index_.html#startserver" class="tsd-kind-icon">start<wbr>Server</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="___test_utils_index_.html#stopserver" class="tsd-kind-icon">stop<wbr>Server</a></li>
 							</ul>
 						</section>
 					</div>
@@ -94,28 +97,25 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Type aliases</h2>
 				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-external-module">
-					<a name="responsetype" class="tsd-anchor"></a>
-					<h3>Response<wbr>Type</h3>
-					<div class="tsd-signature tsd-kind-icon">Response<wbr>Type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+					<a name="testservder" class="tsd-anchor"></a>
+					<h3>Test<wbr>Servder</h3>
+					<div class="tsd-signature tsd-kind-icon">Test<wbr>Servder<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/mironal/electron-oauth-helper/blob/120a096/lib/utils/request.ts#L4">lib/utils/request.ts:4</a></li>
+							<li>Defined in <a href="https://github.com/mironal/electron-oauth-helper/blob/5a21d36/lib/__test_utils/index.ts#L9">__test_utils/index.ts:9</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
 						<h4>Type declaration</h4>
 						<ul class="tsd-parameters">
 							<li class="tsd-parameter">
-								<h5>body<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></h5>
+								<h5>koa<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Koa</span></h5>
 							</li>
 							<li class="tsd-parameter">
-								<h5>headers<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span></h5>
+								<h5>port<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
 							</li>
 							<li class="tsd-parameter">
-								<h5>status<wbr>Code<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
-							</li>
-							<li class="tsd-parameter">
-								<h5>status<wbr>Message<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></h5>
+								<h5>server<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Server</span></h5>
 							</li>
 						</ul>
 					</div>
@@ -124,41 +124,95 @@
 			<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
 				<h2>Variables</h2>
 				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
-					<a name="net" class="tsd-anchor"></a>
-					<h3>net</h3>
-					<div class="tsd-signature tsd-kind-icon">net<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Net</span></div>
+					<a name="debug" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> debug</h3>
+					<div class="tsd-signature tsd-kind-icon">debug<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Debugger</span><span class="tsd-signature-symbol"> =&nbsp;Debug(&quot;eoh:test_util&quot;)</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/mironal/electron-oauth-helper/blob/120a096/lib/utils/request.ts#L2">lib/utils/request.ts:2</a></li>
+							<li>Defined in <a href="https://github.com/mironal/electron-oauth-helper/blob/5a21d36/lib/__test_utils/index.ts#L7">__test_utils/index.ts:7</a></li>
 						</ul>
 					</aside>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Functions</h2>
-				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module">
-					<a name="postrequest" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagConst">Const</span> post<wbr>Request</h3>
-					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
-						<li class="tsd-signature tsd-kind-icon">post<wbr>Request<span class="tsd-signature-symbol">(</span>options<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, data<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="_lib_utils_request_.html#responsetype" class="tsd-signature-type">ResponseType</a><span class="tsd-signature-symbol">&gt;</span></li>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
+					<a name="getport" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> get<wbr>Port</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Port<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/mironal/electron-oauth-helper/blob/120a096/lib/utils/request.ts#L11">lib/utils/request.ts:11</a></li>
+									<li>Defined in <a href="https://github.com/mironal/electron-oauth-helper/blob/5a21d36/lib/__test_utils/index.ts#L40">__test_utils/index.ts:40</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module">
+					<a name="routing" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> routing</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
+						<li class="tsd-signature tsd-kind-icon">routing<span class="tsd-signature-symbol">(</span>koa<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Koa</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">(Anonymous function)</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/mironal/electron-oauth-helper/blob/5a21d36/lib/__test_utils/index.ts#L15">__test_utils/index.ts:15</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>options: <span class="tsd-signature-type">any</span></h5>
-								</li>
-								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> data: <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></h5>
+									<h5>koa: <span class="tsd-signature-type">Koa</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="_lib_utils_request_.html#responsetype" class="tsd-signature-type">ResponseType</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">(Anonymous function)</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module">
+					<a name="startserver" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> start<wbr>Server</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
+						<li class="tsd-signature tsd-kind-icon">start<wbr>Server<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/mironal/electron-oauth-helper/blob/5a21d36/lib/__test_utils/index.ts#L21">__test_utils/index.ts:21</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module">
+					<a name="stopserver" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> stop<wbr>Server</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
+						<li class="tsd-signature tsd-kind-icon">stop<wbr>Server<span class="tsd-signature-symbol">(</span>s<span class="tsd-signature-symbol">: </span><a href="___test_utils_index_.html#testservder" class="tsd-signature-type">TestServder</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/mironal/electron-oauth-helper/blob/5a21d36/lib/__test_utils/index.ts#L34">__test_utils/index.ts:34</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>s: <a href="___test_utils_index_.html#testservder" class="tsd-signature-type">TestServder</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -170,69 +224,72 @@
 					<li class="globals  ">
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
-					<li class="label tsd-is-external">
-						<span>Internals</span>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_lib___test_utils_index_.html">"lib/__test_<wbr>utils/index"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_lib_oauth1_helper_.html">"lib/oauth1/helper"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_lib_oauth1_index_.html">"lib/oauth1/index"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_lib_oauth1_index_test_.html">"lib/oauth1/index.test"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_lib_oauth2_helper_.html">"lib/oauth2/helper"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_lib_oauth2_index_.html">"lib/oauth2/index"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_lib_oauth2_index_test_.html">"lib/oauth2/index.test"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_lib_oauth2_tasks_.html">"lib/oauth2/tasks"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_lib_utils_awaitredirect_.html">"lib/utils/await<wbr>Redirect"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_lib_utils_awaitredirect_test_.html">"lib/utils/await<wbr>Redirect.test"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_lib_utils_index_.html">"lib/utils/index"</a>
-					</li>
 					<li class="current tsd-kind-external-module">
-						<a href="_lib_utils_request_.html">"lib/utils/request"</a>
+						<a href="___test_utils_index_.html">"__test_<wbr>utils/index"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="_lib_utils_util_.html">"lib/utils/util"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_lib_utils_util_test_.html">"lib/utils/util.test"</a>
-					</li>
-					<li class="label tsd-is-external">
-						<span>Externals</span>
-					</li>
-					<li class=" tsd-kind-external-module tsd-is-external">
 						<a href="_index_.html">"index"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="_oauth1_helper_.html">"oauth1/helper"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="_oauth1_index_.html">"oauth1/index"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="_oauth1_index_test_.html">"oauth1/index.test"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="_oauth2_helper_.html">"oauth2/helper"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="_oauth2_index_.html">"oauth2/index"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="_oauth2_index_test_.html">"oauth2/index.test"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="_oauth2_tasks_.html">"oauth2/tasks"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="_utils_awaitredirect_.html">"utils/await<wbr>Redirect"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="_utils_awaitredirect_test_.html">"utils/await<wbr>Redirect.test"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="_utils_index_.html">"utils/index"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="_utils_request_.html">"utils/request"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="_utils_util_.html">"utils/util"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="_utils_util_test_.html">"utils/util.test"</a>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
 					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
-						<a href="_lib_utils_request_.html#responsetype" class="tsd-kind-icon">Response<wbr>Type</a>
+						<a href="___test_utils_index_.html#testservder" class="tsd-kind-icon">Test<wbr>Servder</a>
 					</li>
 					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
-						<a href="_lib_utils_request_.html#net" class="tsd-kind-icon">net</a>
+						<a href="___test_utils_index_.html#debug" class="tsd-kind-icon">debug</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
+						<a href="___test_utils_index_.html#getport" class="tsd-kind-icon">get<wbr>Port</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-external-module">
-						<a href="_lib_utils_request_.html#postrequest" class="tsd-kind-icon">post<wbr>Request</a>
+						<a href="___test_utils_index_.html#routing" class="tsd-kind-icon">routing</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module">
+						<a href="___test_utils_index_.html#startserver" class="tsd-kind-icon">start<wbr>Server</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module">
+						<a href="___test_utils_index_.html#stopserver" class="tsd-kind-icon">stop<wbr>Server</a>
 					</li>
 				</ul>
 			</nav>
