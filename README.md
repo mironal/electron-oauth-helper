@@ -1,6 +1,6 @@
-# Electron OAuth Helper
+# I haven't used electron recently, so this repository is not currently maintained.If a pull request comes in, it could be reviewed and merged.
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/mironal/electron-oauth-helper.svg)](https://greenkeeper.io/)
+# Electron OAuth Helper
 
 [![NPM](https://nodei.co/npm/electron-oauth-helper.png)](https://nodei.co/npm/electron-oauth-helper/)
 
