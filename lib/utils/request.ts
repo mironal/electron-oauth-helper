@@ -15,7 +15,8 @@ export const postRequest = (
   return new Promise((resolve, reject) => {
     const ops = { ...options } // clone
     const headers = ops.headers || {}
-    headers["Content-Length"] = data ? Buffer.byteLength(data) : 0
+    // Not allowed to set Content-Length in electron v7.1.2 and later on
+    // headers["Content-Length"] = data ? Buffer.byteLength(data) : 0
     headers["Content-Type"] = "application/x-www-form-urlencoded"
 
     const request = net.request({ ...ops, headers, method: "POST" })
