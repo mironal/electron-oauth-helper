@@ -1,3 +1,5 @@
 docs/*
 .cache/*
 dist/*
+**/*.test.ts
+**/__test_utils/**
