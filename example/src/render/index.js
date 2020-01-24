@@ -1,10 +1,9 @@
 /* eslint-disable no-console */
 
 const ipc = require("electron").ipcRenderer
-const {
-  OAuth1Provider,
-  OAuth2Provider,
-} = require("electron").remote.require("../../../dist")
+const { OAuth1Provider, OAuth2Provider } = require("electron").remote.require(
+  "../../../dist",
+)
 
 const { BrowserWindow } = require("electron").remote
 

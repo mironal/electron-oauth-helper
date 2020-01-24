@@ -104,6 +104,11 @@ export type OAuth1OptionalParameter = {
 
 const makeOAuthParameter = <
   P extends {
+    oauth_timestamp?: number
+    oauth_version?: string
+    oauth_nonce?: string
+    oauth_signature_method?: string
+    oauth_consumer_key?: string
     [key: string]: any
   }
 >(

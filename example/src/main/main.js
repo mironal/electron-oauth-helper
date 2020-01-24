@@ -5,12 +5,11 @@ const path = require("path")
 const url = require("url")
 const ipc = require("electron").ipcMain
 
-const OAuth1Provider = require("../../../dist/oauth1")
-const OAuth2Provider = require("../../../dist/oauth2")
+const OAuth1Provider = require("../../../dist/oauth1").default
+const OAuth2Provider = require("../../../dist/oauth2").default
 
 const firebase = require("firebase")
 
-// eslint-disable-next-line node/no-missing-require
 const mapTypeToConfig = require("./config")
 if (mapTypeToConfig("Firebase")) {
   firebase.initializeApp(mapTypeToConfig("Firebase"))
@@ -22,7 +21,13 @@ let win
 
 function createWindow() {
   // Create the browser window.
-  win = new BrowserWindow({ width: 800, height: 600 })
+  win = new BrowserWindow({
+    width: 800,
+    height: 600,
+    webPreferences: {
+      nodeIntegration: true,
+    }
+  })
 
   // and load the index.html of the app.
   win.loadURL(
