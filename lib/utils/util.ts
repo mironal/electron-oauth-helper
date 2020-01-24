@@ -6,16 +6,13 @@ export const omit = <T extends {}, K extends keyof T>(
 ): Omit<T, K> => {
   let propsArray: K[] = Array.isArray(props) ? props : [props]
 
-  return Object.keys(obj).reduce(
-    (prev, k) => {
-      const key = k as K
-      if (!propsArray.includes(key)) {
-        prev[key] = obj[key]
-      }
-      return prev
-    },
-    {} as any,
-  )
+  return Object.keys(obj).reduce((prev, k) => {
+    const key = k as K
+    if (!propsArray.includes(key)) {
+      prev[key] = obj[key]
+    }
+    return prev
+  }, {} as any)
 }
 
 export const pick = <T extends {}, K extends keyof T>(
@@ -24,14 +21,11 @@ export const pick = <T extends {}, K extends keyof T>(
 ): Pick<T, K> => {
   let propsArray: K[] = Array.isArray(props) ? props : [props]
 
-  return Object.keys(obj).reduce(
-    (prev, k) => {
-      const key = k as K
-      if (propsArray.includes(key)) {
-        prev[key] = obj[key]
-      }
-      return prev
-    },
-    {} as any,
-  )
+  return Object.keys(obj).reduce((prev, k) => {
+    const key = k as K
+    if (propsArray.includes(key)) {
+      prev[key] = obj[key]
+    }
+    return prev
+  }, {} as any)
 }

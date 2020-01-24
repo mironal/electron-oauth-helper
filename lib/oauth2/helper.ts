@@ -27,22 +27,17 @@ const createAuthorizeParameters = (config: OAuthConfigType) => {
   ]
   const parameter = Object.assign(
     {},
-    keys.reduce(
-      (prev, key) => {
-        if (typeof config[key] === "string") {
-          prev[key] = config[key]
-        }
-        return prev
-      },
-      {} as OAuthConfigType,
-    ),
+    keys.reduce((prev, key) => {
+      if (typeof config[key] === "string") {
+        prev[key] = config[key]
+      }
+      return prev
+    }, {} as OAuthConfigType),
   )
   return parameter
 }
 
-export const authorizationCodeFlowTask: TaskFunction<
-  AuthorizationCodeGrantConfig
-> = async (
+export const authorizationCodeFlowTask: TaskFunction<AuthorizationCodeGrantConfig> = async (
   config: AuthorizationCodeGrantConfig,
   emitter: OAuth2EmitterType,
   window?: BrowserWindow,
@@ -142,9 +137,7 @@ export const implicitFlowTask: TaskFunction<ImplicitGrantConfig> = async (
   return hash
 }
 
-export const resourceOwnerPasswordCredentialsFlowTask: TaskFunction<
-  ResourceOwnerPasswordCredentialsGrantConfig
-> = (
+export const resourceOwnerPasswordCredentialsFlowTask: TaskFunction<ResourceOwnerPasswordCredentialsGrantConfig> = (
   config: ResourceOwnerPasswordCredentialsGrantConfig,
   emitter: OAuth2EmitterType,
 ) => {
@@ -159,9 +152,10 @@ export const resourceOwnerPasswordCredentialsFlowTask: TaskFunction<
   return postRequest({ url: config.access_token_url, headers }, postdata)
 }
 
-export const clientCredentialsFlowTask: TaskFunction<
-  ClientCredentialsGrantConfig
-> = (config: ClientCredentialsGrantConfig, emitter: OAuth2EmitterType) => {
+export const clientCredentialsFlowTask: TaskFunction<ClientCredentialsGrantConfig> = (
+  config: ClientCredentialsGrantConfig,
+  emitter: OAuth2EmitterType,
+) => {
   const parameters = omit(config, "access_token_url")
   const headers = {
     "Content-Type": "application/x-www-form-urlencoded",
