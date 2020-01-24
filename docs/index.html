@@ -56,7 +56,7 @@
 					<a href="globals.html">Globals</a>
 				</li>
 			</ul>
-			<h1> electron-oauth-helper</h1>
+			<h1>electron-oauth-helper</h1>
 		</div>
 	</div>
 </header>
@@ -64,12 +64,18 @@
 	<div class="row">
 		<div class="col-8 col-content">
 			<div class="tsd-panel tsd-typography">
-				<h1 id="electron-oauth-helper">Electron OAuth Helper</h1>
-				<p><a href="https://greenkeeper.io/"><img src="https://badges.greenkeeper.io/mironal/electron-oauth-helper.svg" alt="Greenkeeper badge"></a></p>
+				<a href="#i-haven39t-used-electron-recently-so-this-repository-is-not-currently-maintainedif-a-pull-request-comes-in-it-could-be-reviewed-and-merged" id="i-haven39t-used-electron-recently-so-this-repository-is-not-currently-maintainedif-a-pull-request-comes-in-it-could-be-reviewed-and-merged" style="color: inherit; text-decoration: none;">
+					<h1>I haven&#39;t used electron recently, so this repository is not currently maintained.If a pull request comes in, it could be reviewed and merged.</h1>
+				</a>
+				<a href="#electron-oauth-helper" id="electron-oauth-helper" style="color: inherit; text-decoration: none;">
+					<h1>Electron OAuth Helper</h1>
+				</a>
 				<p><a href="https://nodei.co/npm/electron-oauth-helper/"><img src="https://nodei.co/npm/electron-oauth-helper.png" alt="NPM"></a></p>
 				<p><a href="https://travis-ci.org/mironal/electron-oauth-helper"><img src="https://travis-ci.org/mironal/electron-oauth-helper.svg" alt="Build Status"></a></p>
 				<p>Tested by Electron 4.2.0.</p>
-				<h2 id="what-s-this">What&#39;s this</h2>
+				<a href="#what39s-this" id="what39s-this" style="color: inherit; text-decoration: none;">
+					<h2>What&#39;s this</h2>
+				</a>
 				<p>Easy to use helper library for OAuth1 and OAuth2.</p>
 				<p>All grant type supported.</p>
 				<ul>
@@ -83,10 +89,16 @@
 				</blockquote>
 				<p>You can get a token just by calling a method of start OAuth.</p>
 				<p>This library is lightweight because it depends only on <a href="https://github.com/visionmedia/debug">debug</a> module.</p>
-				<h2 id="install">Install</h2>
+				<a href="#install" id="install" style="color: inherit; text-decoration: none;">
+					<h2>Install</h2>
+				</a>
 				<p><code>npm install electron-oauth-helper --save</code></p>
-				<h2 id="usage">Usage</h2>
-				<h3 id="oauth1">OAuth1</h3>
+				<a href="#usage" id="usage" style="color: inherit; text-decoration: none;">
+					<h2>Usage</h2>
+				</a>
+				<a href="#oauth1" id="oauth1" style="color: inherit; text-decoration: none;">
+					<h3>OAuth1</h3>
+				</a>
 				<pre><code class="language-js">
 <span class="hljs-keyword">import</span> OAuth1Provider <span class="hljs-keyword">from</span> <span class="hljs-string">"electron-oauth-helper/oauth1"</span>
 
@@ -95,7 +107,7 @@
   <span class="hljs-attr">height</span>: <span class="hljs-number">800</span>,
   <span class="hljs-attr">webPreferences</span>: {
     <span class="hljs-attr">nodeIntegration</span>: <span class="hljs-literal">false</span> <span class="hljs-comment">// We recommend disabling nodeIntegration for security.</span>
-    contextIsolation: <span class="hljs-literal">true</span> <span class="hljs-comment">// We recommend enabling contextIsolation for security.</span>
+    <span class="hljs-attr">contextIsolation</span>: <span class="hljs-literal">true</span> <span class="hljs-comment">// We recommend enabling contextIsolation for security.</span>
     <span class="hljs-comment">// see https://github.com/electron/electron/blob/master/docs/tutorial/security.md</span>
   },
 })
@@ -107,7 +119,9 @@ provider.perform(<span class="hljs-built_in">window</span>)
     <span class="hljs-built_in">console</span>.log(resp)
   })
   .catch(<span class="hljs-function"><span class="hljs-params">error</span> =&gt;</span> <span class="hljs-built_in">console</span>.error(error))</code></pre>
-				<h3 id="oauth2">OAuth2</h3>
+				<a href="#oauth2" id="oauth2" style="color: inherit; text-decoration: none;">
+					<h3>OAuth2</h3>
+				</a>
 				<pre><code class="language-js">
 <span class="hljs-keyword">import</span> OAuth2Provider <span class="hljs-keyword">from</span> <span class="hljs-string">"electron-oauth-helper/oauth2"</span>
 
@@ -116,7 +130,7 @@ provider.perform(<span class="hljs-built_in">window</span>)
   <span class="hljs-attr">height</span>: <span class="hljs-number">800</span>,
   <span class="hljs-attr">webPreferences</span>: {
     <span class="hljs-attr">nodeIntegration</span>: <span class="hljs-literal">false</span> <span class="hljs-comment">// We recommend disabling nodeIntegration for security.</span>
-    contextIsolation: <span class="hljs-literal">true</span> <span class="hljs-comment">// We recommend enabling contextIsolation for security.</span>
+    <span class="hljs-attr">contextIsolation</span>: <span class="hljs-literal">true</span> <span class="hljs-comment">// We recommend enabling contextIsolation for security.</span>
     <span class="hljs-comment">// see https://github.com/electron/electron/blob/master/docs/tutorial/security.md</span>
   },
 })
@@ -138,7 +152,9 @@ provider.perform(<span class="hljs-built_in">window</span>)
     <span class="hljs-built_in">console</span>.log(resp)
   })
   .catch(<span class="hljs-function"><span class="hljs-params">error</span> =&gt;</span> <span class="hljs-built_in">console</span>.error(error))</code></pre>
-				<h3 id="firebase-auth-integration">Firebase Auth Integration</h3>
+				<a href="#firebase-auth-integration" id="firebase-auth-integration" style="color: inherit; text-decoration: none;">
+					<h3>Firebase Auth Integration</h3>
+				</a>
 				<p>Electron can not use firebase auth <code>signInWithPopup</code> or <code>signInWithRedirect</code>.
 				You can only use email/password authentication.</p>
 				<p>But, you can use GitHub, Twitter, etc... authentication by using manually flow.</p>
@@ -164,12 +180,18 @@ provider.perform(<span class="hljs-built_in">window</span>)
 				<blockquote>
 					<p>Don&#39;t forget setting firebase auth.</p>
 				</blockquote>
-				<h2 id="example">Example</h2>
+				<a href="#example" id="example" style="color: inherit; text-decoration: none;">
+					<h2>Example</h2>
+				</a>
 				<p>example electron app =&gt; <code>example/</code></p>
 				<p><img src="./ss/example.png" alt="example screenshot"></p>
 				<hr>
-				<h1 id="which-parameters-are-required-">Which parameters are required?</h1>
-				<h2 id="oauth-2"><a href="https://tools.ietf.org/html/rfc6749">OAuth 2</a></h2>
+				<a href="#which-parameters-are-required" id="which-parameters-are-required" style="color: inherit; text-decoration: none;">
+					<h1>Which parameters are required?</h1>
+				</a>
+				<a href="#a-hrefhttpstoolsietforghtmlrfc6749oauth-2a" id="a-hrefhttpstoolsietforghtmlrfc6749oauth-2a" style="color: inherit; text-decoration: none;">
+					<h2><a href="https://tools.ietf.org/html/rfc6749">OAuth 2</a></h2>
+				</a>
 				<p>The OAuth2 defines four grant type. Here is sample code for each.</p>
 				<ol>
 					<li>Authorization Code Grant</li>
@@ -177,7 +199,9 @@ provider.perform(<span class="hljs-built_in">window</span>)
 					<li>Resource Owner Password Credentials Grant</li>
 					<li>Client Credentials Grant</li>
 				</ol>
-				<h3 id="authorization-code-grant">Authorization Code Grant</h3>
+				<a href="#authorization-code-grant" id="authorization-code-grant" style="color: inherit; text-decoration: none;">
+					<h3>Authorization Code Grant</h3>
+				</a>
 				<blockquote>
 					<p><a href="https://tools.ietf.org/html/rfc6749#section-4.1">RFC 6749: 4.1</a></p>
 				</blockquote>
@@ -198,101 +222,111 @@ provider.perform()
 .then(<span class="hljs-function"><span class="hljs-params">resp</span> =&gt;</span> {
   <span class="hljs-comment">// Got Access Token (◍•ᴗ•◍)</span>
 })</code></pre>
-				<h4 id="authorization-request">Authorization Request</h4>
+				<a href="#authorization-request" id="authorization-request" style="color: inherit; text-decoration: none;">
+					<h4>Authorization Request</h4>
+				</a>
 				<p><code>GET /authorize?...</code></p>
 				<pre><code class="language-js"><span class="hljs-comment">// more detail</span>
 {
   <span class="hljs-comment">// REQUIRED. Value MUST be set to "code".</span>
-  response_type: <span class="hljs-string">"code"</span>,
+  <span class="hljs-attr">response_type</span>: <span class="hljs-string">"code"</span>,
 
   <span class="hljs-comment">// REQUIRED. The client identifier as described in Section 2.2.</span>
-  client_id: <span class="hljs-string">""</span>,
+  <span class="hljs-attr">client_id</span>: <span class="hljs-string">""</span>,
 
   <span class="hljs-comment">// OPTIONAL. As described in Section 3.1.2.</span>
-  redirect_uri: <span class="hljs-string">""</span>,
+  <span class="hljs-attr">redirect_uri</span>: <span class="hljs-string">""</span>,
 
   <span class="hljs-comment">// OPTIONAL. The scope of the access request as described by Section 3.3.</span>
-  scope: <span class="hljs-string">""</span>,
+  <span class="hljs-attr">scope</span>: <span class="hljs-string">""</span>,
 
   <span class="hljs-comment">// RECOMMENDED.  An opaque value used by the client to maintain</span>
   <span class="hljs-comment">// state between the request and callback.  The authorization</span>
   <span class="hljs-comment">// server includes this value when redirecting the user-agent back</span>
   <span class="hljs-comment">// to the client.  The parameter SHOULD be used for preventing</span>
   <span class="hljs-comment">// cross-site request forgery as described in Section 10.12.</span>
-  state: <span class="hljs-string">""</span>,
+  <span class="hljs-attr">state</span>: <span class="hljs-string">""</span>,
 
   <span class="hljs-comment">// Additional.</span>
   <span class="hljs-comment">// the `code_challenge` and `code_challenge` are optional parameters</span>
   <span class="hljs-comment">// defined in RFC 7636.</span>
 
   <span class="hljs-comment">// REQUIRED.  Code challenge.</span>
-  code_challenge: <span class="hljs-string">""</span>,
+  <span class="hljs-attr">code_challenge</span>: <span class="hljs-string">""</span>,
 
   <span class="hljs-comment">// OPTIONAL, defaults to "plain" if not present in the request.  Code</span>
   <span class="hljs-comment">// verifier transformation method is "S256" or "plain".</span>
-  code_challege_method: <span class="hljs-string">""</span>,
+  <span class="hljs-attr">code_challege_method</span>: <span class="hljs-string">""</span>,
 }</code></pre>
-				<h4 id="authorization-response">Authorization Response</h4>
+				<a href="#authorization-response" id="authorization-response" style="color: inherit; text-decoration: none;">
+					<h4>Authorization Response</h4>
+				</a>
 				<pre><code class="language-js">{
   <span class="hljs-comment">// REQUIRED.  The authorization code generated by the</span>
   <span class="hljs-comment">// authorization server.</span>
-  code: <span class="hljs-string">""</span>,
+  <span class="hljs-attr">code</span>: <span class="hljs-string">""</span>,
 
   <span class="hljs-comment">// REQUIRED if the "state" parameter was present in the client</span>
   <span class="hljs-comment">// authorization request.  The exact value received from the</span>
   <span class="hljs-comment">// client.</span>
-  state: <span class="hljs-string">""</span>,
+  <span class="hljs-attr">state</span>: <span class="hljs-string">""</span>,
 }</code></pre>
 				<blockquote>
 					<p><a href="https://tools.ietf.org/html/rfc6749#section-4.1.2.1">Error Response</a></p>
 				</blockquote>
-				<h4 id="access-token-request">Access Token Request</h4>
+				<a href="#access-token-request" id="access-token-request" style="color: inherit; text-decoration: none;">
+					<h4>Access Token Request</h4>
+				</a>
 				<p><code>POST /token</code></p>
 				<pre><code class="language-js">{
   <span class="hljs-comment">// REQUIRED.  Value MUST be set to "authorization_code".</span>
-  grant_type: <span class="hljs-string">"authorization_code"</span>,
+  <span class="hljs-attr">grant_type</span>: <span class="hljs-string">"authorization_code"</span>,
 
   <span class="hljs-comment">// REQUIRED.  The authorization code received from the</span>
   <span class="hljs-comment">// authorization server.</span>
-  code: <span class="hljs-string">""</span>,
+  <span class="hljs-attr">code</span>: <span class="hljs-string">""</span>,
 
   <span class="hljs-comment">// REQUIRED, if the "redirect_uri" parameter was included in the</span>
   <span class="hljs-comment">// authorization request as described in Section 4.1.1, and their</span>
   <span class="hljs-comment">// values MUST be identical.</span>
-  redirect_uri: <span class="hljs-string">""</span>,
+  <span class="hljs-attr">redirect_uri</span>: <span class="hljs-string">""</span>,
 
   <span class="hljs-comment">// REQUIRED, if the client is not authenticating with the</span>
   <span class="hljs-comment">// authorization server as described in Section 3.2.1.</span>
-  client_id: <span class="hljs-string">""</span>,
+  <span class="hljs-attr">client_id</span>: <span class="hljs-string">""</span>,
 }</code></pre>
-				<h4 id="access-token-response">Access Token Response</h4>
+				<a href="#access-token-response" id="access-token-response" style="color: inherit; text-decoration: none;">
+					<h4>Access Token Response</h4>
+				</a>
 				<pre><code class="language-js">{
   <span class="hljs-comment">// REQUIRED.  The access token issued by the authorization server.</span>
-  access_token: <span class="hljs-string">""</span>,
+  <span class="hljs-attr">access_token</span>: <span class="hljs-string">""</span>,
 
   <span class="hljs-comment">// REQUIRED.  The type of the token issued as described in</span>
   <span class="hljs-comment">// Section 7.1.  Value is case insensitive.</span>
-  token_type: <span class="hljs-string">""</span>,
+  <span class="hljs-attr">token_type</span>: <span class="hljs-string">""</span>,
 
   <span class="hljs-comment">// RECOMMENDED.  The lifetime in seconds of the access token.  For</span>
   <span class="hljs-comment">// example, the value "3600" denotes that the access token will</span>
   <span class="hljs-comment">// expire in one hour from the time the response was generated.</span>
   <span class="hljs-comment">// If omitted, the authorization server SHOULD provide the</span>
   <span class="hljs-comment">// expiration time via other means or document the default value.</span>
-  expires_in: <span class="hljs-string">""</span>,
+  <span class="hljs-attr">expires_in</span>: <span class="hljs-string">""</span>,
 
   <span class="hljs-comment">// OPTIONAL.  The refresh token, which can be used to obtain new</span>
   <span class="hljs-comment">// access tokens using the same authorization grant as described</span>
   <span class="hljs-comment">// in Section 6.</span>
-  refresh_token: <span class="hljs-string">""</span>,
+  <span class="hljs-attr">refresh_token</span>: <span class="hljs-string">""</span>,
 
   <span class="hljs-comment">// OPTIONAL, if identical to the scope requested by the client;</span>
   <span class="hljs-comment">// otherwise, REQUIRED.  The scope of the access token as</span>
   <span class="hljs-comment">// described by Section 3.3.</span>
-  scope: <span class="hljs-string">""</span>,
+  <span class="hljs-attr">scope</span>: <span class="hljs-string">""</span>,
 }</code></pre>
 				<p><a href="https://tools.ietf.org/html/rfc6749#section-5.2">Error Response</a></p>
-				<h3 id="implicit-grant">Implicit Grant</h3>
+				<a href="#implicit-grant" id="implicit-grant" style="color: inherit; text-decoration: none;">
+					<h3>Implicit Grant</h3>
+				</a>
 				<blockquote>
 					<p><a href="https://tools.ietf.org/html/rfc6749#section-4.2">RFC 6749: 4.2</a></p>
 				</blockquote>
@@ -310,36 +344,42 @@ provider.perform()
 .then(<span class="hljs-function"><span class="hljs-params">resp</span> =&gt;</span> {
   <span class="hljs-comment">// Got Access Token (◍•ᴗ•◍)</span>
 })</code></pre>
-				<h4 id="authorization-request">Authorization Request</h4>
+				<a href="#authorization-request-1" id="authorization-request-1" style="color: inherit; text-decoration: none;">
+					<h4>Authorization Request</h4>
+				</a>
 				<p><code>GET /authorize?...</code></p>
 				<pre><code class="language-js">{
   <span class="hljs-comment">// REQUIRED. Value MUST be set to "token".</span>
-  response_type: <span class="hljs-string">"token"</span>,
+  <span class="hljs-attr">response_type</span>: <span class="hljs-string">"token"</span>,
 
   <span class="hljs-comment">// REQUIRED. The client identifier as described in Section 2.2.</span>
-  client_id: <span class="hljs-string">""</span>,
+  <span class="hljs-attr">client_id</span>: <span class="hljs-string">""</span>,
   <span class="hljs-comment">// OPTIONAL.  As described in Section 3.1.2.</span>
-  redirect_uri: <span class="hljs-string">""</span>,
+  <span class="hljs-attr">redirect_uri</span>: <span class="hljs-string">""</span>,
 
   <span class="hljs-comment">// OPTIONAL. The scope of the access request as described by</span>
   <span class="hljs-comment">// Section 3.3.</span>
-  scope: <span class="hljs-string">""</span>,
+  <span class="hljs-attr">scope</span>: <span class="hljs-string">""</span>,
 
   <span class="hljs-comment">// RECOMMENDED.  An opaque value used by the client to maintain</span>
   <span class="hljs-comment">// state between the request and callback.  The authorization</span>
   <span class="hljs-comment">// server includes this value when redirecting the user-agent back</span>
   <span class="hljs-comment">// to the client.  The parameter SHOULD be used for preventing</span>
   <span class="hljs-comment">// cross-site request forgery as described in Section 10.12.</span>
-  state: <span class="hljs-string">""</span>,
+  <span class="hljs-attr">state</span>: <span class="hljs-string">""</span>,
 }</code></pre>
-				<h4 id="access-token-response">Access Token Response</h4>
+				<a href="#access-token-response-1" id="access-token-response-1" style="color: inherit; text-decoration: none;">
+					<h4>Access Token Response</h4>
+				</a>
 				<blockquote>
 					<p><a href="https://tools.ietf.org/html/rfc6749#section-4.2.2">Successful Response</a></p>
 				</blockquote>
 				<blockquote>
 					<p><a href="https://tools.ietf.org/html/rfc6749#section-4.2.2.1">Error Response</a></p>
 				</blockquote>
-				<h3 id="resource-owner-password-credentials-grant">Resource Owner Password Credentials Grant</h3>
+				<a href="#resource-owner-password-credentials-grant" id="resource-owner-password-credentials-grant" style="color: inherit; text-decoration: none;">
+					<h3>Resource Owner Password Credentials Grant</h3>
+				</a>
 				<blockquote>
 					<p><a href="https://tools.ietf.org/html/rfc6749#section-4.3">RFC 6749: 4.3</a></p>
 				</blockquote>
@@ -357,32 +397,40 @@ provider.perform()
 .then( <span class="hljs-function"><span class="hljs-params">resp</span> =&gt;</span> {
   <span class="hljs-comment">// Got Access Token (◍•ᴗ•◍)</span>
 })</code></pre>
-				<h4 id="authorization-request-and-response">Authorization Request and Response</h4>
+				<a href="#authorization-request-and-response" id="authorization-request-and-response" style="color: inherit; text-decoration: none;">
+					<h4>Authorization Request and Response</h4>
+				</a>
 				<p>No need.</p>
-				<h4 id="access-token-request">Access Token Request</h4>
+				<a href="#access-token-request-1" id="access-token-request-1" style="color: inherit; text-decoration: none;">
+					<h4>Access Token Request</h4>
+				</a>
 				<p><code>POST /token</code></p>
 				<pre><code class="language-js">{
   <span class="hljs-comment">// REQUIRED. Value MUST be set to "password".</span>
-  grant_type: <span class="hljs-string">"password"</span>,
+  <span class="hljs-attr">grant_type</span>: <span class="hljs-string">"password"</span>,
 
   <span class="hljs-comment">// REQUIRED. The resource owner username.</span>
-  username: <span class="hljs-string">""</span>,
+  <span class="hljs-attr">username</span>: <span class="hljs-string">""</span>,
 
   <span class="hljs-comment">// REQUIRED. The resource owner password.</span>
-  password: <span class="hljs-string">""</span>,
+  <span class="hljs-attr">password</span>: <span class="hljs-string">""</span>,
 
   <span class="hljs-comment">// OPTIONAL.  The scope of the access request as described by</span>
   <span class="hljs-comment">// Section 3.3.</span>
-  scope: <span class="hljs-string">""</span>,
+  <span class="hljs-attr">scope</span>: <span class="hljs-string">""</span>,
 }</code></pre>
-				<h4 id="access-token-response">Access Token Response</h4>
+				<a href="#access-token-response-2" id="access-token-response-2" style="color: inherit; text-decoration: none;">
+					<h4>Access Token Response</h4>
+				</a>
 				<blockquote>
 					<p><a href="https://tools.ietf.org/html/rfc6749#section-5.1">Successful Response</a></p>
 				</blockquote>
 				<blockquote>
 					<p><a href="https://tools.ietf.org/html/rfc6749#section-5.2">Error Response</a></p>
 				</blockquote>
-				<h3 id="client-credentials-grant">Client Credentials Grant</h3>
+				<a href="#client-credentials-grant" id="client-credentials-grant" style="color: inherit; text-decoration: none;">
+					<h3>Client Credentials Grant</h3>
+				</a>
 				<blockquote>
 					<p><a href="https://tools.ietf.org/html/rfc6749#section-4.4">RFC 6749: 4.4</a></p>
 				</blockquote>
@@ -399,32 +447,42 @@ provider.perform()
   <span class="hljs-comment">// Got Access Token (◍•ᴗ•◍)</span>
 })
 </code></pre>
-				<h4 id="authorization-request-and-response">Authorization Request and Response</h4>
+				<a href="#authorization-request-and-response-1" id="authorization-request-and-response-1" style="color: inherit; text-decoration: none;">
+					<h4>Authorization Request and Response</h4>
+				</a>
 				<p>No need.</p>
-				<h4 id="access-token-request">Access Token Request</h4>
+				<a href="#access-token-request-2" id="access-token-request-2" style="color: inherit; text-decoration: none;">
+					<h4>Access Token Request</h4>
+				</a>
 				<p><code>POST /token</code></p>
 				<pre><code class="language-js">{
   <span class="hljs-comment">// REQUIRED. Value MUST be set to "client_credentials".</span>
-  grant_type: <span class="hljs-string">"client_credentials"</span>,
+  <span class="hljs-attr">grant_type</span>: <span class="hljs-string">"client_credentials"</span>,
 
   <span class="hljs-comment">// OPTIONAL. The scope of the access request as described by</span>
   <span class="hljs-comment">// Section 3.3.</span>
-  scope: <span class="hljs-string">""</span>,
+  <span class="hljs-attr">scope</span>: <span class="hljs-string">""</span>,
 }</code></pre>
-				<h4 id="access-token-response">Access Token Response</h4>
+				<a href="#access-token-response-3" id="access-token-response-3" style="color: inherit; text-decoration: none;">
+					<h4>Access Token Response</h4>
+				</a>
 				<blockquote>
 					<p><a href="https://tools.ietf.org/html/rfc6749#section-5.1">Successful Response</a></p>
 				</blockquote>
 				<blockquote>
 					<p><a href="https://tools.ietf.org/html/rfc6749#section-5.2">Error Response</a></p>
 				</blockquote>
-				<h3 id="refreshing-an-access-token">Refreshing an Access Token</h3>
+				<a href="#refreshing-an-access-token" id="refreshing-an-access-token" style="color: inherit; text-decoration: none;">
+					<h3>Refreshing an Access Token</h3>
+				</a>
 				<blockquote>
 					<p><a href="https://tools.ietf.org/html/rfc6749#section-6">RFC 6749: 6</a></p>
 				</blockquote>
 				<p>TODO</p>
 				<hr>
-				<h2 id="how-to-release">How to release</h2>
+				<a href="#how-to-release" id="how-to-release" style="color: inherit; text-decoration: none;">
+					<h2>How to release</h2>
+				</a>
 				<ol>
 					<li><code>npm version patch | minor | major |...</code></li>
 					<li><code>npm publish</code></li>
@@ -438,49 +496,49 @@ provider.perform()
 						<a href="globals.html"><em>Globals</em></a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="modules/___test_utils_index_.html">"__test_<wbr>utils/index"</a>
+						<a href="modules/___test_utils_index_.html">&quot;__test_<wbr>utils/index&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="modules/_index_.html">"index"</a>
+						<a href="modules/_index_.html">&quot;index&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="modules/_oauth1_helper_.html">"oauth1/helper"</a>
+						<a href="modules/_oauth1_helper_.html">&quot;oauth1/helper&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="modules/_oauth1_index_.html">"oauth1/index"</a>
+						<a href="modules/_oauth1_index_.html">&quot;oauth1/index&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="modules/_oauth1_index_test_.html">"oauth1/index.test"</a>
+						<a href="modules/_oauth1_index_test_.html">&quot;oauth1/index.test&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="modules/_oauth2_helper_.html">"oauth2/helper"</a>
+						<a href="modules/_oauth2_helper_.html">&quot;oauth2/helper&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="modules/_oauth2_index_.html">"oauth2/index"</a>
+						<a href="modules/_oauth2_index_.html">&quot;oauth2/index&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="modules/_oauth2_index_test_.html">"oauth2/index.test"</a>
+						<a href="modules/_oauth2_index_test_.html">&quot;oauth2/index.test&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="modules/_oauth2_tasks_.html">"oauth2/tasks"</a>
+						<a href="modules/_oauth2_tasks_.html">&quot;oauth2/tasks&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="modules/_utils_awaitredirect_.html">"utils/await<wbr>Redirect"</a>
+						<a href="modules/_utils_awaitredirect_.html">&quot;utils/await<wbr>Redirect&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="modules/_utils_awaitredirect_test_.html">"utils/await<wbr>Redirect.test"</a>
+						<a href="modules/_utils_awaitredirect_test_.html">&quot;utils/await<wbr>Redirect.test&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="modules/_utils_index_.html">"utils/index"</a>
+						<a href="modules/_utils_index_.html">&quot;utils/index&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="modules/_utils_request_.html">"utils/request"</a>
+						<a href="modules/_utils_request_.html">&quot;utils/request&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="modules/_utils_util_.html">"utils/util"</a>
+						<a href="modules/_utils_util_.html">&quot;utils/util&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="modules/_utils_util_test_.html">"utils/util.test"</a>
+						<a href="modules/_utils_util_test_.html">&quot;utils/util.test&quot;</a>
 					</li>
 				</ul>
 			</nav>
@@ -503,6 +561,7 @@ provider.perform()
 				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
 				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
 				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
@@ -551,7 +610,7 @@ provider.perform()
 	</div>
 </footer>
 <div class="container tsd-generator">
-	<p>Generated using <a href="http://typedoc.org/" target="_blank">TypeDoc</a></p>
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
 </div>
 <div class="overlay"></div>
 <script src="assets/js/main.js"></script>

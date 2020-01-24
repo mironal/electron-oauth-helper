@@ -1,6 +1,6 @@
 {
   "name": "electron-oauth-helper",
-  "version": "5.0.1",
+  "version": "5.0.2",
   "description": "Easy to use helper library for OAuth1 and OAuth2.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
