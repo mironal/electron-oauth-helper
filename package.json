@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "postinstall": "electron-rebuild -m node_modules/grpc",
+    "rebuild": "electron-rebuild -m node_modules/grpc",
     "start:example": "electron ./example/src/main/main.js",
     "lint": "eslint lib/**/*",
     "lint:fix": "eslint --fix lib/**/*",
