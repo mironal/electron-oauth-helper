@@ -5,13 +5,14 @@ import {
   resourceOwnerPasswordCredentialsFlowTask,
   clientCredentialsFlowTask,
 } from "./helper"
-import { OAuthConfigType } from "../"
+import { OAuthConfigType, WindowOptions } from "../"
 import { OAuth2EmitterType } from "."
 
 export type TaskFunction<C> = (
   config: C,
   ee: OAuth2EmitterType,
   window?: BrowserWindow,
+  windowOptions?: WindowOptions
 ) => Promise<any>
 
 export const flowTaskFor = (config: OAuthConfigType): TaskFunction<any> => {

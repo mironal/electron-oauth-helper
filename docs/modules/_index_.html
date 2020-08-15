@@ -97,10 +97,10 @@
 				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-external-module">
 					<a name="accesstokenrequestparameter" class="tsd-anchor"></a>
 					<h3>Access<wbr>Token<wbr>Request<wbr>Parameter</h3>
-					<div class="tsd-signature tsd-kind-icon">Access<wbr>Token<wbr>Request<wbr>Parameter<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+					<div class="tsd-signature tsd-kind-icon">Access<wbr>Token<wbr>Request<wbr>Parameter<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>client_id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>client_secret<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>code<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>grant_type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">"authorization_code"</span><span class="tsd-signature-symbol">; </span>redirect_uri<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>state<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> }</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/mironal/electron-oauth-helper/blob/5a21d36/lib/index.ts#L28">index.ts:28</a></li>
+							<li>Defined in <a href="https://github.com/mironal/electron-oauth-helper/blob/4a46a05/lib/index.ts#L28">lib/index.ts:28</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -133,7 +133,7 @@
 					<div class="tsd-signature tsd-kind-icon">Authorization<wbr>Code<wbr>Grant<wbr>Config<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Required</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Pick</span><span class="tsd-signature-symbol">&lt;</span><a href="_index_.html#oauthconfigtype" class="tsd-signature-type">OAuthConfigType</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">"authorize_url"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"access_token_url"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"client_id"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"redirect_uri"</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-type">Pick</span><span class="tsd-signature-symbol">&lt;</span><a href="_index_.html#oauthconfigtype" class="tsd-signature-type">OAuthConfigType</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">"state"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"client_secret"</span><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/mironal/electron-oauth-helper/blob/5a21d36/lib/index.ts#L20">index.ts:20</a></li>
+							<li>Defined in <a href="https://github.com/mironal/electron-oauth-helper/blob/4a46a05/lib/index.ts#L20">lib/index.ts:20</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -143,7 +143,7 @@
 					<div class="tsd-signature tsd-kind-icon">Client<wbr>Credentials<wbr>Grant<wbr>Config<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Required</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Pick</span><span class="tsd-signature-symbol">&lt;</span><a href="_index_.html#oauthconfigtype" class="tsd-signature-type">OAuthConfigType</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">"grant_type"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"access_token_url"</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/mironal/electron-oauth-helper/blob/5a21d36/lib/index.ts#L64">index.ts:64</a></li>
+							<li>Defined in <a href="https://github.com/mironal/electron-oauth-helper/blob/4a46a05/lib/index.ts#L64">lib/index.ts:64</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -153,17 +153,17 @@
 					<div class="tsd-signature tsd-kind-icon">Implicit<wbr>Grant<wbr>Config<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Required</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Pick</span><span class="tsd-signature-symbol">&lt;</span><a href="_index_.html#oauthconfigtype" class="tsd-signature-type">OAuthConfigType</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">"authorize_url"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"response_type"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"client_id"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"redirect_uri"</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/mironal/electron-oauth-helper/blob/5a21d36/lib/index.ts#L50">index.ts:50</a></li>
+							<li>Defined in <a href="https://github.com/mironal/electron-oauth-helper/blob/4a46a05/lib/index.ts#L50">lib/index.ts:50</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-external-module">
 					<a name="oauthconfigtype" class="tsd-anchor"></a>
 					<h3>OAuth<wbr>Config<wbr>Type</h3>
-					<div class="tsd-signature tsd-kind-icon">OAuth<wbr>Config<wbr>Type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+					<div class="tsd-signature tsd-kind-icon">OAuth<wbr>Config<wbr>Type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>access_token_url<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>authorize_url<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>client_id<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>client_secret<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>code<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>grant_type<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">"authorization_code"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"password"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"client_credentials"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>password<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>redirect_uri<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>response_type<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">"code"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"token"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"password"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>scope<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>state<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>username<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> }</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/mironal/electron-oauth-helper/blob/5a21d36/lib/index.ts#L5">index.ts:5</a></li>
+							<li>Defined in <a href="https://github.com/mironal/electron-oauth-helper/blob/4a46a05/lib/index.ts#L5">lib/index.ts:5</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -214,19 +214,28 @@
 					<div class="tsd-signature tsd-kind-icon">OAuth<wbr>Flow<wbr>Type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"code"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"token"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"password"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"client_credentials"</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/mironal/electron-oauth-helper/blob/5a21d36/lib/index.ts#L3">index.ts:3</a></li>
+							<li>Defined in <a href="https://github.com/mironal/electron-oauth-helper/blob/4a46a05/lib/index.ts#L3">lib/index.ts:3</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-external-module tsd-has-type-parameter">
 					<a name="omit" class="tsd-anchor"></a>
 					<h3>Omit</h3>
-					<div class="tsd-signature tsd-kind-icon">Omit<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Pick</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">Exclude</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">keyof T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></div>
+					<div class="tsd-signature tsd-kind-icon">Omit&lt;T, K&gt;<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Pick</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">Exclude</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-symbol">keyof </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/mironal/electron-oauth-helper/blob/5a21d36/lib/index.ts#L1">index.ts:1</a></li>
+							<li>Defined in <a href="https://github.com/mironal/electron-oauth-helper/blob/4a46a05/lib/index.ts#L1">lib/index.ts:1</a></li>
 						</ul>
 					</aside>
+					<h4 class="tsd-type-parameters-title">Type parameters</h4>
+					<ul class="tsd-type-parameters">
+						<li>
+							<h4>T</h4>
+						</li>
+						<li>
+							<h4>K<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">keyof </span><span class="tsd-signature-type">T</span></h4>
+						</li>
+					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-external-module">
 					<a name="resourceownerpasswordcredentialsgrantconfig" class="tsd-anchor"></a>
@@ -234,7 +243,7 @@
 					<div class="tsd-signature tsd-kind-icon">Resource<wbr>Owner<wbr>Password<wbr>Credentials<wbr>Grant<wbr>Config<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Required</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Pick</span><span class="tsd-signature-symbol">&lt;</span><a href="_index_.html#oauthconfigtype" class="tsd-signature-type">OAuthConfigType</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">"access_token_url"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"response_type"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"username"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"password"</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/mironal/electron-oauth-helper/blob/5a21d36/lib/index.ts#L57">index.ts:57</a></li>
+							<li>Defined in <a href="https://github.com/mironal/electron-oauth-helper/blob/4a46a05/lib/index.ts#L57">lib/index.ts:57</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -247,49 +256,49 @@
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="___test_utils_index_.html">"__test_<wbr>utils/index"</a>
+						<a href="___test_utils_index_.html">&quot;__test_<wbr>utils/index&quot;</a>
 					</li>
 					<li class="current tsd-kind-external-module">
-						<a href="_index_.html">"index"</a>
+						<a href="_index_.html">&quot;index&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="_oauth1_helper_.html">"oauth1/helper"</a>
+						<a href="_oauth1_helper_.html">&quot;oauth1/helper&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="_oauth1_index_.html">"oauth1/index"</a>
+						<a href="_oauth1_index_.html">&quot;oauth1/index&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="_oauth1_index_test_.html">"oauth1/index.test"</a>
+						<a href="_oauth1_index_test_.html">&quot;oauth1/index.test&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="_oauth2_helper_.html">"oauth2/helper"</a>
+						<a href="_oauth2_helper_.html">&quot;oauth2/helper&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="_oauth2_index_.html">"oauth2/index"</a>
+						<a href="_oauth2_index_.html">&quot;oauth2/index&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="_oauth2_index_test_.html">"oauth2/index.test"</a>
+						<a href="_oauth2_index_test_.html">&quot;oauth2/index.test&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="_oauth2_tasks_.html">"oauth2/tasks"</a>
+						<a href="_oauth2_tasks_.html">&quot;oauth2/tasks&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="_utils_awaitredirect_.html">"utils/await<wbr>Redirect"</a>
+						<a href="_utils_awaitredirect_.html">&quot;utils/await<wbr>Redirect&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="_utils_awaitredirect_test_.html">"utils/await<wbr>Redirect.test"</a>
+						<a href="_utils_awaitredirect_test_.html">&quot;utils/await<wbr>Redirect.test&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="_utils_index_.html">"utils/index"</a>
+						<a href="_utils_index_.html">&quot;utils/index&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="_utils_request_.html">"utils/request"</a>
+						<a href="_utils_request_.html">&quot;utils/request&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="_utils_util_.html">"utils/util"</a>
+						<a href="_utils_util_.html">&quot;utils/util&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="_utils_util_test_.html">"utils/util.test"</a>
+						<a href="_utils_util_test_.html">&quot;utils/util.test&quot;</a>
 					</li>
 				</ul>
 			</nav>
@@ -339,6 +348,7 @@
 				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
 				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
 				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
@@ -387,7 +397,7 @@
 	</div>
 </footer>
 <div class="container tsd-generator">
-	<p>Generated using <a href="http://typedoc.org/" target="_blank">TypeDoc</a></p>
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
 </div>
 <div class="overlay"></div>
 <script src="../assets/js/main.js"></script>
