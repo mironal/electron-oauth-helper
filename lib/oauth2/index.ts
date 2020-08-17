@@ -1,5 +1,5 @@
 import Debug from "debug"
-import { OAuthConfigType } from "../"
+import { OAuthConfigType, WindowOptions } from "../"
 import { BrowserWindow } from "electron"
 import { validate, needWindowForGrantType } from "./helper"
 import { flowTaskFor } from "./tasks"
@@ -72,7 +72,7 @@ export default class OAuth2Provider extends EventEmitter
    * ```
    *
    */
-  async perform(window?: BrowserWindow): Promise<ResponseType | string> {
+  async perform(window?: BrowserWindow, windowOptions?: WindowOptions): Promise<ResponseType | string> {
     const config = this.config
 
     const task = flowTaskFor(config)
@@ -93,7 +93,7 @@ export default class OAuth2Provider extends EventEmitter
     }
 
     debug("start OAUTH2")
-    const resp = await task(config, this, window)
+    const resp = await task(config, this, window, windowOptions)
     this.finished = true
     if (this.userCancelError) {
       debug("User cancelled")

@@ -65,6 +65,11 @@ export type ClientCredentialsGrantConfig = Required<
   Pick<OAuthConfigType, "grant_type" | "access_token_url">
 >
 
+export type WindowOptions = {
+  // Need to set as OAuth2 application not accept default user agent
+  userAgent?: string
+}
+
 export class EOHError extends Error {
   public query?: string
   constructor(message?: string) {
