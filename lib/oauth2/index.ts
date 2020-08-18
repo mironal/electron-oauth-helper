@@ -72,7 +72,10 @@ export default class OAuth2Provider extends EventEmitter
    * ```
    *
    */
-  async perform(window?: BrowserWindow, windowOptions?: WindowOptions): Promise<ResponseType | string> {
+  async perform(
+    window?: BrowserWindow,
+    windowOptions?: WindowOptions,
+  ): Promise<ResponseType | string> {
     const config = this.config
 
     const task = flowTaskFor(config)

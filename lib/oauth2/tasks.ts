@@ -12,7 +12,7 @@ export type TaskFunction<C> = (
   config: C,
   ee: OAuth2EmitterType,
   window?: BrowserWindow,
-  windowOptions?: WindowOptions
+  windowOptions?: WindowOptions,
 ) => Promise<any>
 
 export const flowTaskFor = (config: OAuthConfigType): TaskFunction<any> => {

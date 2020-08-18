@@ -11,7 +11,7 @@ import {
   ImplicitGrantConfig,
   EOHError,
   OAuthFlowType,
-  WindowOptions
+  WindowOptions,
 } from "../"
 import { BrowserWindow } from "electron"
 import { TaskFunction } from "./tasks"
@@ -42,7 +42,7 @@ export const authorizationCodeFlowTask: TaskFunction<AuthorizationCodeGrantConfi
   config: AuthorizationCodeGrantConfig,
   emitter: OAuth2EmitterType,
   window?: BrowserWindow,
-  windowOptions: WindowOptions = { userAgent: "" }
+  windowOptions: WindowOptions = { userAgent: "" },
 ): Promise<ResponseType> => {
   if (!window) {
     return Promise.reject(new Error("window is required"))
@@ -55,16 +55,14 @@ export const authorizationCodeFlowTask: TaskFunction<AuthorizationCodeGrantConfi
     authorizeParameters,
   )}`
 
-  const userAgent = windowOptions.userAgent || "";
+  const userAgent = windowOptions.userAgent || ""
 
   setImmediate(() => {
     debug("load", authorizeUrl)
 
-    if (
-      userAgent.length > 0
-    ) {
+    if (userAgent.length > 0) {
       window.loadURL(authorizeUrl, {
-        userAgent
+        userAgent,
       })
     } else {
       window.loadURL(authorizeUrl)
@@ -122,7 +120,7 @@ export const implicitFlowTask: TaskFunction<ImplicitGrantConfig> = async (
   config: ImplicitGrantConfig,
   emitter: OAuth2EmitterType,
   window?: BrowserWindow,
-  windowOptions: WindowOptions = { userAgent: "" }
+  windowOptions: WindowOptions = { userAgent: "" },
 ): Promise<string> => {
   if (!window) {
     return Promise.reject(new Error("window is required"))
@@ -135,14 +133,12 @@ export const implicitFlowTask: TaskFunction<ImplicitGrantConfig> = async (
     authorizeParameters,
   )}`
 
-  const userAgent = windowOptions.userAgent || "";
+  const userAgent = windowOptions.userAgent || ""
 
   setImmediate(() => {
-    if (
-      userAgent.length > 0
-    ) {
+    if (userAgent.length > 0) {
       window.loadURL(authorizeUrl, {
-        userAgent
+        userAgent,
       })
     } else {
       window.loadURL(authorizeUrl)
