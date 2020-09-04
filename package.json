@@ -13,7 +13,7 @@
     "doc": "typedoc --out docs lib",
     "build": "tsc",
     "rebuild:modules": "electron-rebuild",
-    "preversion": "npm run lint && npm run test",
+    "preversion": "npm run lint && npm run test && npm run build",
     "version": "npm run doc && git add -A",
     "postversion": "git push && git push --tags",
     "_fmt": "prettier --config .prettierrc '{*,src/**/*}.{js,jsx,css,ts,tsx,json}'",
