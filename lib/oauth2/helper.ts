@@ -38,6 +38,33 @@ const createAuthorizeParameters = (config: OAuthConfigType) => {
   return parameter
 }
 
+/**
+ * Extract query from the URL string
+ * @param url {string} URL string to extract query
+ * @returns URL string and query object
+ */
+const extractQuery = (url: string): { url: string; query: any } => {
+  try {
+    if (typeof url !== "string" || url.length === 0) {
+      return {
+        url: "",
+        query: {},
+      }
+    }
+
+    const _url = Url.parse(url)
+
+    _url.search = _url.query = ""
+
+    return { url: Url.format(_url), query: Url.parse(_url.query, true).query }
+  } catch (error) {
+    return {
+      url: "",
+      query: {},
+    }
+  }
+}
+
 export const authorizationCodeFlowTask: TaskFunction<AuthorizationCodeGrantConfig> = async (
   config: AuthorizationCodeGrantConfig,
   emitter: OAuth2EmitterType,
@@ -51,9 +78,14 @@ export const authorizationCodeFlowTask: TaskFunction<AuthorizationCodeGrantConfi
   const authorizeParameters = createAuthorizeParameters(config)
   emitter.emit("before-authorize-request", authorizeParameters)
 
-  const authorizeUrl = `${config.authorize_url}?${querystring.stringify(
-    authorizeParameters,
-  )}`
+  const { url: urlWithoutQuery, query: queryObject } = extractQuery(
+    config.authorize_url,
+  )
+
+  const authorizeUrl = `${urlWithoutQuery}?${querystring.stringify({
+    ...queryObject,
+    ...authorizeParameters,
+  })}`
 
   const userAgent = windowOptions.userAgent || ""
 
@@ -129,9 +161,14 @@ export const implicitFlowTask: TaskFunction<ImplicitGrantConfig> = async (
   const authorizeParameters = createAuthorizeParameters(config)
   emitter.emit("before-authorize-request", authorizeParameters)
 
-  const authorizeUrl = `${config.authorize_url}?${querystring.stringify(
-    authorizeParameters,
-  )}`
+  const { url: urlWithoutQuery, query: queryObject } = extractQuery(
+    config.authorize_url,
+  )
+
+  const authorizeUrl = `${urlWithoutQuery}?${querystring.stringify({
+    ...queryObject,
+    ...authorizeParameters,
+  })}`
 
   const userAgent = windowOptions.userAgent || ""
 
